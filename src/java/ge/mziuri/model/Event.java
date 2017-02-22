@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ge.mziuri.dao;
+package ge.mziuri.model;
 
 /**
  *
  * @author USER
  */
-public class User {
+public class Event {
     
 }
