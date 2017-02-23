@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Card {
     
+    private int id;
     private double money;
     private String code;
     private String passcode;
@@ -14,12 +15,15 @@ public class Card {
     public Card() {
     }
 
-    public Card(double money, String code, String passcode, Date expDate) {
+    public Card(int id, double money, String code, String passcode, Date expDate) {
+        this.id = id;
         this.money = money;
         this.code = code;
         this.passcode = passcode;
         this.expDate = expDate;
     }
+
+    
 
     public double getMoney() {
         return money;

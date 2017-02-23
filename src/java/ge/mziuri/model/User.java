@@ -3,7 +3,8 @@ package ge.mziuri.model;
 
 
 public class User {
-    
+   
+   private int id;
    private  String name;
    private  String surname;
    private  String username;
@@ -14,8 +15,8 @@ public class User {
     public User() {
     }
 
-    
-    public User(String name, String surname, String username, String password, Card card, Ticket boughtT) {
+    public User(int id, String name, String surname, String username, String password, Card card, Ticket boughtT) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.username = username;
@@ -23,6 +24,7 @@ public class User {
         this.card = card;
         this.boughtT = boughtT;
     }
+
 
     public String getName() {
         return name;
