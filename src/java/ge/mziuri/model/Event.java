@@ -16,11 +16,13 @@ public class Event {
     private Category category;
     private Type type;
     private int places;
+    private User author;
 
     public Event() {
     }
 
-    public Event(int id, String name, String desc, Date date, double price, Category category, Type type, int places) {
+    public Event(int id, String name, String desc, Date date, double price,
+            Category category, Type type, int places, User author) {
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -29,6 +31,7 @@ public class Event {
         this.category = category;
         this.type = type;
         this.places = places;
+        this.author = author;
     }
 
     
@@ -86,6 +89,14 @@ public class Event {
 
     public void setPlaces(int places) {
         this.places = places;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
     
     
