@@ -7,6 +7,7 @@ public class Ticket {
     private Event event;
 
     public Ticket() {
+        
     }
 
     public Ticket(int id, Event event) {

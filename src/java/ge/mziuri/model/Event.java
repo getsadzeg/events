@@ -19,6 +19,7 @@ public class Event {
     private User author;
 
     public Event() {
+        
     }
 
     public Event(int id, String name, String desc, Date date, double price,

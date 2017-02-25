@@ -13,6 +13,7 @@ public class Card {
     private Date expDate;
 
     public Card() {
+        
     }
 
     public Card(int id, double money, String code, String passcode, Date expDate) {
