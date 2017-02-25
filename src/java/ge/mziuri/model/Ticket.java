@@ -2,7 +2,7 @@
 package ge.mziuri.model;
 
 public class Ticket {
-    
+
     private int id;
     private Event event;
 
@@ -23,6 +23,12 @@ public class Ticket {
         this.event = event;
     }
     
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }

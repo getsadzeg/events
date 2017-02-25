@@ -5,7 +5,7 @@ import java.util.Date;
 
 
 public class Card {
-    
+
     private int id;
     private double money;
     private String code;
@@ -58,7 +58,14 @@ public class Card {
         this.expDate = expDate;
     }
     
+    public int getId() {
+        return id;
+    }
+
     
+    public void setId(int id) {
+        this.id = id;
+    }
     
     
 }
