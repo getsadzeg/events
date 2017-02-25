@@ -1,6 +1,8 @@
 
 package ge.mziuri.model;
 
+import java.util.ArrayList;
+
 
 public class User {
    
@@ -10,13 +12,14 @@ public class User {
    private String username;
    private String password;
    private Card card;
-   private Ticket[] boughtTickets;
+   private ArrayList<Ticket> boughtTickets;
 
     public User() {
         
     }
 
-    public User(int id, String name, String surname, String username, String password, Card card, Ticket[] boughtTickets) {
+    public User(int id, String name, String surname, String username, String password,
+            Card card, ArrayList<Ticket> boughtTickets) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -67,11 +70,11 @@ public class User {
         this.card = card;
     }
 
-    public Ticket[] getBoughtT() {
+    public ArrayList<Ticket> getBoughtTickets() {
         return boughtTickets;
     }
 
-    public void setBoughtT(Ticket[] boughtTickets) {
+    public void setBoughtT(ArrayList<Ticket> boughtTickets) {
         this.boughtTickets = boughtTickets;
     }
 
