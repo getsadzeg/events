@@ -2,5 +2,5 @@
 package ge.mziuri.enums;
 
 public enum Category {
-     CINEMA, SPORTS, THEATRE, PARTY
+     CINEMA, SPORTS, THEATRE, PARTY, CONCERTS
 }
