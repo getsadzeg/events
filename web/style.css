@@ -20,5 +20,15 @@
     background: deepskyblue;
     text-align: center;
     color : crimson;
+}
+    
+ .divForm1 {
+    border-style: solid;
+    border-width: 0.2px;
+    height: 40px;
+    width: 150px;
+    background: deepskyblue;
+    text-align: center;
+    color : crimson;   
     
 }
