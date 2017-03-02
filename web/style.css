@@ -20,9 +20,17 @@
     background: deepskyblue;
     text-align: center;
     color : crimson;
+    font: bold 15px arial, sans-serif;
+}
+
+.menuDiv {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
 }
     
- .divForm1 {
+ .menuItem {
     border-style: solid;
     border-width: 0.2px;
     height: 40px;
@@ -30,5 +38,17 @@
     background: deepskyblue;
     text-align: center;
     color : crimson;   
+    display: table-cell;
+ }
+ 
+   .linkForm {
+    color: crimson;
+    text-decoration: none;
+    font: bold 80px arial, sans-serif;    
+    }
     
-}
+    .categForm {
+      color: crimson;
+      text-decoration: none; 
+      font: bold 20px arial, sans-serif;
+    }
