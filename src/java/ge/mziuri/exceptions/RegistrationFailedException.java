@@ -1,6 +1,6 @@
 
 package ge.mziuri.exceptions;
-
+import ge.mziuri.enums.RegistrationFailedExceptionType;
 
 public class RegistrationFailedException extends Exception {
 
@@ -9,7 +9,7 @@ public class RegistrationFailedException extends Exception {
     }
 
     
-    public RegistrationFailedException(String msg) {
+    public RegistrationFailedException(String msg, RegistrationFailedExceptionType type) {
         super(msg);
     }
 }
