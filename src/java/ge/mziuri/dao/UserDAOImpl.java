@@ -20,14 +20,13 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public void register(User user) {
         try {
-            pstmt = con.prepareStatement("INSERT INTO USER (id, name, surname, username, password, card_id)"
-                    + " VALUES (?,?,?,?,?,?)");
-            pstmt.setInt(1, user.getId());
-            pstmt.setString(2, user.getName());
-            pstmt.setString(3, user.getSurname());
-            pstmt.setString(4, user.getUsername());
-            pstmt.setString(5, user.getPassword());
-            pstmt.setInt(6, user.getCard().getId());
+            pstmt = con.prepareStatement("INSERT INTO USER (name, surname, username, password, card_id)"
+                    + " VALUES (?,?,?,?,?)");
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getSurname());
+            pstmt.setString(3, user.getUsername());
+            pstmt.setString(4, user.getPassword());
+            pstmt.setInt(5, user.getCard().getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
