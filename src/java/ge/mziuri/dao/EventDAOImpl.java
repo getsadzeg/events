@@ -46,12 +46,32 @@ public class EventDAOImpl implements EventDAO{
 
     @Override
     public void DeleteEvent(Event event) {
-       
+       try {
+           pstmt = con.prepareStatement("DELETE FROM EVENT WHERE id = ? ");
+           pstmt.setInt(1, event.getId());
+           pstmt.executeUpdate();
+       }
+       catch(SQLException ex) {
+           System.out.println(ex.getMessage());
+       }
     }
 
     @Override
     public void UpdateEvent(Event event) {
-        
+        try {
+            pstmt = con.prepareStatement("UPDATE EVENT SET name = ?, desc = ?, date = ?,"
+                    + "price = ?, category = ? WHERE id = ? ");
+            pstmt.setString(1, event.getName());
+            pstmt.setString(2, event.getDesc());
+            pstmt.setDate(3, (Date) event.getDate()); //cast may be incorrect
+            pstmt.setDouble(4, event.getPrice());
+            pstmt.setString(5, event.getCategory().toString());
+            pstmt.setInt(6, event.getId());
+            pstmt.executeUpdate();
+        }
+        catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
    
