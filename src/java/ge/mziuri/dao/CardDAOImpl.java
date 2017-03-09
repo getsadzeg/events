@@ -37,7 +37,7 @@ public class CardDAOImpl implements CardDAO {
                     + "passCode = ?, expirationDate = ? WHERE id = ?");
            pstmt.setString(1, card.getCode());
            pstmt.setString(2, card.getPasscode());
-           pstmt.setDate(3, (Date) card.getExpDate()); //cast may be incorrect
+           pstmt.setDate(3, new Date(card.getExpDate().getTime())); 
            pstmt.setInt(4, card.getId());
            pstmt.executeUpdate();
         }

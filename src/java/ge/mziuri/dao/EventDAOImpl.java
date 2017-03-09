@@ -63,7 +63,7 @@ public class EventDAOImpl implements EventDAO{
                     + "price = ?, category = ? WHERE id = ? ");
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
-            pstmt.setDate(3, (Date) event.getDate()); //cast may be incorrect
+            pstmt.setDate(3, new Date(event.getDate().getTime()));
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
             pstmt.setInt(6, event.getId());
