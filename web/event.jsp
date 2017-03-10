@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Event Page</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
@@ -11,7 +11,7 @@
     <body>
         <div class="divForm"> 
             <a href="index.html" class="linkForm" >
-                    Events.ge
+                    Events
                 </a> 
         </div>
         
@@ -40,7 +40,7 @@
         </div>
        
         <div class="wrapper">
-        <button class="buttonForm"> Buy </button> 
+        <button class="buttonForm"> Buy </button>
         </div>
         </body>
 </html>
