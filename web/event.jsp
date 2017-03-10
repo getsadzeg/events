@@ -38,7 +38,9 @@
              <span> ავტორი: </span>
              <span>  <%=request.getAttribute("author")%> </span> 
         </div>
-        
+       
+        <div class="wrapper">
         <button class="buttonForm"> Buy </button> 
-    </body>
+        </div>
+        </body>
 </html>
