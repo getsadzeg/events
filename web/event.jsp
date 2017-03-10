@@ -40,7 +40,7 @@
         </div>
        
         <div class="wrapper">
-        <button class="buttonForm"> Buy </button> 
+        <button class="buttonForm"> Buy </button>
         </div>
         </body>
 </html>
