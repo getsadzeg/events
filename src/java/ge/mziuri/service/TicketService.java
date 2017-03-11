@@ -30,14 +30,14 @@ public class TicketService {
             pstmt = con.prepareStatement("SELECT card_id FROM USER WHERE id = ?");
             pstmt.setInt(1, userID);
             int card_id = pstmt.executeQuery().getInt("card_id");
-            int money = moneywithCardID(card_id);
+            double money = moneywithCardID(card_id);
             card.setMoney(money);
             card.setId(card_id);
             CardDAO cardDAO = new CardDAOImpl();
             cardDAO.updateMoney(money-price, card);
             pstmt = con.prepareStatement("SELECT card_id FROM USER WHERE author_username = ?");
             int author_card_id = pstmt.executeQuery().getInt("card_id");
-            int author_money = moneywithCardID(author_card_id);
+            double author_money = moneywithCardID(author_card_id);
             card.setMoney(author_money);
             card.setId(author_card_id);
             cardDAO.updateMoney(author_money+price*(9/10), card);
@@ -47,12 +47,12 @@ public class TicketService {
         }
     }
     
-    public int moneywithCardID(int card_id) {
-        int money;
+    public double moneywithCardID(int card_id) {
+        double money = 0.0;
         try {
             pstmt = con.prepareStatement("SELECT money FROM CARD WHERE id = ?");
             pstmt.setInt(1, card_id);
-            money = pstmt.executeQuery().getInt("money");
+            money = pstmt.executeQuery().getDouble("money");
         }
         catch(SQLException ex) {
             System.out.println(ex.getMessage());
