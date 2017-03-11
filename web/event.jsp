@@ -15,7 +15,7 @@
                 </a> 
         </div>
         
-        <h1 class="hForm"> სახელი </h1>
+        <h1 class="hForm"> <%=request.getAttribute("name")%> </h1>
          <div class="eventForm">
              <span> აღწერა: </span>
              <span> <%=request.getAttribute("description")%> </span>
