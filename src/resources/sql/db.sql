@@ -17,7 +17,7 @@ CREATE TABLE EVENT (
     category VARCHAR(30) NOT NULL,
     places INT NOT NULL,
     type VARCHAR(30) NOT NULL,
-    author_id INT REFERENCES "USER"(id)
+    author_username VARCHAR(30) REFERENCES "USER"(username)
 );
 
 CREATE TABLE TICKET(

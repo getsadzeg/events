@@ -5,11 +5,16 @@
  */
 package ge.mziuri.dao;
 
+import ge.mziuri.enums.Category;
+import ge.mziuri.enums.Type;
 import ge.mziuri.model.Event;
+import ge.mziuri.model.User;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import sun.util.locale.provider.LocaleProviderAdapter;
 
 
  
@@ -72,6 +77,40 @@ public class EventDAOImpl implements EventDAO{
         catch(SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    @Override
+    public Event getEvent(int id) {
+        Event event = null;
+        User author = null;
+        try {
+            pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE id = ?");
+            pstmt.setInt(1, id);
+            ResultSet result = pstmt.executeQuery();
+            while(result.next()) {
+                String name = result.getString("name");
+                String description = result.getString("Description");
+                Date date = new Date(result.getDate("Date").getTime());
+                double price = result.getDouble("price");
+                Category category = Category.valueOf(result.getString("category"));
+                Type type = Type.valueOf(result.getString("type"));
+                int seatsnum = result.getInt("places");
+                String author_username = result.getString("author_username");
+                author.setUsername(author_username);
+                event.setName(name);
+                event.setDesc(description);
+                event.setDate(date);
+                event.setPrice(price);
+                event.setCategory(category);
+                event.setType(type);
+                event.setPlaces(seatsnum);
+                event.setAuthor(author);
+            }
+        }
+        catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return event;
     }
 
    

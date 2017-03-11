@@ -1,10 +1,13 @@
 
 package ge.mziuri.dao;
 
+import ge.mziuri.model.Card;
+import ge.mziuri.service.TicketService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 
 public class TicketDAOImpl implements TicketDAO {
@@ -18,11 +21,14 @@ public class TicketDAOImpl implements TicketDAO {
 
     @Override
     public void buyTicket(int EventID, int userID) {
+        ResultSet result = null;
+        TicketService service = new TicketService();
         try {
+            service.processPayment(EventID, userID);
             pstmt = con.prepareStatement("INSERT INTO TICKET(event_id) VALUES(?) RETURNING id;");
             pstmt.setInt(1, EventID);
             pstmt.execute();
-            ResultSet result = pstmt.getResultSet();
+            result = pstmt.getResultSet();
             int ticketID = result.getInt(1);
             pstmt = con.prepareStatement("INSERT INTO TICKET_HISTORY(user_id, ticket_id, status) VALUES(?, ?, ?)");
             pstmt.setInt(1, userID);

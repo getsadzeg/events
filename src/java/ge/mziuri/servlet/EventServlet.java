@@ -18,6 +18,7 @@ public class EventServlet extends HttpServlet {
         
     }
     
+    //demo
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* request.setAttribute("description", "rame");

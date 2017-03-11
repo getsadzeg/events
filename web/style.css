@@ -1,6 +1,9 @@
 .loginForm {
     text-align: center;
     margin-top: 70px;
+    font: bold 15px arial, sans-serif;
+     margin: auto;
+    margin-top: 70px;
 }
 
 .registerForm {
