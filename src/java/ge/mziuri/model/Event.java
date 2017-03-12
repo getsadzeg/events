@@ -110,6 +110,10 @@ public class Event {
         this.id = id;
     }
     
-    
+    @Override
+    public String toString() {
+        return id + " " + name + " " + desc + " " + date.toString() + " " + price + " " + category + 
+                " " + type + " " + places + " " + author.getUsername();
+    }
     
 }

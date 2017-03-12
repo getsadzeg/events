@@ -81,8 +81,8 @@ public class EventDAOImpl implements EventDAO{
     
     @Override
     public Event getEvent(int id) {
-        Event event = null;
-        User author = null;
+        Event event = new Event();
+        User author = new User();
         try {
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE id = ?");
             pstmt.setInt(1, id);
@@ -97,6 +97,7 @@ public class EventDAOImpl implements EventDAO{
                 int seatsnum = result.getInt("places");
                 String author_username = result.getString("author_username");
                 author.setUsername(author_username);
+                event.setId(id);
                 event.setName(name);
                 event.setDesc(description);
                 event.setDate(date);
