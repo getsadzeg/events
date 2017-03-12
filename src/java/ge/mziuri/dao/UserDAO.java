@@ -5,7 +5,7 @@ import ge.mziuri.model.User;
 
 public interface UserDAO {
     
-    void register(User user);
+    int register(User user);
     
     User login(String username, String password);
 }
