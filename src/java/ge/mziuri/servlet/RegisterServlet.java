@@ -36,7 +36,7 @@ public class RegisterServlet extends HttpServlet {
             user.setName(firstName);
             user.setSurname(lastName);
             user.setUsername(username);
-            user.setPassword(password);
+            user.setPassword(String.valueOf(password.hashCode()));
             UserDAOImpl userDAO = new UserDAOImpl();
             userDAO.register(user);
         }

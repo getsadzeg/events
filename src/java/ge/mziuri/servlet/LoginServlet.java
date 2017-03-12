@@ -6,6 +6,8 @@ import ge.mziuri.dao.UserDAOImpl;
 import ge.mziuri.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +33,11 @@ public class LoginServlet extends HttpServlet {
             if (user == null) {
                 printWriter.append("არასწორი სახელი ან პაროლი");
             } else {
-                printWriter.append("success");
+                RequestDispatcher rd = request.getRequestDispatcher("index.html");
+                rd.forward(request, response);
             }
             
-        } catch (IOException ex) {
+        } catch (IOException | ServletException ex) {
             System.out.println(ex.getMessage());
         }
     }
