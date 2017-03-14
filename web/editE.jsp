@@ -14,10 +14,10 @@
                   აღწერა: <input type="text" name="name" value="<%=request.getAttribute("desc")%>"> <br>   
                   თარიღი:  <input type="date" name="date" value="<%=request.getAttribute("date")%>"> <br> 
                   ფასი:  <input type="number" name="price" value="<%=request.getAttribute("price")%>" > <br> 
-                  კატეგორია: <input type="text" name="categ" value="<%=request.getAttribute("categ")%>"> <br> 
+                  კატეგორია: <input type="text" name="category" value="<%=request.getAttribute("category")%>"> <br> 
                   ტიპი: <input type="text" name="type" value="<%=request.getAttribute("type")%>"> <br> 
                   ადგილები: <input type="number" name="places" value="<%=request.getAttribute("places")%>"> <br> 
-                  <input type="button" value="შეცვლა">
+                  <input type="button" value="განახლება">
               </form>
           </div>
         
