@@ -1,4 +1,6 @@
 
+<%@page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,7 @@
                 </a> 
         </div>
         
-        <form action = "EventServlet" method = "post">
+        <form action = "EventViewServlet" method = "post">
         <h1 class="hForm"> <%=request.getAttribute("name")%> </h1>
          <div class="eventForm">
              <span> აღწერა: </span>
@@ -38,9 +40,21 @@
              <br>
              <span> ავტორი: </span>
              <span>  <%=request.getAttribute("author")%> </span> 
+             
         </div>
         </form>
        
+             <div class="wrapper">
+                 <select>
+                    <%
+                        List<Integer> numbers = (List<Integer>)request.getAttribute("freePlaces");
+                        for (int number : numbers) {
+                            out.write("<option value=\" " + number + "\">" + number + "</option>");
+                        }
+                    %>
+                 </select>
+             </div>
+             
         <div class="wrapper">
         <button class="buttonForm"> Buy Ticket </button>
         </div>
