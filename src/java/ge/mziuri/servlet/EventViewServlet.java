@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class EventServlet extends HttpServlet {
+public class EventViewServlet extends HttpServlet {
     
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -32,6 +32,7 @@ public class EventServlet extends HttpServlet {
         request.setAttribute("category", event.getCategory().toString());
         request.setAttribute("type", event.getType().toString());
         request.setAttribute("places", event.getPlaces());
+        request.setAttribute("freeplaces", event.getAvailablePlaces());
         request.setAttribute("author", event.getAuthor().getUsername());
         RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
         rd.forward(request, response);

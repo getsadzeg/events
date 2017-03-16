@@ -2,6 +2,7 @@
 package ge.mziuri.dao;
 
 import ge.mziuri.model.Event;
+import java.util.ArrayList;
 
 
 public interface EventDAO {
@@ -13,4 +14,6 @@ public interface EventDAO {
     void UpdateEvent(Event event);
     
     Event getEvent(int id);
+    
+    ArrayList<Integer> getAvailablePlaces(int id);
 }

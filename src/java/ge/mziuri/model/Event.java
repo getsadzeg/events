@@ -3,6 +3,7 @@ package ge.mziuri.model;
 
 import ge.mziuri.enums.Category;
 import ge.mziuri.enums.Type;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -16,6 +17,7 @@ public class Event {
     private Category category;
     private Type type;
     private int places;
+    private ArrayList availablePlaces;
     private User author;
 
     public Event() {
@@ -32,6 +34,7 @@ public class Event {
         this.category = category;
         this.type = type;
         this.places = places;
+        availablePlaces = new ArrayList<>();
         this.author = author;
     }
 
@@ -108,6 +111,16 @@ public class Event {
     
     public void setId(int id) {
         this.id = id;
+    }
+
+    
+    public ArrayList<Integer> getAvailablePlaces() {
+        return availablePlaces;
+    }
+
+    
+    public void setAvailablePlaces(ArrayList<Integer> availablePlaces) {
+        this.availablePlaces = availablePlaces;
     }
     
     @Override

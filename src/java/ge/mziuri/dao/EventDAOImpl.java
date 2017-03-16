@@ -14,6 +14,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import sun.util.locale.provider.LocaleProviderAdapter;
 
 
@@ -112,6 +114,24 @@ public class EventDAOImpl implements EventDAO{
             System.out.println(ex.getMessage());
         }
         return event;
+    }
+    
+    @Override
+    public ArrayList getAvailablePlaces(int id) {
+        String availablePlaceString = null;
+        ArrayList list = new ArrayList<>();
+        try {
+            pstmt = con.prepareStatement("SELECT available_places FROM EVENT WHERE id = ?");
+            pstmt.setInt(1, id);
+            ResultSet result = pstmt.executeQuery();
+            availablePlaceString = result.getString("available_places");
+            Arrays.asList(1,2);
+            list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));
+        }
+        catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
     }
 
    
