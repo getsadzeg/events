@@ -44,5 +44,10 @@
         </div>
         
         
+        <a href="Event.jsp" class="DivLinkForm"><div class="eventDForm"> 
+                <h2> <%=request.getAttribute("name")%> </h2>
+                <h3><%=request.getAttribute("desc")%></h3>
+            </div></a>
+            
     </body>
 </html>
