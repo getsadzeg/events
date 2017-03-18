@@ -61,7 +61,7 @@
         <div class="wrapper">
     
             <form formAction="BuyTicketServlet" method="post">
-                <input type="button"  class="buttonForm" value="Buy ticket">   
+                <input type="button" class="buttonForm" value="Buy ticket">   
           </form>
 
         
