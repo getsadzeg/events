@@ -1,7 +1,6 @@
 
 package ge.mziuri.servlet;
 
-import com.sun.prism.paint.Paint;
 import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.enums.Category;

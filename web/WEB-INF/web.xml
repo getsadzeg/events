@@ -32,4 +32,12 @@
         <servlet-name>EventViewServlet</servlet-name>
         <url-pattern>/EventViewServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EventCreateServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.EventCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventCreateServlet</servlet-name>
+        <url-pattern>/EventCreateServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
