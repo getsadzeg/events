@@ -90,3 +90,18 @@
              margin: auto;
              margin-top: 70px;  
                     }   
+                    
+       .eventDForm {
+             border-style: solid;
+             border-width: 1px;
+             width: 240px;    
+             text-align: center;      
+             color: black;
+             margin-left: 10px;
+             display: table-cell;
+                    }
+      
+     .DivLinkForm {
+         text-decoration: none;
+         padding: 14px;
+                    }

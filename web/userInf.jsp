@@ -10,11 +10,12 @@
     <body>
         <div  class="registerForm">
            <form action="/action_page.php">
-           სახელი: <input type="text" name="fname" value="<%=request.getAttribute("name")%>"><br>
-           გვარი: <input type="text" name="lname" value="<%=request.getAttribute("surname")%>"><br>
-           ბარათის კოდი: <input type="text" name="card" value="<%=request.getAttribute("cardinf")%>"> <br>
-           ბარათის ვადა: <input type="date" value="<%=request.getAttribute("date")%>">
-           <input type="submit" value="შეცვლა">
+           სახელი: <input type="text" name="firstname" value="<%=request.getAttribute("name")%>"><br>
+           გვარი: <input type="text" name="lastname" value="<%=request.getAttribute("surname")%>"><br>
+           ბარათის კოდი: <input type="text" name="card" value="<%=request.getAttribute("cardcode")%>"> <br>
+           ბარათის პასკოდი: <input type="password" name="passcode" value="<%=request.getAttribute("passcode")%>"> <br>
+           ბარათის ვადა: <input type="date" name="expdate" value="<%=request.getAttribute("expdate")%>">
+           <input type="submit" value="განახლება">
 </form>
         </div>
     </body>

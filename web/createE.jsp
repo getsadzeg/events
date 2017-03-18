@@ -1,8 +1,3 @@
-<%-- 
-    Document   : createE
-    Created on : Mar 11, 2017, 3:14:03 PM
-    Author     : user_2
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,12 +8,12 @@
     </head>
     <body>
           <div class="eventForm">
-              <form>
+              <form action = "EventCreateServlet" method = "post">
                   სახელი: <input type="text" name="desc"> <br>   
                   აღწერა: <input type="text" name="name"> <br>   
                   თარიღი:  <input type="date" name="date"> <br> 
                   ფასი:  <input type="number" name="price"> <br> 
-                  კატეგორია: <input type="text" name="categ"> <br> 
+                  კატეგორია: <input type="text" name="category"> <br> 
                   ტიპი: <input type="text" name="type"> <br> 
                   ადგილები: <input type="number" name="places"> <br> 
                   <input type="button" value="შექმნა">

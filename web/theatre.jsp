@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sports</title>
+        <title>Cinema</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
+       <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-           <div class="divForm"> 
-            <a href="index.html" class="linkForm" >
+        
+          <div class="divForm"> 
+            <a href="index.jsp" class="linkForm" >
                     Events
                 </a> 
         </div>
         <div class="menuDiv">
             <div class="menuItem">
-                <a href="sports.html" class="categForm" >
+                <a href="sports.jsp" class="categForm" >
                     Sports
                 </a> 
             </div> 
 
             <div class="menuItem">
-                <a href="theater.html" class="categForm">
+                <a href="theater.jsp" class="categForm">
                     Theater
                 </a>
             </div>
             
             <div class="menuItem">
-                <a href="cinema.html" class="categForm">
+                <a href="cinema.jsp" class="categForm">
                     Cinema
                 </a>
             </div>
             <div class="menuItem">
-                <a href="party.html" class="categForm">
+                <a href="party.jsp" class="categForm">
                     Party
                 </a>
             </div>
             
              <div class="menuItem">
-                <a href="concert.html" class="categForm">
+                <a href="concert.jsp" class="categForm">
                     Concert
                 </a>
             </div>
