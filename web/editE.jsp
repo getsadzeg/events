@@ -9,7 +9,7 @@
     </head>
     <body>
           <div class="eventForm">
-              <form action = "EventEditServlet" method = "post">
+              <form action = "EventViewEditServlet" method = "post">
                   სახელი: <input type="text" name="desc" value="<%=request.getAttribute("name")%>"> <br>   
                   აღწერა: <input type="text" name="name" value="<%=request.getAttribute("desc")%>"> <br>   
                   თარიღი:  <input type="date" name="date" value="<%=request.getAttribute("date")%>"> <br>  

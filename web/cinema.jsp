@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="ge.mziuri.model.Event"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,6 +44,20 @@
                 </a>
             </div>
         </div>
+        
+           <%  
+                   List<Event> events = (List<Event>)request.getAttribute("events");
+                   for (Event event : events) {
+                       out.write("<form formAction=\"eventViewEditServlet\" method=\"post\">");
+                       out.write("<a href=\"Event.jsp\" class=\"DivLinkForm\"><div class=\"eventDForm\">");
+                       out.write("<h2>" + event.getName() + "</h2>");
+                       out.write("<h3>" + event.getDesc() + "</h3>");
+                       out.write("<input type=\"hidden\" value=\"view\">");
+                       out.write("</div></a>");
+                   }
+                          
+                 %> 
+        
         
     </body>
 </html>
