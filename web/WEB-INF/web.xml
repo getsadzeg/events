@@ -40,4 +40,12 @@
         <servlet-name>EventCreateServlet</servlet-name>
         <url-pattern>/EventCreateServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EventEditServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.EventEditServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventEditServlet</servlet-name>
+        <url-pattern>/EventEditServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
