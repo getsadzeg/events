@@ -20,13 +20,14 @@ public class TicketDAOImpl implements TicketDAO {
     }
 
     @Override
-    public void buyTicket(int EventID, int userID) {
+    public void buyTicket(int EventID, int userID, int seat) {
         ResultSet result = null;
         TicketService service = new TicketService();
         try {
             service.processPayment(EventID, userID);
-            pstmt = con.prepareStatement("INSERT INTO TICKET(event_id) VALUES(?) RETURNING id;");
+            pstmt = con.prepareStatement("INSERT INTO TICKET(event_id, seat) VALUES(?, ?) RETURNING id;");
             pstmt.setInt(1, EventID);
+            pstmt.setInt(2, seat);
             pstmt.execute();
             result = pstmt.getResultSet();
             int ticketID = result.getInt(1);
