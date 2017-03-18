@@ -25,12 +25,12 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>EventViewServlet</servlet-name>
-        <servlet-class>ge.mziuri.servlet.EventViewServlet</servlet-class>
+        <servlet-name>EventViewEditServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.EventViewEditServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>EventViewServlet</servlet-name>
-        <url-pattern>/EventViewServlet</url-pattern>
+        <servlet-name>EventViewEditServlet</servlet-name>
+        <url-pattern>/EventViewEditServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>EventCreateServlet</servlet-name>
@@ -39,13 +39,5 @@
     <servlet-mapping>
         <servlet-name>EventCreateServlet</servlet-name>
         <url-pattern>/EventCreateServlet</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>EventEditServlet</servlet-name>
-        <servlet-class>ge.mziuri.servlet.EventEditServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EventEditServlet</servlet-name>
-        <url-pattern>/EventEditServlet</url-pattern>
     </servlet-mapping>
 </web-app>
