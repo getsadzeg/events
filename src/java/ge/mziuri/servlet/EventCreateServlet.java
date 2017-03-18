@@ -40,7 +40,7 @@ public class EventCreateServlet extends HttpServlet {
         event.setName(name);
         event.setDesc(description);
         event.setDate(date);
-        event.setPrice(Double.parseDouble(name));
+        event.setPrice(Double.parseDouble(price)); 
         event.setCategory(category);
         event.setType(type);
         event.setPlaces(Integer.parseInt(places));
