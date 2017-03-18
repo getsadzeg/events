@@ -9,7 +9,7 @@
     </head>
     <body>
         <div  class="registerForm">
-           <form action="/action_page.php">
+           <form action="/action_page.php"> <!what is it?!>
            სახელი: <input type="text" name="firstname" value="<%=request.getAttribute("name")%>"><br>
            გვარი: <input type="text" name="lastname" value="<%=request.getAttribute("surname")%>"><br>
            ბარათის კოდი: <input type="text" name="card" value="<%=request.getAttribute("cardcode")%>"> <br>
