@@ -34,8 +34,17 @@ public class EventDAOImpl implements EventDAO{
     @Override
     public void CreateEvent(Event event) {
        try { 
-           pstmt = con.prepareStatement("INSERT INTO EVENT (name, desc, date, price, category, type, places)"
-                    + " VALUES (?,?,?,?,?,?,?)");
+           StringBuilder availablePlacesBuilder = new StringBuilder();
+            ArrayList availablePlacesList = event.getAvailablePlaces();
+            for(int i=0; i<event.getPlaces(); i++) {
+                availablePlacesBuilder.append(availablePlacesList.get(i));
+                if (i != event.getPlaces() - 1) {
+                    availablePlacesBuilder.append(",");
+                }
+            }
+           String availablePlacesString = availablePlacesBuilder.toString();
+           pstmt = con.prepareStatement("INSERT INTO EVENT (name, desc, date, price, category, type, places, available_places)"
+                    + " VALUES (?,?,?,?,?,?,?,?)");
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
             pstmt.setDate(3, (Date) event.getDate());
@@ -43,6 +52,7 @@ public class EventDAOImpl implements EventDAO{
             pstmt.setString(5, event.getCategory().toString());
             pstmt.setString(6, event.getType().toString());
             pstmt.setInt(7, event.getPlaces());
+            pstmt.setString(8, availablePlacesString);
             pstmt.executeUpdate();
             
        }catch(SQLException ex){
@@ -124,7 +134,6 @@ public class EventDAOImpl implements EventDAO{
             pstmt.setInt(1, id);
             ResultSet result = pstmt.executeQuery();
             availablePlaceString = result.getString("available_places");
-            Arrays.asList(1,2);
             list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));
         }
         catch(SQLException ex) {
