@@ -35,19 +35,18 @@ public class EventDAOImpl implements EventDAO{
     public void CreateEvent(Event event) {
        try { 
            StringBuilder availablePlacesBuilder = new StringBuilder();
-            ArrayList availablePlacesList = event.getAvailablePlaces();
-            for(int i=0; i<event.getPlaces(); i++) {
-                availablePlacesBuilder.append(availablePlacesList.get(i));
+            for(int i=1; i<event.getPlaces(); i++) {
+                availablePlacesBuilder.append(i);
                 if (i != event.getPlaces() - 1) {
                     availablePlacesBuilder.append(",");
                 }
             }
            String availablePlacesString = availablePlacesBuilder.toString();
-           pstmt = con.prepareStatement("INSERT INTO EVENT (name, desc, date, price, category, type, places, available_places)"
-                    + " VALUES (?,?,?,?,?,?,?,?)");
+           pstmt = con.prepareStatement("INSERT INTO EVENT (name, description, date, price, category, type, places, available_places)"
+                    + " VALUES (?,?,?,?,?,?,?,?)"); //wanna add author_username after adding cookies
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
-            pstmt.setDate(3, (Date) event.getDate());
+            pstmt.setDate(3, new Date(event.getDate().getTime()));
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
             pstmt.setString(6, event.getType().toString());
@@ -55,7 +54,7 @@ public class EventDAOImpl implements EventDAO{
             pstmt.setString(8, availablePlacesString);
             pstmt.executeUpdate();
             
-       }catch(SQLException ex){
+       } catch(SQLException ex){
             System.out.println(ex.getMessage());
        }
     }

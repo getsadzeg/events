@@ -25,8 +25,8 @@ public class EventCreateServlet extends HttpServlet {
         String description = (String)request.getAttribute("desc");
         String date_string = (String)request.getAttribute("date");
         String price = (String)request.getAttribute("price");
-        Category category = (Category.valueOf((String)request.getAttribute("categ")));
-        Type type = (Type.valueOf((String)request.getAttribute("type")));
+        Category category = Category.valueOf((String)request.getAttribute("category")); //NullPointerException lies here.. :(
+        Type type = Type.valueOf((String)request.getAttribute("type"));
         String places = (String)request.getAttribute("places");
         SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         Date date = null;
