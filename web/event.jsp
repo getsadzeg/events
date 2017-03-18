@@ -40,10 +40,11 @@
              <br>
              <span> ავტორი: </span>
              <span>  <%=request.getAttribute("author")%> </span> 
-             
+      
         </div>
         </form>
        
+           
              <div class="wrapper">
                  <select>
                     <%
@@ -54,9 +55,21 @@
                     %>
                  </select>
              </div>
+                 
+          
              
         <div class="wrapper">
-        <button class="buttonForm"> Buy Ticket </button>
-        </div>
+    
+            <form formAction="BuyTicketServlet" method="post">
+                <input type="button"  class="buttonForm" value="Buy ticket">   
+          </form>
+
+        
+          <form formAction="EventViewEditServlet" method="post">
+            <input type="hidden" name="actionType" value="edit">  
+            <input type="button" class="buttonForm" value="Edit">   
+          </form>
+        
+          </div>
         </body>
 </html>

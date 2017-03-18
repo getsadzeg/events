@@ -72,7 +72,8 @@
         }
         
     .buttonForm {
-      
+       margin: 10px;
+       display: table-cell;
        }
             
             
