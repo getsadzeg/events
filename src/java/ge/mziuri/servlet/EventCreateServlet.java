@@ -21,14 +21,14 @@ public class EventCreateServlet extends HttpServlet {
     
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String name = (String)request.getAttribute("name");
-        String description = (String)request.getAttribute("desc");
-        String date_string = (String)request.getAttribute("date");
-        String price = (String)request.getAttribute("price");
-        Category category = Category.valueOf((String)request.getAttribute("category")); //NullPointerException lies here.. :(
-        Type type = Type.valueOf((String)request.getAttribute("type"));
-        String places = (String)request.getAttribute("places");
-        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        String name = (String)request.getParameter("name");
+        String description = (String)request.getParameter("desc");
+        String date_string = (String)request.getParameter("date");
+        String price = (String)request.getParameter("price");
+        Category category = Category.valueOf((String)request.getParameter("category"));
+        Type type = Type.valueOf((String)request.getParameter("type"));
+        String places = (String)request.getParameter("places");
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
         Date date = null;
         try {
              date = formatter.parse(date_string);
