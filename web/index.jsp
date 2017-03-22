@@ -60,6 +60,13 @@
                           
                  %> 
            
+                 <a href="Login.jsp" ><div class="eventDForm"> 
+                         <p> Login </p>
+                     </div> </a>
+                 
+                  <a href="Register.jsp" ><div class="eventDForm"> 
+                         <p> Register </p>
+                     </div> </a>
             
     </body>
 </html>
