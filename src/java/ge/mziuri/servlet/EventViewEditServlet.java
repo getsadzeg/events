@@ -19,12 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class EventViewEditServlet extends HttpServlet {
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-    }
-
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         EventDAO eventDAO = new EventDAOImpl();
         Event event = eventDAO.getEvent(id);
@@ -40,11 +35,7 @@ public class EventViewEditServlet extends HttpServlet {
         String actionType = request.getParameter("actionType");
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter pt = response.getWriter();
-        pt.append(actionType);
-        pt.flush();
-        pt.close();
-        if (actionType != null && !actionType.isEmpty()) {
+        if (actionType != null && actionType.equals("edit")) {
             RequestDispatcher rd = request.getRequestDispatcher("editE.jsp");
             rd.forward(request, response);
             String name = (String) request.getAttribute("name");
@@ -67,5 +58,10 @@ public class EventViewEditServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
             rd.forward(request, response);
         }
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
     }
 }
