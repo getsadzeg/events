@@ -17,7 +17,7 @@
                 </a> 
         </div>
         
-        <form action = "EventViewServlet" method = "post">
+        <form action = "EventViewEditServlet" method = "post">
         <h1 class="hForm"> <%=request.getAttribute("name")%> </h1>
          <div class="eventForm">
              <span> აღწერა: </span>
@@ -42,16 +42,20 @@
              <span>  <%=request.getAttribute("author")%> </span> 
       
         </div>
+             <div class="wrapper">
+                 <input type="submit" name="actionType" class="buttonForm" value="Edit">
+             </div>
+             
         </form>
        
            
              <div class="wrapper">
                  <select>
                     <%
-                        List<Integer> numbers = (List<Integer>)request.getAttribute("freePlaces");
+                       /* List<Integer> numbers = (List<Integer>)request.getAttribute("freePlaces");
                         for (int number : numbers) {
                             out.write("<option value=\" " + number + "\">" + number + "</option>");
-                        }
+                        } */
                     %>
                  </select>
              </div>
@@ -65,10 +69,9 @@
           </form>
 
         
-          <form formAction="EventViewEditServlet" method="post">
-            <input type="hidden" name="actionType" value="edit">  
-            <input type="button" class="buttonForm" value="Edit">   
-          </form>
+          <!--<form formAction="EventViewEditServlet" method="post">
+            <input type="submit" name="actionType" class="buttonForm" value="Edit">   
+          </form> --->
         
           </div>
         </body>

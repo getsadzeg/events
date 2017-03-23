@@ -14,7 +14,7 @@
                   აღწერა: <input type="text" name="name" value="<%=request.getAttribute("desc")%>"> <br>   
                   თარიღი:  <input type="date" name="date" value="<%=request.getAttribute("date")%>"> <br>  
                   კატეგორია: <input type="text" name="category" value="<%=request.getAttribute("category")%>"> <br>   
-                  <input type="button" value="განახლება">
+                  <input type="submit" value="განახლება">
               </form>
           </div>
         

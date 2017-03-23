@@ -6,6 +6,7 @@ import ge.mziuri.enums.Category;
 import ge.mziuri.enums.Type;
 import ge.mziuri.model.Event;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +38,13 @@ public class EventViewEditServlet extends HttpServlet {
         request.setAttribute("freeplaces", event.getAvailablePlaces());
         request.setAttribute("author", event.getAuthor().getUsername());
         String actionType = request.getParameter("actionType");
-        if ("edit".equals(actionType)) {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter pt = response.getWriter();
+        pt.append(actionType);
+        pt.flush();
+        pt.close();
+        if (actionType != null && !actionType.isEmpty()) {
             RequestDispatcher rd = request.getRequestDispatcher("editE.jsp");
             rd.forward(request, response);
             String name = (String) request.getAttribute("name");
@@ -56,7 +63,7 @@ public class EventViewEditServlet extends HttpServlet {
             event.setDate(date);
             event.setCategory(category);
             eventDAO.UpdateEvent(event);
-        } else if ("view".equals(actionType)) {
+        } else {
             RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
             rd.forward(request, response);
         }
