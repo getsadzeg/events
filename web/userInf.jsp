@@ -23,7 +23,7 @@
                         List<Event> events = (List<Event>)request.getAttribute("BoughtTicket");
                         for (Event event : events) {
                             out.write("<h4>" + event.getName() + "</h4>");
-                            out.write("<h5>" + event.getDate() + "</h5>"); //probably incorrect
+                            out.write("<h5>" + event.getDate() + "</h5>");
                            
                         } 
                     %>   
