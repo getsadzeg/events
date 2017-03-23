@@ -16,7 +16,7 @@
                   კატეგორია: <input type="text" name="category"> <br> 
                   ტიპი: <input type="text" name="type"> <br> 
                   ადგილები: <input type="number" name="places"> <br> 
-                  <input type="button" value="შექმნა">
+                  <input type="submit" value="შექმნა">
               </form>
           </div>
         
