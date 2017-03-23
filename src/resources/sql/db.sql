@@ -21,6 +21,7 @@ CREATE TABLE EVENT (
     author_username VARCHAR(30) REFERENCES "USER"(username)
 );
 ALTER TABLE EVENT ADD name VARCHAR(30);
+ALTER TABLE EVENT ADD available_places text;
 
 CREATE TABLE TICKET(
     id serial PRIMARY KEY NOT NULL,

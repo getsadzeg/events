@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
     <session-config>
         <session-timeout>
@@ -25,12 +25,12 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>EventViewServlet</servlet-name>
-        <servlet-class>ge.mziuri.servlet.EventViewServlet</servlet-class>
+        <servlet-name>EventViewEditServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.EventViewEditServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>EventViewServlet</servlet-name>
-        <url-pattern>/EventViewServlet</url-pattern>
+        <servlet-name>EventViewEditServlet</servlet-name>
+        <url-pattern>/EventViewEditServlet</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>EventCreateServlet</servlet-name>

@@ -16,51 +16,54 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import sun.util.locale.provider.LocaleProviderAdapter;
 
+public class EventDAOImpl implements EventDAO {
 
- 
-
-public class EventDAOImpl implements EventDAO{
-
-    
     private Connection con;
-    
+
     private PreparedStatement pstmt;
-    
+
     public EventDAOImpl() {
-       con = DatabaseUtil.getConnection();
+        con = DatabaseUtil.getConnection();
     }
-    
+
     @Override
     public void CreateEvent(Event event) {
-       try { 
-           pstmt = con.prepareStatement("INSERT INTO EVENT (name, desc, date, price, category, type, places)"
-                    + " VALUES (?,?,?,?,?,?,?)");
+        try {
+            StringBuilder availablePlacesBuilder = new StringBuilder();
+            for (int i = 1; i <= event.getPlaces(); i++) {
+                availablePlacesBuilder.append(i);
+                if (i != event.getPlaces()) {
+                    availablePlacesBuilder.append(",");
+                }
+            }
+            String availablePlacesString = availablePlacesBuilder.toString();
+            pstmt = con.prepareStatement("INSERT INTO EVENT (name, description, date, price, category, type, places, available_places)"
+                    + " VALUES (?,?,?,?,?,?,?,?)"); //wanna add author_username after adding cookies
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
-            pstmt.setDate(3, (Date) event.getDate());
+            pstmt.setDate(3, new Date(event.getDate().getTime()));
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
             pstmt.setString(6, event.getType().toString());
             pstmt.setInt(7, event.getPlaces());
+            pstmt.setString(8, availablePlacesString);
             pstmt.executeUpdate();
-            
-       }catch(SQLException ex){
+
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-       }
+        }
     }
 
     @Override
     public void DeleteEvent(Event event) {
-       try {
-           pstmt = con.prepareStatement("DELETE FROM EVENT WHERE id = ? ");
-           pstmt.setInt(1, event.getId());
-           pstmt.executeUpdate();
-       }
-       catch(SQLException ex) {
-           System.out.println(ex.getMessage());
-       }
+        try {
+            pstmt = con.prepareStatement("DELETE FROM EVENT WHERE id = ? ");
+            pstmt.setInt(1, event.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @Override
@@ -75,12 +78,11 @@ public class EventDAOImpl implements EventDAO{
             pstmt.setString(5, event.getCategory().toString());
             pstmt.setInt(6, event.getId());
             pstmt.executeUpdate();
-        }
-        catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     @Override
     public Event getEvent(int id) {
         Event event = new Event();
@@ -89,7 +91,7 @@ public class EventDAOImpl implements EventDAO{
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE id = ?");
             pstmt.setInt(1, id);
             ResultSet result = pstmt.executeQuery();
-            while(result.next()) {
+            while (result.next()) {
                 String name = result.getString("name");
                 String description = result.getString("Description");
                 Date date = new Date(result.getDate("Date").getTime());
@@ -109,13 +111,12 @@ public class EventDAOImpl implements EventDAO{
                 event.setPlaces(seatsnum);
                 event.setAuthor(author);
             }
-        }
-        catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return event;
     }
-    
+
     @Override
     public ArrayList getAvailablePlaces(int id) {
         String availablePlaceString = null;
@@ -125,15 +126,11 @@ public class EventDAOImpl implements EventDAO{
             pstmt.setInt(1, id);
             ResultSet result = pstmt.executeQuery();
             availablePlaceString = result.getString("available_places");
-            Arrays.asList(1,2);
             list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));
-        }
-        catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return list;
     }
 
-   
-    
 }

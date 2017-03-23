@@ -10,11 +10,11 @@
     <body>
           <div class="eventForm">
               <form action = "EventViewEditServlet" method = "post">
-                  სახელი: <input type="text" name="desc" value="<%=request.getAttribute("name")%>"> <br>   
-                  აღწერა: <input type="text" name="name" value="<%=request.getAttribute("desc")%>"> <br>   
+                  სახელი: <input type="text" name="name" value="<%=request.getAttribute("name")%>"> <br>   
+                  აღწერა: <input type="text" name="desc" value="<%=request.getAttribute("desc")%>"> <br>   
                   თარიღი:  <input type="date" name="date" value="<%=request.getAttribute("date")%>"> <br>  
                   კატეგორია: <input type="text" name="category" value="<%=request.getAttribute("category")%>"> <br>   
-                  <input type="button" value="განახლება">
+                  <input type="submit" value="განახლება">
               </form>
           </div>
         

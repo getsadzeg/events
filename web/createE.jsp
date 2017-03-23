@@ -9,8 +9,8 @@
     <body>
           <div class="eventForm">
               <form action = "EventCreateServlet" method = "get">
-                  სახელი: <input type="text" name="desc"> <br>   
-                  აღწერა: <input type="text" name="name"> <br>   
+                  სახელი: <input type="text" name="name"> <br>   
+                  აღწერა: <input type="text" name="desc"> <br>   
                   თარიღი:  <input type="date" name="date"> <br> 
                   ფასი:  <input type="number" name="price"> <br> 
                   კატეგორია: <input type="text" name="category"> <br> 
