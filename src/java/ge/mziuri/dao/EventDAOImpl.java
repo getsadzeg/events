@@ -69,7 +69,7 @@ public class EventDAOImpl implements EventDAO {
     @Override
     public void UpdateEvent(Event event) {
         try {
-            pstmt = con.prepareStatement("UPDATE EVENT SET name = ?, desc = ?, date = ?,"
+            pstmt = con.prepareStatement("UPDATE EVENT SET name = ?, description = ?, date = ?,"
                     + "price = ?, category = ? WHERE id = ? ");
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());

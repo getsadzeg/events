@@ -17,7 +17,7 @@
                 </a> 
         </div>
         
-        <form action = "EventViewEditServlet" method = "get">
+        <form action = "EventViewServlet" method = "get">
         <h1 class="hForm"> <%=request.getAttribute("name")%> </h1>
          <div class="eventForm">
              <span> აღწერა: </span>
@@ -42,6 +42,8 @@
              <span>  <%=request.getAttribute("author")%> </span> 
       
         </div>
+             </form>
+             <form action="EventEditServlet" method="post">
              <div class="wrapper">
                  <input type="hidden" name="actionType" value="edit">
                  <input type="submit" name="button" class="buttonForm" value="Edit">
