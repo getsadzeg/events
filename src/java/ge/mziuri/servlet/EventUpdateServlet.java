@@ -4,9 +4,12 @@ import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.enums.Category;
 import ge.mziuri.model.Event;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,5 +49,22 @@ public class EventUpdateServlet extends HttpServlet {
         event.setDate(date);
         event.setCategory(category);
         eventDAO.UpdateEvent(event);
+        Cookie cookie = new Cookie("idCookie", String.valueOf(id));
+        response.addCookie(cookie);
+        request.setAttribute("name", name);
+        request.setAttribute("description", description);
+        request.setAttribute("date", date);
+        request.setAttribute("price", event.getPrice());
+        request.setAttribute("category", category.toString());
+        request.setAttribute("type", event.getType().toString());
+        request.setAttribute("places", event.getPlaces());
+        request.setAttribute("freeplaces", event.getAvailablePlaces());
+        request.setAttribute("author", event.getAuthor().getUsername());
+        RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
+        try {
+            rd.forward(request, response);
+        } catch(ServletException | IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
