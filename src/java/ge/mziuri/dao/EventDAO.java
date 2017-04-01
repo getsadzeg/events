@@ -16,4 +16,6 @@ public interface EventDAO {
     Event getEvent(int id);
     
     ArrayList<Integer> getAvailablePlaces(int id);
+    
+    ArrayList getAllEvents();
 }

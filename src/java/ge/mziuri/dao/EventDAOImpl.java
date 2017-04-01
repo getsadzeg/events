@@ -133,4 +133,42 @@ public class EventDAOImpl implements EventDAO {
         return list;
     }
 
+    @Override
+    public ArrayList getAllEvents() {
+        ArrayList list = new ArrayList<>();
+        Event event;
+        User author;
+        try {
+            pstmt = con.prepareStatement("SELECT * FROM EVENT");
+            ResultSet result = pstmt.executeQuery();
+            while (result.next()) {
+                event = new Event();
+                author = new User();
+                int id = result.getInt("id");
+                String name = result.getString("name");
+                String description = result.getString("Description");
+                Date date = new Date(result.getDate("Date").getTime());
+                double price = result.getDouble("price");
+                Category category = Category.valueOf(result.getString("category"));
+                Type type = Type.valueOf(result.getString("type"));
+                int seatsnum = result.getInt("places");
+                String author_username = result.getString("author_username");
+                author.setUsername(author_username);
+                event.setId(id);
+                event.setName(name);
+                event.setDesc(description);
+                event.setDate(date);
+                event.setPrice(price);
+                event.setCategory(category);
+                event.setType(type);
+                event.setPlaces(seatsnum);
+                event.setAuthor(author);
+                list.add(event);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+
 }

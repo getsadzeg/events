@@ -10,4 +10,5 @@ public interface UserDAO {
     
     User login(String username, String password);
     
+    User getUser(int id);
 }

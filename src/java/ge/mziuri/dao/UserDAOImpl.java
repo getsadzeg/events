@@ -60,5 +60,23 @@ public class UserDAOImpl implements UserDAO {
         return null;
     }
 
-    
+    @Override
+    public User getUser(int id) {
+        try {
+            pstmt = con.prepareStatement("SELECT * FROM \"USER\" WHERE id = ?");
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            User user = new User();
+            user.setId(rs.getInt("id"));
+            user.setName(rs.getString("name"));
+            user.setSurname(rs.getString("surname"));
+            user.setUsername(rs.getString("username"));
+            user.setPassword(rs.getString("password"));
+            return user;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
 }
