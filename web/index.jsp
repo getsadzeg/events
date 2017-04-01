@@ -61,7 +61,6 @@
 
 
         <%
-            System.out.println(request.getAttribute("events"));
             if (request.getAttribute("events") != null) {
                 ArrayList<Event> events = (ArrayList<Event>) request.getAttribute("events");
                 int i = 0;
