@@ -1,9 +1,11 @@
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Events - Registration</title>
         <meta charset="UTF-8">
-         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <div class="registerForm">
@@ -18,3 +20,4 @@
         </div>
     </body>
 </html>
+

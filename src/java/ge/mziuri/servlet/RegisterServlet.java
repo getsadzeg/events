@@ -7,6 +7,7 @@ import ge.mziuri.model.User;
 import ge.mziuri.enums.RegistrationFailedExceptionType;
 import ge.mziuri.exceptions.RegistrationFailedException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,13 +40,17 @@ public class RegisterServlet extends HttpServlet {
             user.setPassword(String.valueOf(password.hashCode()));
             UserDAOImpl userDAO = new UserDAOImpl();
             userDAO.register(user);
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            rd.forward(request, response);
         }
-        catch(Exception e) {
-            System.out.println(e.getMessage());
+        catch(RegistrationFailedException e) {
+            response.setContentType("text/html");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter pt = response.getWriter();
+            pt.append(e.getMessage());
         }
 
-        RequestDispatcher rd = request.getRequestDispatcher("login.html");
-        rd.forward(request, response);
+        
     }
 
     public void validatefirstName(String firstName) throws RegistrationFailedException {

@@ -1,4 +1,4 @@
-﻿CREATE TABLE "USER"(
+CREATE TABLE "USER"(
     id serial PRIMARY KEY NOT NULL,
     name VARCHAR(30) NOT NULL,
     surname VARCHAR(30) NOT NULL,
@@ -8,7 +8,6 @@
 );
 
 ALTER TABLE "USER" ADD card_id INT REFERENCES CARD(id);
-
 
 CREATE TABLE EVENT (
     id serial PRIMARY KEY NOT NULL,

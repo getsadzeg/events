@@ -1,24 +1,25 @@
-
 package ge.mziuri.dao;
 
+import ge.mziuri.enums.RegistrationFailedExceptionType;
+import ge.mziuri.exceptions.RegistrationFailedException;
 import ge.mziuri.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserDAOImpl implements UserDAO{
-    
+public class UserDAOImpl implements UserDAO {
+
     private Connection con;
-    
+
     private PreparedStatement pstmt;
-    
+
     public UserDAOImpl() {
         con = DatabaseUtil.getConnection();
     }
 
     @Override
-    public int register(User user) {
+    public int register(User user) throws RegistrationFailedException {
         int res = 0;
         try {
             pstmt = con.prepareStatement("INSERT INTO \"USER\" (name, surname, username, password)"
@@ -29,7 +30,10 @@ public class UserDAOImpl implements UserDAO{
             pstmt.setString(4, user.getPassword());
             res = pstmt.executeUpdate();
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            if (ex.getMessage().contains("(username)=") && ex.getMessage().contains("already exists")) {
+                throw new RegistrationFailedException("მომხმარებელი ამ სახელით უკვე არსებობს",
+                        RegistrationFailedExceptionType.USERNAME);
+            }
         }
         return res;
     }
@@ -55,5 +59,6 @@ public class UserDAOImpl implements UserDAO{
         }
         return null;
     }
+
     
 }

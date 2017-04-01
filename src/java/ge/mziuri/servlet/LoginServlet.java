@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
             if (user == null) {
                 printWriter.append("არასწორი სახელი ან პაროლი");
             } else {
+                Cookie cookie = new Cookie("idCookie", String.valueOf(user.getId()));
+                response.addCookie(cookie);
                 RequestDispatcher rd = request.getRequestDispatcher("index.html");
                 rd.forward(request, response);
             }
