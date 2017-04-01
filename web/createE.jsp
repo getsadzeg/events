@@ -7,6 +7,11 @@
          <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+          <div class="div2Form"> 
+            <a href="index.html" class="linkForm" >
+                    Events
+            </a> </div>
+        
           <div class="eventForm">
               <form action = "EventCreateServlet" method = "get">
                   სახელი: <input type="text" name="name"> <br>   

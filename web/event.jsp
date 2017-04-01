@@ -11,11 +11,22 @@
     </head>
     
     <body>
-        <div class="divForm"> 
+        <div> 
+          <div class="divForm"> 
             <a href="index.html" class="linkForm" >
                     Events
-                </a> 
-        </div>
+            </a> </div>
+   
+         <div class="DivTform"> 
+             <a href="Login.html" class="btnform"><div class="divBForm"> 
+                         <h5> Login </h5>
+          </div> </a>
+                 
+        <a href="Register.html" class="btnform" ><div class="divBForm"> 
+                         <h4> Register </h4>
+          </div> </a>
+              </div>
+                   </div> 
         
         <form action = "EventViewServlet" method = "get">
         <h1 class="hForm"> <%=request.getAttribute("name")%> </h1>

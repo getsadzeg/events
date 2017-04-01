@@ -9,10 +9,22 @@
     </head>
     <body>
         
+        <div> 
           <div class="divForm"> 
-            <a href="index.jsp" class="linkForm" >
+            <a href="index.html" class="linkForm" >
                     Events
-                </a> 
+            </a> </div>
+   
+         <div class="DivTform"> 
+             <a href="Login.html" class="btnform"><div class="divBForm"> 
+                         <h5> Login </h5>
+          </div> </a>
+                 
+        <a href="Register.html" class="btnform" ><div class="divBForm"> 
+                         <h4> Register </h4>
+          </div> </a>
+              </div>
+                   </div> 
         </div>
         <div class="menuDiv">
             <div class="menuItem">

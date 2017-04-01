@@ -16,23 +16,29 @@
     margin-top: 70px;
 }
 
-.divForm {
-    border-style: solid;
+ .divForm {
+    border-style: solid; 
     border-width: 0.2px;
     height: 100px;
+    width: 1250px;
     background: deepskyblue;
     text-align: center;
     color : crimson;
-    font: bold 15px arial, sans-serif;
+    font: bold 15px arial, sans-serif; 
+    display: table-cell;
 }
 
 .menuDiv {
     display: table;
-    width: 100%;
     table-layout: fixed;
     border-spacing: 10px;
+    width: 100%;
 }
-    
+
+.DivTform{
+      display: table-cell;  
+}
+
  .menuItem {
     border-style: solid;
     border-width: 0.2px;
@@ -48,6 +54,8 @@
     color: crimson;
     text-decoration: none;
     font: bold 80px arial, sans-serif;    
+    width: 500px;
+  
     }
     
     .categForm {
@@ -67,7 +75,7 @@
         }
         
     .hForm {
-         text-align: center;   
+        text-align: center;   
             
         }
         
@@ -78,8 +86,8 @@
             
             
      .wrapper {
-                 text-align: center;
-                margin-top: 20px;
+         text-align: center;
+         margin-top: 20px;
        }
 
        .userForm {
@@ -98,17 +106,51 @@
              width: 240px;    
              text-align: center;      
              color: black;
-             margin-left: 10px;
-             display: table-cell;
-                    }
+                   }
       
      .DivLinkForm {
          text-decoration: none;
-         padding: 14px;
+         padding: 4px;
+         margin-bottom: 10px;
+         margin-left: 10px;
+         display: table-cell;    
+         table-layout: fixed;
                     }
      
       .btnform {
-           background-color: skyblue;
-           color: crimson;
-           
-                    }               
+           text-align: center;
+           text-decoration: none;
+      }               
+      
+      .FormDivLinkForm {
+           margin-left: 10px;              
+           display: table-cell;    
+           table-layout: fixed;
+           margin-bottom: 10px;      
+           border-spacing: 10px;
+                    }
+                    
+      .divBForm {
+            background-color: deepskyblue;
+            color: crimson;
+            border-style: solid;
+            border-width: 0.2px; 
+            height: 40px;
+            width: 150px;
+            margin: 10px;
+                    }
+                    
+      .div2Form {
+           border-style: solid; 
+           border-width: 0.2px;
+           height: 100px;
+           width: 100%;
+           background: deepskyblue;
+           text-align: center;
+           color : crimson;
+           font: bold 15px arial, sans-serif; 
+           display: table-cell;               
+                        
+                        
+                        
+                    }
