@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             } else {
                 Cookie cookie = new Cookie("idCookie", String.valueOf(user.getId()));
                 response.addCookie(cookie);
-                RequestDispatcher rd = request.getRequestDispatcher("IndexServlet");
+                RequestDispatcher rd = request.getRequestDispatcher("LoginCookieProcessor");
                 rd.forward(request, response);
             }
             
