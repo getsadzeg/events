@@ -1,6 +1,7 @@
 
 package ge.mziuri.dao;
 
+import ge.mziuri.enums.Category;
 import ge.mziuri.model.Event;
 import java.util.ArrayList;
 
@@ -18,4 +19,6 @@ public interface EventDAO {
     ArrayList<Integer> getAvailablePlaces(int id);
     
     ArrayList getAllEvents();
+    
+    ArrayList getAllEvents(Category category);
 }

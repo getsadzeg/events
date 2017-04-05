@@ -39,7 +39,7 @@
             </div> 
 
             <div class="menuItem">
-                <a href="theater.jsp" class="categForm">
+                <a href="theatre.jsp" class="categForm">
                     Theater
                 </a>
             </div>
