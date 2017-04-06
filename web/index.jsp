@@ -1,3 +1,4 @@
+<%@page import="java.lang.Integer"%>
 <%@page import="ge.mziuri.dao.EventDAOImpl"%>
 <%@page import="ge.mziuri.dao.EventDAO"%>
 <%@page import="ge.mziuri.model.User"%>
@@ -68,6 +69,10 @@
             if (request.getAttribute("user") != null) {
                 User user = (User) request.getAttribute("user");
                 out.write("logined user is: " + user.toString());
+            }
+            
+            if(request.getAttribute("id")!= null) {
+                out.write((int)request.getAttribute("id"));
             }
             
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();

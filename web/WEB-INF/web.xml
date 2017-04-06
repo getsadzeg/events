@@ -63,6 +63,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginCookieProcessor</servlet-name>
-        <url-pattern>/Home</url-pattern>
+        <url-pattern>/LoginCookieProcessor</url-pattern>
     </servlet-mapping>
 </web-app>

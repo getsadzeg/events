@@ -29,6 +29,7 @@ public class LoginCookieProcessor extends HttpServlet {
                 }
             }
             request.setAttribute("user", userDAO.getUser(id));
+            request.setAttribute("id", id);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);
         }
