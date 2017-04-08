@@ -13,16 +13,16 @@
     <body>
         <div> 
           <div class="divForm"> 
-            <a href="index.html" class="linkForm" >
+            <a href="index.jsp" class="linkForm" >
                     Events
             </a> </div>
    
          <div class="DivTform"> 
-             <a href="Login.html" class="btnform"><div class="divBForm"> 
+             <a href="login.jsp" class="btnform"><div class="divBForm"> 
                          <h5> Login </h5>
           </div> </a>
                  
-        <a href="Register.html" class="btnform" ><div class="divBForm"> 
+        <a href="register.jsp" class="btnform" ><div class="divBForm"> 
                          <h4> Register </h4>
           </div> </a>
               </div>

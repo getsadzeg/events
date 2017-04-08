@@ -67,11 +67,13 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setName(rs.getString("name"));
-            user.setSurname(rs.getString("surname"));
-            user.setUsername(rs.getString("username"));
-            user.setPassword(rs.getString("password"));
+            if (rs.next()) {
+                user.setId(id);
+                user.setName(rs.getString("name"));
+                user.setSurname(rs.getString("surname"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+            }
             return user;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

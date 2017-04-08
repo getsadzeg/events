@@ -21,14 +21,14 @@ public class LoginCookieProcessor extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         UserDAO userDAO = new UserDAOImpl();
         try {
-            int id = 0;
+            String id = "";
             Cookie[] cookies = request.getCookies();
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("idCookie")) {
-                    id = Integer.parseInt(cookie.getValue());
+                if (cookie.getName().equals("userIDCookie")) {
+                    id = cookie.getValue();
                 }
             }
-            request.setAttribute("user", userDAO.getUser(id));
+            request.setAttribute("user", userDAO.getUser(Integer.parseInt(id)));
             request.setAttribute("id", id);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
             rd.forward(request, response);

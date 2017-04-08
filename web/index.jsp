@@ -66,21 +66,23 @@
 
         <%
             EventDAO eventDAO = new EventDAOImpl();
-            if (request.getAttribute("user") != null) {
+           /* if (request.getAttribute("user") != null) {
                 User user = (User) request.getAttribute("user");
                 out.write("logined user is: " + user.toString());
             }
+            else out.write("user is null");
             
             if(request.getAttribute("id")!= null) {
-                out.write((int)request.getAttribute("id"));
-            }
+                out.write("" + Integer.parseInt((String)request.getAttribute("id")));
+            } */
             
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();
             int i = 0;
             for (Event event : events) {
+                //request.setAttribute("id", event.getId()); 
                 i++;
-                out.write("<form formAction=\"eventViewEditServlet\" method=\"post\" class=\"FormDivLinkForm\">");
-                out.write("<a href=\"event.jsp\" class=\"DivLinkForm\"><div class=\"eventDForm\">");
+                out.write("<form action=\"EventViewServlet\" method=\"get\" class=\"FormDivLinkForm\">");
+                out.write("<a href=\"event.jsp?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
                 out.write("<h2>" + event.getName() + "</h2>");
                 out.write("<h3>" + event.getDesc() + "</h3>");
                 out.write("<input type=\"hidden\" value=\"view\">");

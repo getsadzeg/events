@@ -24,7 +24,7 @@ public class EventEditServlet extends HttpServlet {
         int id = 0;
         Cookie[] cookies = request.getCookies();
         for(Cookie cookie : cookies) {
-            if(cookie.getName().equals("idCookie")) id = Integer.parseInt(cookie.getValue());
+            if(cookie.getName().equals("eventIDCookie")) id = Integer.parseInt(cookie.getValue());
         }
         EventDAO eventDAO = new EventDAOImpl();
         Event event = eventDAO.getEvent(id);

@@ -11,7 +11,7 @@
     </head>
     <body>
           <div class="div2Form"> 
-            <a href="index.html" class="linkForm" >
+            <a href="index.jsp" class="linkForm" >
                     Events
             </a> </div>
         
