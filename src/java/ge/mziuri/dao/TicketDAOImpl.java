@@ -30,7 +30,12 @@ public class TicketDAOImpl implements TicketDAO {
             pstmt.setInt(2, seat);
             pstmt.execute();
             result = pstmt.getResultSet();
-            int ticketID = result.getInt(1);
+            int ticketID = 0;
+  
+            if(result.next()) {
+                ticketID = result.getInt(1);
+            }
+            
             pstmt = con.prepareStatement("INSERT INTO TICKET_HISTORY(user_id, ticket_id, status) VALUES(?, ?, ?)");
             pstmt.setInt(1, userID);
             pstmt.setInt(2, ticketID);

@@ -36,9 +36,11 @@ public class BuyTicketServlet extends HttpServlet {
                 System.out.println("userID is " + userID);
             }
         }
+        int selection = Integer.parseInt(request.getParameter("selection"));
         
-        ticketDAO.buyTicket(Integer.parseInt(eventID), Integer.parseInt(userID),
-                Integer.parseInt(request.getParameter("selection")));
+        ticketDAO.buyTicket(Integer.parseInt(eventID), Integer.parseInt(userID), selection); 
+        //should notify user that they bought ticket
+        
     }
 
 }

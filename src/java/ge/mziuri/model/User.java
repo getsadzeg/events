@@ -12,7 +12,7 @@ public class User {
    private String username;
    private String password;
    private Card card;
-   private ArrayList<Ticket> boughtTickets;
+   private ArrayList<Ticket> boughtTickets = new ArrayList<>();
 
     public User() {
         

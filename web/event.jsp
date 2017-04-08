@@ -53,6 +53,9 @@
              <span>  <%=request.getAttribute("author")%> </span> 
       
         </div>
+             </form>
+             
+             <form action="BuyTicketServlet" method="post">
              <div class="wrapper">
                  <select name="selection">
                      
@@ -63,8 +66,12 @@
                         }
                     %>
                  </select>
+                <input type="submit" class="buttonForm" value="Buy Ticket">   
              </div>
              </form>
+             
+                 
+                 
              <form action="EventEditServlet" method="post">
              <div class="wrapper">
                  <input type="hidden" name="actionType" value="edit">
@@ -74,11 +81,11 @@
         </form>
        
              
-        <div class="wrapper">
+        <!---<div class="wrapper">
     
             <form action="BuyTicketServlet" method="post">
                 <input type="submit" class="buttonForm" value="Buy ticket">   
-          </form>
+          </form> -->
 
         
           </div>

@@ -7,6 +7,7 @@ import ge.mziuri.dao.DatabaseUtil;
 import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.model.Card;
+import ge.mziuri.model.Event;
 import ge.mziuri.model.Ticket;
 import ge.mziuri.model.User;
 import java.sql.Connection;
@@ -26,7 +27,7 @@ public class TicketService {
     public void processPayment(int EventID, int userID) {
         EventDAO eventDAO = new EventDAOImpl();
         ResultSet result = null;
-        Card card = null;
+        Card card = new Card();
         User user = new User();
         Ticket ticket = new Ticket();
         ArrayList boughtlist = new ArrayList<>();
@@ -34,23 +35,38 @@ public class TicketService {
             pstmt = con.prepareStatement("SELECT price, author_username FROM EVENT where id = ?");
             pstmt.setInt(1, EventID);
             result = pstmt.executeQuery();
-            double price = result.getDouble("price");
-            //String author_username = result.getString("author_username");
-            pstmt = con.prepareStatement("SELECT card_id FROM USER WHERE id = ?");
+            double price = 0;
+            String author_username = "";
+            while(result.next()) {
+                price = result.getDouble("price");
+                author_username = result.getString("author_username");
+            }
+            
+            pstmt = con.prepareStatement("SELECT card_id FROM \"USER\" WHERE id = ?");
             pstmt.setInt(1, userID);
+            result = pstmt.executeQuery();
+            int card_id = 0;
+            if(result.next()) {
+                card_id = result.getInt("card_id");
+            }
+            
             user.setId(userID);
             boughtlist = user.getBoughtTickets();
-            ticket.setEvent(eventDAO.getEvent(EventID));
+            Event eventToSet = eventDAO.getEvent(EventID);
+            ticket.setEvent(eventToSet);
             boughtlist.add(ticket);
             user.setBoughtT(boughtlist);
-            int card_id = pstmt.executeQuery().getInt("card_id");
             double money = moneywithCardID(card_id);
             card.setMoney(money);
             card.setId(card_id);
             CardDAO cardDAO = new CardDAOImpl();
             cardDAO.updateMoney(money-price, card);
-            pstmt = con.prepareStatement("SELECT card_id FROM USER WHERE author_username = ?");
-            int author_card_id = pstmt.executeQuery().getInt("card_id");
+            pstmt = con.prepareStatement("SELECT card_id FROM \"USER\" WHERE username = ?");
+            result = pstmt.executeQuery();
+            int author_card_id = 0;
+            if(result.next()) {
+                author_card_id = result.getInt("card_id");
+            }
             double author_money = moneywithCardID(author_card_id);
             card.setMoney(author_money);
             card.setId(author_card_id);
