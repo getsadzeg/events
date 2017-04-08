@@ -10,26 +10,26 @@
     <head>
         <title>Concerts</title>
         <meta charset="UTF-8">
-       <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-         <div> 
-          <div class="divForm"> 
-            <a href="index.jsp" class="linkForm" >
+        <div> 
+            <div class="divForm"> 
+                <a href="index.jsp" class="linkForm" >
                     Events
-            </a> </div>
-   
-         <div class="DivTform"> 
-             <a href="login.jsp" class="btnform"><div class="divBForm"> 
-                         <h5> Login </h5>
-          </div> </a>
-                 
-        <a href="register.jsp" class="btnform" ><div class="divBForm"> 
-                         <h4> Register </h4>
-          </div> </a>
-              </div>
-                   </div> 
-        
+                </a> </div>
+
+            <div class="DivTform"> 
+                <a href="login.jsp" class="btnform"><div class="divBForm"> 
+                        <h5> Login </h5>
+                    </div> </a>
+
+                <a href="register.jsp" class="btnform" ><div class="divBForm"> 
+                        <h4> Register </h4>
+                    </div> </a>
+            </div>
+        </div> 
+
         <div class="menuDiv">
             <div class="menuItem">
                 <a href="sports.jsp" class="categForm" >
@@ -42,7 +42,7 @@
                     Theater
                 </a>
             </div>
-            
+
             <div class="menuItem">
                 <a href="cinema.jsp" class="categForm">
                     Cinema
@@ -53,27 +53,21 @@
                     Party
                 </a>
             </div>
-            
-             <div class="menuItem">
+
+            <div class="menuItem">
                 <a href="concert.jsp" class="categForm">
                     Concert
                 </a>
             </div>
         </div>
-        
-           <%  
-                   EventDAO eventDAO = new EventDAOImpl();
-            if (request.getAttribute("user") != null) {
-                User user = (User) request.getAttribute("user");
-                out.write("logined user is: " + user.toString());
-            }
-            
+
+        <%
+            EventDAO eventDAO = new EventDAOImpl();
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents(Category.CONCERTS);
             int i = 0;
             for (Event event : events) {
                 i++;
-                out.write("<form formAction=\"eventViewEditServlet\" method=\"post\" class=\"FormDivLinkForm\">");
-                out.write("<a href=\"event.jsp\" class=\"DivLinkForm\"><div class=\"eventDForm\">");
+                out.write("<a href=\"EventViewServlet?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
                 out.write("<h2>" + event.getName() + "</h2>");
                 out.write("<h3>" + event.getDesc() + "</h3>");
                 out.write("<input type=\"hidden\" value=\"view\">");
@@ -82,7 +76,7 @@
                     out.write("</div>");
                 }
             }
-                          
-                 %> 
+
+        %> 
     </body>
 </html>

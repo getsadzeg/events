@@ -64,25 +64,19 @@
 
     <%
         EventDAO eventDAO = new EventDAOImpl();
-        if (request.getAttribute("user") != null) {
-            User user = (User) request.getAttribute("user");
-            out.write("logined user is: " + user.toString());
-        }
-
         ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents(Category.CINEMA);
-        int i = 0;
-        for (Event event : events) {
-            i++;
-            out.write("<form formAction=\"eventViewEditServlet\" method=\"post\" class=\"FormDivLinkForm\">");
-            out.write("<a href=\"event.jsp\" class=\"DivLinkForm\"><div class=\"eventDForm\">");
-            out.write("<h2>" + event.getName() + "</h2>");
-            out.write("<h3>" + event.getDesc() + "</h3>");
-            out.write("<input type=\"hidden\" value=\"view\">");
-            out.write("</div></a>");
-            if (i % 5 == 0) {
-                out.write("</div>");
+            int i = 0;
+            for (Event event : events) {
+                i++;
+                out.write("<a href=\"EventViewServlet?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
+                out.write("<h2>" + event.getName() + "</h2>");
+                out.write("<h3>" + event.getDesc() + "</h3>");
+                out.write("<input type=\"hidden\" value=\"view\">");
+                out.write("</div></a>");
+                if (i % 5 == 0) {
+                    out.write("</div>");
+                }
             }
-        }
 
     %> 
 

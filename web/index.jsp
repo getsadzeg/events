@@ -79,9 +79,7 @@
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();
             int i = 0;
             for (Event event : events) {
-                //request.setAttribute("id", event.getId()); 
                 i++;
-                //out.write("<form action=\"EventViewServlet\" method=\"get\" class=\"FormDivLinkForm\">");
                 out.write("<a href=\"EventViewServlet?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
                 out.write("<h2>" + event.getName() + "</h2>");
                 out.write("<h3>" + event.getDesc() + "</h3>");
