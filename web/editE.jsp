@@ -8,10 +8,7 @@
          <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-          <div class="div2Form"> 
-            <a href="index.jsp" class="linkForm" >
-                    Events
-            </a> </div>
+          
         
           <div class="eventForm">
               <form action = "EventUpdateServlet" method = "post">
