@@ -32,7 +32,7 @@ public class EventViewServlet extends HttpServlet {
         request.setAttribute("category", event.getCategory().toString());
         request.setAttribute("type", event.getType().toString());
         request.setAttribute("places", event.getPlaces());
-        request.setAttribute("freeplaces", event.getAvailablePlaces());
+        request.setAttribute("availableSeats", event.getAvailablePlaces());
         request.setAttribute("author", event.getAuthor().getUsername());
         Cookie cookie = new Cookie("eventIDCookie", String.valueOf(id));
         response.addCookie(cookie);

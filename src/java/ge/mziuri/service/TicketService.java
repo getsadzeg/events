@@ -4,11 +4,16 @@ package ge.mziuri.service;
 import ge.mziuri.dao.CardDAO;
 import ge.mziuri.dao.CardDAOImpl;
 import ge.mziuri.dao.DatabaseUtil;
+import ge.mziuri.dao.EventDAO;
+import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.model.Card;
+import ge.mziuri.model.Ticket;
+import ge.mziuri.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class TicketService {
@@ -19,16 +24,25 @@ public class TicketService {
         con = DatabaseUtil.getConnection();
     }
     public void processPayment(int EventID, int userID) {
+        EventDAO eventDAO = new EventDAOImpl();
         ResultSet result = null;
         Card card = null;
+        User user = new User();
+        Ticket ticket = new Ticket();
+        ArrayList boughtlist = new ArrayList<>();
         try {
             pstmt = con.prepareStatement("SELECT price, author_username FROM EVENT where id = ?");
             pstmt.setInt(1, EventID);
             result = pstmt.executeQuery();
             double price = result.getDouble("price");
-            String author_username = result.getString("author_username");
+            //String author_username = result.getString("author_username");
             pstmt = con.prepareStatement("SELECT card_id FROM USER WHERE id = ?");
             pstmt.setInt(1, userID);
+            user.setId(userID);
+            boughtlist = user.getBoughtTickets();
+            ticket.setEvent(eventDAO.getEvent(EventID));
+            boughtlist.add(ticket);
+            user.setBoughtT(boughtlist);
             int card_id = pstmt.executeQuery().getInt("card_id");
             double money = moneywithCardID(card_id);
             card.setMoney(money);

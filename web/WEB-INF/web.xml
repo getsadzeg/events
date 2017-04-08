@@ -65,4 +65,13 @@
         <servlet-name>LoginCookieProcessor</servlet-name>
         <url-pattern>/LoginCookieProcessor</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>BuyTicketServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.BuyTicketServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BuyTicketServlet</servlet-name>
+        <url-pattern>/BuyTicketServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

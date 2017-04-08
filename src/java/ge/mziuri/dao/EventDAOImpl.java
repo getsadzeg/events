@@ -87,6 +87,9 @@ public class EventDAOImpl implements EventDAO {
     public Event getEvent(int id) {
         Event event = new Event();
         User author = new User();
+        String availablePlaceString = null;
+        ArrayList list = new ArrayList<>();
+
         try {
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE id = ?");
             pstmt.setInt(1, id);
@@ -99,6 +102,8 @@ public class EventDAOImpl implements EventDAO {
                 Category category = Category.valueOf(result.getString("category"));
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
+                availablePlaceString = result.getString("available_places");
+                list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));             
                 String author_username = result.getString("author_username");
                 author.setUsername(author_username);
                 event.setId(id);
@@ -109,6 +114,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setCategory(category);
                 event.setType(type);
                 event.setPlaces(seatsnum);
+                event.setAvailablePlaces(list);
                 event.setAuthor(author);
             }
         } catch (SQLException ex) {
@@ -117,7 +123,7 @@ public class EventDAOImpl implements EventDAO {
         return event;
     }
 
-    @Override
+   /* @Override
     public ArrayList getAvailablePlaces(int id) {
         String availablePlaceString = null;
         ArrayList list = new ArrayList<>();
@@ -131,7 +137,7 @@ public class EventDAOImpl implements EventDAO {
             System.out.println(ex.getMessage());
         }
         return list;
-    }
+    } */
 
     @Override
     public ArrayList getAllEvents() {
