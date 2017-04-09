@@ -28,12 +28,13 @@ public class BuyTicketServlet extends HttpServlet {
         String userID = "";
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("eventIDCookie")) {
-                eventID = cookie.getValue();
-                System.out.println("eventID is " + eventID);
-            } else if (cookie.getName().equals("userIDCookie")) {
-                userID = cookie.getValue();
-                System.out.println("userID is " + userID);
+            switch (cookie.getName()) {
+                case "eventIDCookie":
+                    eventID = cookie.getValue();
+                    break;
+                case "userIDCookie":
+                    userID = cookie.getValue();
+                    break;
             }
         }
         int selection = Integer.parseInt(request.getParameter("selection"));

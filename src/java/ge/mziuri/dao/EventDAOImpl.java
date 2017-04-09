@@ -1,10 +1,10 @@
-
 package ge.mziuri.dao;
 
 import ge.mziuri.enums.Category;
 import ge.mziuri.enums.Type;
 import ge.mziuri.model.Event;
 import ge.mziuri.model.User;
+import ge.mziuri.service.EventService;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,6 +19,8 @@ public class EventDAOImpl implements EventDAO {
 
     private PreparedStatement pstmt;
 
+    private EventService service = new EventService();
+
     public EventDAOImpl() {
         con = DatabaseUtil.getConnection();
     }
@@ -26,14 +28,8 @@ public class EventDAOImpl implements EventDAO {
     @Override
     public void CreateEvent(Event event) {
         try {
-            StringBuilder availablePlacesBuilder = new StringBuilder();
-            for (int i = 1; i <= event.getPlaces(); i++) {
-                availablePlacesBuilder.append(i);
-                if (i != event.getPlaces()) {
-                    availablePlacesBuilder.append(",");
-                }
-            }
-            String availablePlacesString = availablePlacesBuilder.toString();
+
+            String availablePlacesString = service.makeUpString(event.getPlaces());
             pstmt = con.prepareStatement("INSERT INTO EVENT (name, description, date, price, category, type, places, available_places)"
                     + " VALUES (?,?,?,?,?,?,?,?)"); //wanna add author_username after adding cookies
             pstmt.setString(1, event.getName());
@@ -66,13 +62,14 @@ public class EventDAOImpl implements EventDAO {
     public void UpdateEvent(Event event) {
         try {
             pstmt = con.prepareStatement("UPDATE EVENT SET name = ?, description = ?, date = ?,"
-                    + "price = ?, category = ? WHERE id = ? ");
+                    + "price = ?, category = ?, available_places = ? WHERE id = ? ");
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
             pstmt.setDate(3, new Date(event.getDate().getTime()));
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
-            pstmt.setInt(6, event.getId());
+            pstmt.setString(6, service.makeUpString(event.getAvailablePlaces().size()));
+            pstmt.setInt(7, event.getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -99,7 +96,7 @@ public class EventDAOImpl implements EventDAO {
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
                 availablePlaceString = result.getString("available_places");
-                list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));             
+                list = service.StringToList(availablePlaceString);
                 String author_username = result.getString("author_username");
                 author.setUsername(author_username);
                 event.setId(id);
@@ -119,22 +116,21 @@ public class EventDAOImpl implements EventDAO {
         return event;
     }
 
-   /* @Override
-    public ArrayList getAvailablePlaces(int id) {
-        String availablePlaceString = null;
-        ArrayList list = new ArrayList<>();
-        try {
-            pstmt = con.prepareStatement("SELECT available_places FROM EVENT WHERE id = ?");
-            pstmt.setInt(1, id);
-            ResultSet result = pstmt.executeQuery();
-            availablePlaceString = result.getString("available_places");
-            list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return list;
-    } */
-
+    /* @Override
+     public ArrayList getAvailablePlaces(int id) {
+     String availablePlaceString = null;
+     ArrayList list = new ArrayList<>();
+     try {
+     pstmt = con.prepareStatement("SELECT available_places FROM EVENT WHERE id = ?");
+     pstmt.setInt(1, id);
+     ResultSet result = pstmt.executeQuery();
+     availablePlaceString = result.getString("available_places");
+     list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));
+     } catch (SQLException ex) {
+     System.out.println(ex.getMessage());
+     }
+     return list;
+     } */
     @Override
     public ArrayList getAllEvents() {
         ArrayList list = new ArrayList<>();
@@ -172,7 +168,7 @@ public class EventDAOImpl implements EventDAO {
         }
         return list;
     }
-    
+
     @Override
     public ArrayList getAllEvents(Category category) {
         ArrayList list = new ArrayList<>();

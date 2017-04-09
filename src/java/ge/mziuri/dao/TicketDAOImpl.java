@@ -24,7 +24,8 @@ public class TicketDAOImpl implements TicketDAO {
         ResultSet result = null;
         TicketService service = new TicketService();
         try {
-            service.processPayment(EventID, userID);
+            service.processTicket(EventID, userID);
+            service.updateSeats(EventID, seat);
             pstmt = con.prepareStatement("INSERT INTO TICKET(event_id, seat) VALUES(?, ?) RETURNING id;");
             pstmt.setInt(1, EventID);
             pstmt.setInt(2, seat);
@@ -33,7 +34,7 @@ public class TicketDAOImpl implements TicketDAO {
             int ticketID = 0;
   
             if(result.next()) {
-                ticketID = result.getInt(1);
+                ticketID = result.getInt("id");
             }
             
             pstmt = con.prepareStatement("INSERT INTO TICKET_HISTORY(user_id, ticket_id, status) VALUES(?, ?, ?)");

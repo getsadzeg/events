@@ -21,7 +21,7 @@ public class CardDAOImpl implements CardDAO {
     public void updateMoney(double money, Card card) {
         try {
             pstmt = con.prepareStatement("UPDATE CARD SET money = ? WHERE id = ?");
-            pstmt.setDouble(1, card.getMoney() + money);
+            pstmt.setDouble(1, money);
             pstmt.setInt(2, card.getId());
             pstmt.executeUpdate();
         }

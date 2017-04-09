@@ -24,7 +24,7 @@ public class TicketService {
     public TicketService() {
         con = DatabaseUtil.getConnection();
     }
-    public void processPayment(int EventID, int userID) {
+    public void processTicket(int EventID, int userID) {
         EventDAO eventDAO = new EventDAOImpl();
         ResultSet result = null;
         Card card = new Card();
@@ -62,6 +62,7 @@ public class TicketService {
             CardDAO cardDAO = new CardDAOImpl();
             cardDAO.updateMoney(money-price, card);
             pstmt = con.prepareStatement("SELECT card_id FROM \"USER\" WHERE username = ?");
+            pstmt.setString(1, author_username);
             result = pstmt.executeQuery();
             int author_card_id = 0;
             if(result.next()) {
@@ -82,12 +83,24 @@ public class TicketService {
         try {
             pstmt = con.prepareStatement("SELECT money FROM CARD WHERE id = ?");
             pstmt.setInt(1, card_id);
-            money = pstmt.executeQuery().getDouble("money");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()) {
+                money = rs.getDouble("money");
+            }
         }
         catch(SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return money;
+    }
+    
+    public void updateSeats(int EventID, int chosenseat) {
+        EventDAO eventDAO = new EventDAOImpl();
+        Event event = eventDAO.getEvent(EventID);
+        ArrayList<Integer> availableSeats = event.getAvailablePlaces();
+        availableSeats.remove(chosenseat-1);
+        event.setAvailablePlaces(availableSeats);
+        eventDAO.UpdateEvent(event);
     }
     
     
