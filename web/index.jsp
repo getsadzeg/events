@@ -19,10 +19,34 @@
                 <a href="index.jsp" class="linkForm" >
                     Events
                 </a> </div>
-
+                <%
+                    boolean existUser = false;
+                    Cookie[] cookies = request.getCookies();
+                    for (Cookie cookie : cookies) {
+                        if (cookie.getName().equals("userIDCookie")) {
+                            existUser = true;
+                        }
+                    }
+                %>
             <div class="DivTform"> 
-                <a href="login.jsp" class="btnform"><div class="divBForm"> 
-                        <h5> Login </h5>
+                <a href="
+                   <%
+                       if (existUser) {
+                           out.write("userInf.jsp");
+                       } else {
+                           out.write("login.jsp");
+                       }
+                   %>   
+                   " class="btnform"><div class="divBForm"> 
+                        <h5> 
+                            <%
+                                if (existUser) {
+                                    out.write("My Account");
+                                } else {
+                                    out.write("Login");
+                                }
+                            %> 
+                        </h5>
                     </div> </a>
 
                 <a href="register.jsp" class="btnform" ><div class="divBForm"> 
@@ -64,9 +88,8 @@
         </div>
 
 
-        <%
-            EventDAO eventDAO = new EventDAOImpl();
-           /* if (request.getAttribute("user") != null) {
+        <%            EventDAO eventDAO = new EventDAOImpl();
+            /* if (request.getAttribute("user") != null) {
                 User user = (User) request.getAttribute("user");
                 out.write("logined user is: " + user.toString());
             }
@@ -75,7 +98,7 @@
             if(request.getAttribute("id")!= null) {
                 out.write("" + Integer.parseInt((String)request.getAttribute("id")));
             } */
-            
+
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();
             int i = 0;
             for (Event event : events) {

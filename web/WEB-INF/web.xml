@@ -3,6 +3,10 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>MyAccountServlet</servlet-name>
+        <url-pattern>/MyAccountServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -11,6 +15,10 @@
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>ge.mziuri.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MyAccountServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.MyAccountServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -56,7 +64,6 @@
         <servlet-name>EventCreateServlet</servlet-name>
         <url-pattern>/EventCreateServlet</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>LoginCookieProcessor</servlet-name>
         <servlet-class>ge.mziuri.servlet.LoginCookieProcessor</servlet-class>
@@ -65,7 +72,6 @@
         <servlet-name>LoginCookieProcessor</servlet-name>
         <url-pattern>/LoginCookieProcessor</url-pattern>
     </servlet-mapping>
-
     <servlet>
         <servlet-name>BuyTicketServlet</servlet-name>
         <servlet-class>ge.mziuri.servlet.BuyTicketServlet</servlet-class>
