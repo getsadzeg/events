@@ -10,13 +10,13 @@ public class CookieUtil {
     }
 
     public static String getCookieContent(String name, HttpServletRequest request) {
-        String id = "";
+        String value = "";
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals(name)) {
-                id = cookie.getValue();
+                value = cookie.getValue();
             }
         }
-        return id;
+        return value;
     }
 }

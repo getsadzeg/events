@@ -25,7 +25,7 @@ public class EventUpdateServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         String id = "";
-        CookieUtil.getCookieContent("eventIDCookie", request);
+        id = CookieUtil.getCookieContent("eventIDCookie", request);
         EventDAO eventDAO = new EventDAOImpl();
         Event event = eventDAO.getEvent(Integer.parseInt(id));
         String name = (String) request.getParameter("name");
@@ -52,7 +52,7 @@ public class EventUpdateServlet extends HttpServlet {
         request.setAttribute("type", event.getType().toString());
         request.setAttribute("places", event.getPlaces());
         request.setAttribute("freeplaces", event.getAvailablePlaces());
-        request.setAttribute("author", event.getAuthor().getUsername());
+        request.setAttribute("author", event.getOwner().getUsername());
         RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
         try {
             rd.forward(request, response);
