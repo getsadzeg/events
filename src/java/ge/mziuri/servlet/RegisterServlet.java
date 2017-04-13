@@ -1,7 +1,6 @@
 
 package ge.mziuri.servlet;
 
-import ge.mziuri.dao.UserDAO;
 import ge.mziuri.dao.UserDAOImpl;
 import ge.mziuri.model.User;
 import ge.mziuri.enums.RegistrationFailedExceptionType;

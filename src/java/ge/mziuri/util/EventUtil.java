@@ -1,11 +1,11 @@
-package ge.mziuri.service;
+package ge.mziuri.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EventService {
+public class EventUtil {
 
-    public EventService() {
+    public EventUtil() {
 
     }
 

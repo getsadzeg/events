@@ -4,13 +4,13 @@ import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.enums.Category;
 import ge.mziuri.model.Event;
+import ge.mziuri.util.CookieUtil;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,15 +24,10 @@ public class EventUpdateServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        int id = 0;
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("idCookie")) {
-                id = Integer.parseInt(cookie.getValue());
-            }
-        }
+        String id = "";
+        CookieUtil.getCookieContent("eventIDCookie", request);
         EventDAO eventDAO = new EventDAOImpl();
-        Event event = eventDAO.getEvent(id);
+        Event event = eventDAO.getEvent(Integer.parseInt(id));
         String name = (String) request.getParameter("name");
         String description = (String) request.getParameter("desc");
         String date_string = (String) request.getParameter("date");
@@ -49,8 +44,6 @@ public class EventUpdateServlet extends HttpServlet {
         event.setDate(date);
         event.setCategory(category);
         eventDAO.UpdateEvent(event);
-        Cookie cookie = new Cookie("idCookie", String.valueOf(id));
-        response.addCookie(cookie);
         request.setAttribute("name", name);
         request.setAttribute("description", description);
         request.setAttribute("date", date);

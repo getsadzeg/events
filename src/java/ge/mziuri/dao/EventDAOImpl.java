@@ -4,7 +4,7 @@ import ge.mziuri.enums.Category;
 import ge.mziuri.enums.Type;
 import ge.mziuri.model.Event;
 import ge.mziuri.model.User;
-import ge.mziuri.service.EventService;
+import ge.mziuri.util.EventUtil;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -19,7 +19,7 @@ public class EventDAOImpl implements EventDAO {
 
     private PreparedStatement pstmt;
 
-    private EventService service = new EventService();
+    private EventUtil service = new EventUtil();
 
     public EventDAOImpl() {
         con = DatabaseUtil.getConnection();
