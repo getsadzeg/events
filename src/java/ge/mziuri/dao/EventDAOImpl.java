@@ -79,7 +79,7 @@ public class EventDAOImpl implements EventDAO {
     @Override
     public Event getEvent(int id) {
         Event event = new Event();
-        User author = new User();
+        User owner = new User();
         String availablePlaceString = null;
         ArrayList list = new ArrayList<>();
 
@@ -97,8 +97,8 @@ public class EventDAOImpl implements EventDAO {
                 int seatsnum = result.getInt("places");
                 availablePlaceString = result.getString("available_places");
                 list = service.StringToList(availablePlaceString);
-                String author_username = result.getString("author_username");
-                author.setUsername(author_username);
+                String owner_username = result.getString("author_username");
+                owner.setUsername(owner_username);
                 event.setId(id);
                 event.setName(name);
                 event.setDesc(description);
@@ -108,7 +108,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setType(type);
                 event.setPlaces(seatsnum);
                 event.setAvailablePlaces(list);
-                event.setAuthor(author);
+                event.setOwner(owner);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -116,32 +116,23 @@ public class EventDAOImpl implements EventDAO {
         return event;
     }
 
-    /* @Override
-     public ArrayList getAvailablePlaces(int id) {
-     String availablePlaceString = null;
-     ArrayList list = new ArrayList<>();
-     try {
-     pstmt = con.prepareStatement("SELECT available_places FROM EVENT WHERE id = ?");
-     pstmt.setInt(1, id);
-     ResultSet result = pstmt.executeQuery();
-     availablePlaceString = result.getString("available_places");
-     list = new ArrayList(Arrays.asList(availablePlaceString.split(",")));
-     } catch (SQLException ex) {
-     System.out.println(ex.getMessage());
-     }
-     return list;
-     } */
+    @Override
+    public User getEventOwner(int id) {
+        Event event = getEvent(id);
+        return event.getOwner();
+    }
+    
     @Override
     public ArrayList getAllEvents() {
         ArrayList list = new ArrayList<>();
         Event event;
-        User author;
+        User owner;
         try {
             pstmt = con.prepareStatement("SELECT * FROM EVENT");
             ResultSet result = pstmt.executeQuery();
             while (result.next()) {
                 event = new Event();
-                author = new User();
+                owner = new User();
                 int id = result.getInt("id");
                 String name = result.getString("name");
                 String description = result.getString("Description");
@@ -150,8 +141,8 @@ public class EventDAOImpl implements EventDAO {
                 Category category = Category.valueOf(result.getString("category"));
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
-                String author_username = result.getString("author_username");
-                author.setUsername(author_username);
+                String owner_username = result.getString("author_username");
+                owner.setUsername(owner_username);
                 event.setId(id);
                 event.setName(name);
                 event.setDesc(description);
@@ -160,7 +151,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setCategory(category);
                 event.setType(type);
                 event.setPlaces(seatsnum);
-                event.setAuthor(author);
+                event.setOwner(owner);
                 list.add(event);
             }
         } catch (SQLException ex) {
@@ -173,14 +164,14 @@ public class EventDAOImpl implements EventDAO {
     public ArrayList getAllEvents(Category category) {
         ArrayList list = new ArrayList<>();
         Event event;
-        User author;
+        User owner;
         try {
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE category = ?");
             pstmt.setString(1, category.toString());
             ResultSet result = pstmt.executeQuery();
             while (result.next()) {
                 event = new Event();
-                author = new User();
+                owner = new User();
                 int id = result.getInt("id");
                 String name = result.getString("name");
                 String description = result.getString("Description");
@@ -188,8 +179,8 @@ public class EventDAOImpl implements EventDAO {
                 double price = result.getDouble("price");
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
-                String author_username = result.getString("author_username");
-                author.setUsername(author_username);
+                String owner_username = result.getString("author_username");
+                owner.setUsername(owner_username);
                 event.setId(id);
                 event.setName(name);
                 event.setDesc(description);
@@ -198,7 +189,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setCategory(category);
                 event.setType(type);
                 event.setPlaces(seatsnum);
-                event.setAuthor(author);
+                event.setOwner(owner);
                 list.add(event);
             }
         } catch (SQLException ex) {

@@ -18,14 +18,14 @@ public class Event {
     private Type type;
     private int places;
     private ArrayList availablePlaces;
-    private User author;
+    private User owner;
 
     public Event() {
         
     }
 
     public Event(int id, String name, String desc, Date date, double price,
-            Category category, Type type, int places, User author) {
+            Category category, Type type, int places, User owner) {
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -35,7 +35,7 @@ public class Event {
         this.type = type;
         this.places = places;
         availablePlaces = new ArrayList<>();
-        this.author = author;
+        this.owner = owner;
     }
 
     
@@ -95,12 +95,12 @@ public class Event {
         this.places = places;
     }
 
-    public User getAuthor() {
-        return author;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     
@@ -126,7 +126,7 @@ public class Event {
     @Override
     public String toString() {
         return id + " " + name + " " + desc + " " + date.toString() + " " + price + " " + category + 
-                " " + type + " " + places + " " + author.getUsername();
+                " " + type + " " + places + " " + owner.getUsername();
     }
     
 }
