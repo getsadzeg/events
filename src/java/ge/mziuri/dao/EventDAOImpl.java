@@ -19,7 +19,7 @@ public class EventDAOImpl implements EventDAO {
 
     private PreparedStatement pstmt;
 
-    private EventUtil service = new EventUtil();
+    private EventUtil eventUtil = new EventUtil();
 
     public EventDAOImpl() {
         con = DatabaseUtil.getConnection();
@@ -29,7 +29,7 @@ public class EventDAOImpl implements EventDAO {
     public void CreateEvent(Event event) {
         try {
 
-            String availablePlacesString = service.makeUpString(event.getPlaces());
+            String availablePlacesString = eventUtil.makeUpString(event.getPlaces());
             pstmt = con.prepareStatement("INSERT INTO EVENT (name, description, date, price, category, type, places, available_places)"
                     + " VALUES (?,?,?,?,?,?,?,?)"); //wanna add author_username after adding cookies
             pstmt.setString(1, event.getName());
@@ -68,7 +68,7 @@ public class EventDAOImpl implements EventDAO {
             pstmt.setDate(3, new Date(event.getDate().getTime()));
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
-            pstmt.setString(6, service.makeUpString(event.getAvailablePlaces().size()));
+            pstmt.setString(6, eventUtil.makeUpString(event.getAvailablePlaces().size()));
             pstmt.setInt(7, event.getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
@@ -96,7 +96,7 @@ public class EventDAOImpl implements EventDAO {
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
                 availablePlaceString = result.getString("available_places");
-                list = service.StringToList(availablePlaceString);
+                list = eventUtil.StringToList(availablePlaceString);
                 String owner_username = result.getString("author_username");
                 owner.setUsername(owner_username);
                 event.setId(id);
