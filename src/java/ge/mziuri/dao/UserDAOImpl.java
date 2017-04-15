@@ -39,20 +39,20 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User login(String username, String password) {
+    public User login(String username, String passwordHash) {
+        User user = new User();
         try {
             pstmt = con.prepareStatement("SELECT * FROM \"USER\" WHERE username = ? AND password = ?");
             pstmt.setString(1, username);
-            pstmt.setString(2, password);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) {
-                User user = new User();
+            pstmt.setString(2, passwordHash);
+            ResultSet rs = pstmt.executeQuery();            
+            while (rs.next()) {
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setSurname(rs.getString("surname"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                return user;
+                return user; //why can't I return nothing here and return user at the end of method?
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
