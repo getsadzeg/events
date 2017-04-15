@@ -13,7 +13,7 @@
             </a> </div>
         
           <div class="eventForm">
-              <form action = "EventCreateServlet" method = "get">
+              <form action = "EventCreateServlet" method = "post">
                   სახელი: <input type="text" name="name"> <br>   
                   აღწერა: <input type="text" name="desc"> <br>   
                   თარიღი:  <input type="date" name="date"> <br> 
