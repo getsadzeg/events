@@ -22,36 +22,49 @@
                 <%
                     boolean existUser = false;
                     Cookie[] cookies = request.getCookies();
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("userIDCookie")) {
-                            existUser = true;
+                    if (cookies != null) {
+                        for (Cookie cookie : cookies) {
+                            if (cookie.getName().equals("userIDCookie")) {
+                                existUser = true;
+                            }
                         }
                     }
                 %>
             <div class="DivTform"> 
                 <a href="
                    <%
+                       boolean link = false;
                        if (existUser) {
                            out.write("userInf.jsp");
                        } else {
                            out.write("login.jsp");
+                           link = true;
                        }
                    %>   
                    " class="btnform"><div class="divBForm"> 
                         <h5> 
                             <%
+                                boolean text = false;
                                 if (existUser) {
                                     out.write("My Account");
                                 } else {
                                     out.write("Login");
+                                    text = true;
                                 }
                             %> 
                         </h5>
                     </div> </a>
 
-                <a href="register.jsp" class="btnform" ><div class="divBForm"> 
-                        <h4> Register </h4>
-                    </div> </a>
+
+                <%
+                    if (link && text) {
+                        out.write("<a href=\"register.jsp\" class=\"btnform\"><div class=\"divBForm\">");
+                        out.write("<h5>");
+                        out.write("Register");
+                        out.write("</h5>");
+                        out.write("</div> </a>");
+                    }
+                %>            
             </div>
         </div> 
 
@@ -90,14 +103,14 @@
 
         <%            EventDAO eventDAO = new EventDAOImpl();
             /* if (request.getAttribute("user") != null) {
-                User user = (User) request.getAttribute("user");
-                out.write("logined user is: " + user.toString());
-            }
-            else out.write("user is null");
+             User user = (User) request.getAttribute("user");
+             out.write("logined user is: " + user.toString());
+             }
+             else out.write("user is null");
             
-            if(request.getAttribute("id")!= null) {
-                out.write("" + Integer.parseInt((String)request.getAttribute("id")));
-            } */
+             if(request.getAttribute("id")!= null) {
+             out.write("" + Integer.parseInt((String)request.getAttribute("id")));
+             } */
 
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();
             int i = 0;
