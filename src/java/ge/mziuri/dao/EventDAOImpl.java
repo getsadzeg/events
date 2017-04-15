@@ -15,11 +15,11 @@ import java.util.Arrays;
 
 public class EventDAOImpl implements EventDAO {
 
-    private Connection con;
+    private final Connection con;
 
     private PreparedStatement pstmt;
 
-    private EventUtil eventUtil = new EventUtil();
+    private final EventUtil eventUtil = new EventUtil();
 
     public EventDAOImpl() {
         con = DatabaseUtil.getConnection();
@@ -30,8 +30,8 @@ public class EventDAOImpl implements EventDAO {
         try {
 
             String availablePlacesString = eventUtil.makeUpString(event.getPlaces());
-            pstmt = con.prepareStatement("INSERT INTO EVENT (name, description, date, price, category, type, places, available_places)"
-                    + " VALUES (?,?,?,?,?,?,?,?)"); //wanna add author_username after adding cookies
+            pstmt = con.prepareStatement("INSERT INTO EVENT (name, description, date, price, category, type, places, available_places, author_username)"
+                    + " VALUES (?,?,?,?,?,?,?,?,?)");
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
             pstmt.setDate(3, new Date(event.getDate().getTime()));
@@ -40,6 +40,7 @@ public class EventDAOImpl implements EventDAO {
             pstmt.setString(6, event.getType().toString());
             pstmt.setInt(7, event.getPlaces());
             pstmt.setString(8, availablePlacesString);
+            pstmt.setString(9, event.getOwner().getUsername());
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -80,9 +81,9 @@ public class EventDAOImpl implements EventDAO {
     public Event getEvent(int id) {
         Event event = new Event();
         User owner = new User();
+        UserDAO userDAO = new UserDAOImpl();
         String availablePlaceString = null;
         ArrayList list = new ArrayList<>();
-
         try {
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE id = ?");
             pstmt.setInt(1, id);
@@ -99,6 +100,7 @@ public class EventDAOImpl implements EventDAO {
                 list = eventUtil.StringToList(availablePlaceString);
                 String owner_username = result.getString("author_username");
                 owner.setUsername(owner_username);
+                owner.setId(userDAO.getIdFromUsername(owner_username));
                 event.setId(id);
                 event.setName(name);
                 event.setDesc(description);
@@ -118,7 +120,8 @@ public class EventDAOImpl implements EventDAO {
 
     @Override
     public User getEventOwner(int id) {
-        Event event = getEvent(id);
+        EventDAO eventDAO = new EventDAOImpl();
+        Event event = eventDAO.getEvent(id);
         return event.getOwner();
     }
     
