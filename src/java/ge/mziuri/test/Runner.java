@@ -3,23 +3,18 @@ package ge.mziuri.test;
 
 import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
-import ge.mziuri.enums.Category;
-import ge.mziuri.enums.Type;
-import ge.mziuri.model.Event;
-import java.util.Date;
+import ge.mziuri.dao.TicketDAO;
+import ge.mziuri.dao.TicketDAOImpl;
+import ge.mziuri.model.Ticket;
+import java.util.ArrayList;
 
 
 public class Runner {
     public static void main(String[] args) {
-        Event event = new Event();
-        event.setName("Test");
-        event.setDesc("This is a test event");
-        event.setDate(new Date());
-        event.setPrice(10.95); 
-        event.setCategory(Category.CINEMA);
-        event.setType(Type.PUBLIC);
-        event.setPlaces(60);
-        EventDAO eventDAO = new EventDAOImpl();
-        eventDAO.CreateEvent(event);
+        TicketDAO ticketDAO = new TicketDAOImpl();
+        ArrayList<Ticket> list = ticketDAO.getBoughtTickets(1);
+        for(Ticket ticket : list) {
+            System.out.println(ticket.toString());
+        }
     }
 }

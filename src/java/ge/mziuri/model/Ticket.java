@@ -31,4 +31,9 @@ public class Ticket {
         this.id = id;
     }
     
+    @Override
+    public String toString() {
+        return "id: " + id + ", event_id: " + event.getId();
+    }
+    
 }

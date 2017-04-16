@@ -1,9 +1,10 @@
 
 package ge.mziuri.dao;
 
-import ge.mziuri.model.Event;
+import java.util.ArrayList;
 
 
 public interface TicketDAO {
     void buyTicket(int EventID, int userID, int seat);
+    ArrayList getBoughtTickets(int user_id);
 }
