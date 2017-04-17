@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class EventDAOImpl implements EventDAO {
 
@@ -196,6 +195,50 @@ public class EventDAOImpl implements EventDAO {
                 list.add(event);
             }
         } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return list;
+    }
+    
+    @Override
+    public ArrayList getAllEvents(int owner_id) {
+        String owner_username = "";
+        Event event;
+        ArrayList<Event> list = new ArrayList<>();
+        User owner;
+        try {
+            pstmt = con.prepareStatement("SELECT username FROM \"USER\" WHERE id = ?");
+            pstmt.setInt(1, owner_id);
+            ResultSet userRes = pstmt.executeQuery();
+            if(userRes.next()) owner_username = userRes.getString("username");
+            pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE author_username = ?");
+            pstmt.setString(1, owner_username);
+            ResultSet eventRes = pstmt.executeQuery();
+            while(eventRes.next()) {
+                event = new Event();
+                int id = eventRes.getInt("id");
+                String name = eventRes.getString("name");
+                String description = eventRes.getString("Description");
+                Date date = new Date(eventRes.getDate("Date").getTime());
+                double price = eventRes.getDouble("price");
+                Type type = Type.valueOf(eventRes.getString("type"));
+                int seatsnum = eventRes.getInt("places");
+                Category category = Category.valueOf(eventRes.getString("category"));
+                owner = new User();
+                owner.setUsername(owner_username);
+                event.setId(id);
+                event.setName(name);
+                event.setDesc(description);
+                event.setDate(date);
+                event.setPrice(price);
+                event.setCategory(category);
+                event.setType(type);
+                event.setPlaces(seatsnum);
+                event.setOwner(owner);
+                list.add(event);
+            }
+        }
+        catch(SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return list;

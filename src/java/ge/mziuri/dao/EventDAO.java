@@ -22,4 +22,6 @@ public interface EventDAO {
     ArrayList getAllEvents();
     
     ArrayList getAllEvents(Category category);
+    
+    ArrayList getAllEvents(int owner_id);
 }

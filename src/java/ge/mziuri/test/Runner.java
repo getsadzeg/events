@@ -5,16 +5,17 @@ import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.dao.TicketDAO;
 import ge.mziuri.dao.TicketDAOImpl;
+import ge.mziuri.model.Event;
 import ge.mziuri.model.Ticket;
 import java.util.ArrayList;
 
 
 public class Runner {
     public static void main(String[] args) {
-        TicketDAO ticketDAO = new TicketDAOImpl();
-        ArrayList<Ticket> list = ticketDAO.getBoughtTickets(1);
-        for(Ticket ticket : list) {
-            System.out.println(ticket.toString());
+        EventDAO eventDAO = new EventDAOImpl();
+        ArrayList<Event> list = eventDAO.getAllEvents(1);
+        for(Event event : list) {
+            System.out.println(event.toString());
         }
     }
 }

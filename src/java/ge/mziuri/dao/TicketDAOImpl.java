@@ -51,7 +51,7 @@ public class TicketDAOImpl implements TicketDAO {
     }
     
     @Override
-    public ArrayList getBoughtTickets(int user_id) {
+    public ArrayList getBoughtTickets(int user_id) { //wanna move some code to service
         ArrayList<Ticket> boughtTickets = new ArrayList<>();
         Ticket ticket = new Ticket();
         try {
@@ -61,7 +61,7 @@ public class TicketDAOImpl implements TicketDAO {
             while(historyResult.next()) {
                 int ticket_id = historyResult.getInt("ticket_id");
                 ticket.setId(ticket_id);
-                pstmt = con.prepareStatement("SELECT event_id FROM TICKET WHERE id = ?"); //wanna change event_id to event_name in db
+                pstmt = con.prepareStatement("SELECT event_id FROM TICKET WHERE id = ?"); //wanna change event_id to event_name in db and add event_date
                 pstmt.setInt(1, ticket_id);
                 ResultSet ticketResult = pstmt.executeQuery();
                 if(ticketResult.next()) {
