@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 public class Runner {
     public static void main(String[] args) {
-        EventDAO eventDAO = new EventDAOImpl();
-        ArrayList<Event> list = eventDAO.getAllEvents(1);
-        for(Event event : list) {
-            System.out.println(event.toString());
+        TicketDAO ticketDAO = new TicketDAOImpl();
+        ArrayList<Ticket> list = ticketDAO.getBoughtTickets(1);
+        for(Ticket ticket : list) {
+            System.out.println(ticket.toString());
         }
     }
 }

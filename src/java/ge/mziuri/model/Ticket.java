@@ -33,7 +33,7 @@ public class Ticket {
     
     @Override
     public String toString() {
-        return "id: " + id + ", event_id: " + event.getId();
+        return "id: " + id + ", event id: " + event.getId() + ", event name: " + event.getName() + ", event date: " + event.getDate().toString();
     }
     
 }

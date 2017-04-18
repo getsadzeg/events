@@ -6,6 +6,7 @@ import ge.mziuri.model.Event;
 import ge.mziuri.model.Ticket;
 import ge.mziuri.service.TicketService;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,22 +52,30 @@ public class TicketDAOImpl implements TicketDAO {
     }
     
     @Override
-    public ArrayList getBoughtTickets(int user_id) { //wanna move some code to service
+    public ArrayList getBoughtTickets(int user_id) {
         ArrayList<Ticket> boughtTickets = new ArrayList<>();
         Ticket ticket = new Ticket();
         try {
-            pstmt = con.prepareStatement("SELECT * FROM TICKET_HISTORY WHERE user_id = ?");
+            pstmt = con.prepareStatement("SELECT ticket_id FROM TICKET_HISTORY WHERE user_id = ?");
             pstmt.setInt(1, user_id);
             ResultSet historyResult = pstmt.executeQuery();
-            while(historyResult.next()) {
+            if(historyResult.next()) {
                 int ticket_id = historyResult.getInt("ticket_id");
                 ticket.setId(ticket_id);
-                pstmt = con.prepareStatement("SELECT event_id FROM TICKET WHERE id = ?"); //wanna change event_id to event_name in db and add event_date
+                pstmt = con.prepareStatement("SELECT event_id FROM TICKET WHERE id = ?");
                 pstmt.setInt(1, ticket_id);
                 ResultSet ticketResult = pstmt.executeQuery();
                 if(ticketResult.next()) {
                     Event event = new Event();
-                    event.setId(ticketResult.getInt("event_id"));
+                    int event_id = ticketResult.getInt("event_id");
+                    event.setId(event_id);
+                    pstmt = con.prepareStatement("SELECT name, date FROM EVENT WHERE id = ?");
+                    pstmt.setInt(1, event_id);
+                    ResultSet eventResult = pstmt.executeQuery();
+                    while(eventResult.next()) {
+                        event.setName(eventResult.getString("name"));
+                        event.setDate(new Date(eventResult.getDate("Date").getTime()));
+                    }
                     ticket.setEvent(event);
                 }
                 boughtTickets.add(ticket);
@@ -78,4 +87,6 @@ public class TicketDAOImpl implements TicketDAO {
         }
         return boughtTickets;
     }
+    
+    
 }
