@@ -1,6 +1,8 @@
 
 package ge.mziuri.test;
 
+import ge.mziuri.dao.CardDAO;
+import ge.mziuri.dao.CardDAOImpl;
 import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.dao.TicketDAO;
@@ -12,10 +14,7 @@ import java.util.ArrayList;
 
 public class Runner {
     public static void main(String[] args) {
-        TicketDAO ticketDAO = new TicketDAOImpl();
-        ArrayList<Ticket> list = ticketDAO.getBoughtTickets(1);
-        for(Ticket ticket : list) {
-            System.out.println(ticket.toString());
-        }
+        CardDAO cardDAO = new CardDAOImpl();
+        System.out.println(cardDAO.getCardwithUserID(1).toString());
     }
 }

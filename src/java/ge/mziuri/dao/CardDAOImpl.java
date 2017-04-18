@@ -46,4 +46,33 @@ public class CardDAOImpl implements CardDAO {
         }
     }
     
+    @Override
+    public Card getCardwithUserID(int user_id) {
+        Card card;
+        try {
+            pstmt = con.prepareStatement("SELECT card_id FROM \"USER\" WHERE id = ?");
+            pstmt.setInt(1, user_id);
+            ResultSet cardIDResult = pstmt.executeQuery();
+            if(cardIDResult.next()) {
+                int card_id = cardIDResult.getInt("card_id");
+                card = new Card();
+                card.setId(card_id);
+                pstmt = con.prepareStatement("SELECT cardCode, passCode, expirationDate FROM CARD WHERE id = ?");
+                pstmt.setInt(1, card_id);
+                ResultSet cardResult = pstmt.executeQuery();
+                while(cardResult.next()) {
+                    card.setCode(cardResult.getString("cardCode"));
+                    card.setPasscode(cardResult.getString("passCode"));
+                    card.setExpDate(new Date(cardResult.getDate("expirationDate").getTime()));
+                    return card;
+                }
+            }
+        }
+        
+        catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+    
 }

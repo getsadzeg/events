@@ -67,5 +67,10 @@ public class Card {
         this.id = id;
     }
     
+    @Override
+    public String toString() {
+        return "id: " + id + ", money: " + money + ", code: " + code + ", password: " + passcode + ", expiration date: " + expDate.toString();
+    }
+    
     
 }
