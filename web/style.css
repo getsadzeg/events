@@ -149,8 +149,23 @@
            text-align: center;
            color : crimson;
            font: bold 15px arial, sans-serif; 
-           display: table-cell;               
-                        
-                        
-                        
+           display: table-cell;                          
                     }
+                    
+      .newform1 {
+         border-style: solid;        
+         border-width: 0.2px;
+         height: 250px;               
+         text-align: center;     
+         width: 500px;
+         display: table-cell;
+         margin: 10px;
+         padding: 10px;
+                    }
+       
+      dForm{
+        display: table-cell;  
+        margin: 10px;
+        padding: 10px;  
+         
+      }

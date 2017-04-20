@@ -104,6 +104,8 @@
             int i = 0;
             for (Event event : events) {
                 i++;
+                 if (i % 5 == 1) {
+                    out.write("<div>");  }
                 out.write("<a href=\"EventViewServlet?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
                 out.write("<h2>" + event.getName() + "</h2>");
                 out.write("<h3>" + event.getDesc() + "</h3>");
