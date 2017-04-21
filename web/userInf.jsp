@@ -1,4 +1,5 @@
 
+<%@page import="ge.mziuri.model.Card"%>
 <%@page import="ge.mziuri.model.User"%>
 <%@page import="ge.mziuri.model.Event"%>
 <%@page import="java.util.List"%>
@@ -32,10 +33,10 @@
               <h2>User's card info</h2>
               <form <!-- action="AccountUpdateServlet" method="post"-->
                     <% 
-             
-                   out.write("ბარათის კოდი: <input type=\"text\" name=\"card\" value=\"" + user.getCard().getCode() + "\"><br>");
-                   out.write("ბარათის პასკოდი: <input type=\"password\" name=\"passcode\" value=\"" + user.getCard().getPasscode() + "\"><br>");
-                   out.write("ბარათის ვადა: <input type=\"date\" name=\"expDate\" value=\"" + user.getCard().getExpDate() + "\"><br>");
+                   Card card = (Card)request.getAttribute("Card");
+                   out.write("ბარათის კოდი: <input type=\"text\" name=\"card\" value=\"" + card.getCode() + "\"><br>");
+                   out.write("ბარათის პასკოდი: <input type=\"password\" name=\"passcode\" value=\"" + card.getPasscode() + "\"><br>");
+                   out.write("ბარათის ვადა: <input type=\"date\" name=\"expDate\" value=\"" + card.getExpDate() + "\"><br>");
        
                             %>
               </form>  </div>
