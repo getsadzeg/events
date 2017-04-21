@@ -67,7 +67,11 @@
                 %>            
             </div>
         </div> 
-
+<!--
+ <a href=\"Index.jsp\" class=\"btnform\"><div class=\"divBForm\">
+ <h5>Log out</h5> 
+ </div> </a>
+-->
 
         <div class="menuDiv">
             <div class="menuItem">
