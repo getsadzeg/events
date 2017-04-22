@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Runner {
     public static void main(String[] args) {
-        CardDAO cardDAO = new CardDAOImpl();
-        System.out.println(cardDAO.getCardwithUserID(1).toString());
+        EventDAO eventDAO = new EventDAOImpl();
+        System.out.println(eventDAO.getEvent(1));
     }
 }

@@ -46,13 +46,13 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setString(1, username);
             pstmt.setString(2, passwordHash);
             ResultSet rs = pstmt.executeQuery();            
-            while (rs.next()) {
+            if (rs.next()) {
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setSurname(rs.getString("surname"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                return user; //why can't I return nothing here and return user at the end of method?
+                return user;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

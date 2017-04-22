@@ -47,7 +47,7 @@ public class CardDAOImpl implements CardDAO {
     }
     
     @Override
-    public Card getCardwithUserID(int user_id) {
+    public Card getCardwithUserID(int user_id) { //no money needed in Card obj
         Card card;
         try {
             pstmt = con.prepareStatement("SELECT card_id FROM \"USER\" WHERE id = ?");
@@ -60,7 +60,7 @@ public class CardDAOImpl implements CardDAO {
                 pstmt = con.prepareStatement("SELECT cardCode, passCode, expirationDate FROM CARD WHERE id = ?");
                 pstmt.setInt(1, card_id);
                 ResultSet cardResult = pstmt.executeQuery();
-                while(cardResult.next()) {
+                if(cardResult.next()) {
                     card.setCode(cardResult.getString("cardCode"));
                     card.setPasscode(cardResult.getString("passCode"));
                     card.setExpDate(new Date(cardResult.getDate("expirationDate").getTime()));

@@ -87,7 +87,7 @@ public class EventDAOImpl implements EventDAO {
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE id = ?");
             pstmt.setInt(1, id);
             ResultSet result = pstmt.executeQuery();
-            while (result.next()) {
+            if (result.next()) {
                 String name = result.getString("name");
                 String description = result.getString("Description");
                 Date date = new Date(result.getDate("Date").getTime());

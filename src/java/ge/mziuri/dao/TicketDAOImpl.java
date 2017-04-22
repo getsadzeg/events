@@ -72,7 +72,7 @@ public class TicketDAOImpl implements TicketDAO {
                     pstmt = con.prepareStatement("SELECT name, date FROM EVENT WHERE id = ?");
                     pstmt.setInt(1, event_id);
                     ResultSet eventResult = pstmt.executeQuery();
-                    while(eventResult.next()) {
+                    if(eventResult.next()) {
                         event.setName(eventResult.getString("name"));
                         event.setDate(new Date(eventResult.getDate("Date").getTime()));
                     }
