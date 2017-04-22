@@ -10,6 +10,8 @@ public interface UserDAO {
     
     User login(String username, String password);
     
+    void updateUser(User user);
+    
     User getUser(int id);
     
     int getIdFromUsername(String username);

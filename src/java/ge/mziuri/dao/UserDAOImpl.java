@@ -59,6 +59,21 @@ public class UserDAOImpl implements UserDAO {
         }
         return null;
     }
+    
+    @Override
+    public void updateUser(User user) {
+        try {
+            pstmt = con.prepareStatement("UPDATE \"USER\" SET name = ?, surname = ?, password = ? WHERE id = ?");
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getSurname());
+            pstmt.setString(3, String.valueOf(user.getPassword().hashCode()));
+            pstmt.setInt(4, user.getId());
+            pstmt.executeUpdate();
+        }
+        catch(SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     @Override
     public User getUser(int id) {
