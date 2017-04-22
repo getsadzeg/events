@@ -68,7 +68,7 @@ public class EventDAOImpl implements EventDAO {
             pstmt.setDate(3, new Date(event.getDate().getTime()));
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
-            pstmt.setString(6, eventUtil.makeUpString(event.getAvailablePlaces().size()));
+            pstmt.setString(6, eventUtil.makeUpString(event.getAvailablePlaces()));
             pstmt.setInt(7, event.getId());
             pstmt.executeUpdate();
         } catch (SQLException ex) {

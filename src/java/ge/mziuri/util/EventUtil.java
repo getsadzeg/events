@@ -1,5 +1,6 @@
 package ge.mziuri.util;
 
+import ge.mziuri.model.Event;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -9,7 +10,6 @@ public class EventUtil {
 
     }
 
-    
     public String makeUpString(int seats) {
         StringBuilder availablePlacesBuilder = new StringBuilder();
         for (int i = 1; i <= seats; i++) {
@@ -18,6 +18,18 @@ public class EventUtil {
                 availablePlacesBuilder.append(",");
             }
         }
+        return availablePlacesBuilder.toString();
+    }
+
+    public String makeUpString(ArrayList<Integer> list) {
+        StringBuilder availablePlacesBuilder = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            availablePlacesBuilder.append(list.get(i));
+            if (i != list.size() - 1) {
+                availablePlacesBuilder.append(",");
+            }
+        }
+
         return availablePlacesBuilder.toString();
     }
 
