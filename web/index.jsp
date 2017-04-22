@@ -35,7 +35,7 @@
                    <%
                        boolean link = false;
                        if (existUser) {
-                           out.write("userInf.jsp");
+                           out.write("MyAccountServlet");
                        } else {
                            out.write("login.jsp");
                            link = true;
