@@ -1,9 +1,9 @@
-
 package ge.mziuri.servlet;
 
 import ge.mziuri.dao.UserDAO;
 import ge.mziuri.dao.UserDAOImpl;
 import ge.mziuri.model.User;
+import ge.mziuri.util.CookieUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginServlet extends HttpServlet {
-    
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         response.setStatus(403);
     }
-    
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
@@ -35,13 +35,15 @@ public class LoginServlet extends HttpServlet {
             } else {
                 Cookie cookie = new Cookie("userIDCookie", String.valueOf(user.getId()));
                 response.addCookie(cookie);
-                RequestDispatcher rd = request.getRequestDispatcher("LoginCookieProcessor");
+                request.setAttribute("user", userDAO.getUser(user.getId()));
+                request.setAttribute("id", String.valueOf(user.getId()));
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.forward(request, response);
             }
-            
+
         } catch (IOException | ServletException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
+
 }
