@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
             } else {
                 Cookie cookie = new Cookie("userIDCookie", String.valueOf(user.getId()));
                 response.addCookie(cookie);
-                request.setAttribute("user", userDAO.getUser(user.getId()));
                 request.setAttribute("id", String.valueOf(user.getId()));
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 rd.forward(request, response);

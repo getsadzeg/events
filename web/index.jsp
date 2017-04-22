@@ -105,17 +105,8 @@
         </div>
 
 
-        <%            EventDAO eventDAO = new EventDAOImpl();
-            /* if (request.getAttribute("user") != null) {
-             User user = (User) request.getAttribute("user");
-             out.write("logined user is: " + user.toString());
-             }
-             else out.write("user is null");
-            
-             if(request.getAttribute("id")!= null) {
-             out.write("" + Integer.parseInt((String)request.getAttribute("id")));
-             } */
-
+        <%            
+            EventDAO eventDAO = new EventDAOImpl();
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();
             int i = 0;
             for (Event event : events) {
