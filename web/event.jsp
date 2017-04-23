@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Event Page</title>
+        <title>Event: <%=request.getAttribute("name")%></title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>

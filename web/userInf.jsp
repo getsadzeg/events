@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>My Account</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
