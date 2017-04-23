@@ -19,4 +19,14 @@ public class CookieUtil {
         }
         return value;
     }
+    
+    public static Cookie getCookie(String name, HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals(name)) {
+                return cookie;
+            }
+        }
+        return null;
+    }
 }

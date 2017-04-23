@@ -64,14 +64,21 @@
                         out.write("</h5>");
                         out.write("</div> </a>");
                     }
-                %>            
-            </div>
-        </div> 
-<!--
- <a href=\"Index.jsp\" class=\"btnform\"><div class=\"divBForm\">
- <h5>Log out</h5> 
- </div> </a>
--->
+                %>
+                <%
+                    if(existUser) {
+                        out.write("<a href=\"LogoutServlet\" class=\"btnform\"><div class=\"divBForm\">");
+                        out.write("<h5>Log out</h5>");
+                        out.write("</div> </a>");
+                    }
+                    %>
+            </div> 
+        </div>
+
+
+
+
+
 
         <div class="menuDiv">
             <div class="menuItem">
@@ -105,14 +112,15 @@
         </div>
 
 
-        <%            
+        <%
             EventDAO eventDAO = new EventDAOImpl();
             ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents();
             int i = 0;
             for (Event event : events) {
                 i++;
                 if (i % 5 == 1) {
-                    out.write("<div>");  }
+                    out.write("<div>");
+                }
                 out.write("<a href=\"EventViewServlet?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
                 out.write("<h2>" + event.getName() + "</h2>");
                 out.write("<h3>" + event.getDesc() + "</h3>");
