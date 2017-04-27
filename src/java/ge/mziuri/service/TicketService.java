@@ -71,7 +71,7 @@ public class TicketService {
             double author_money = moneywithCardID(author_card_id);
             card.setMoney(author_money);
             card.setId(author_card_id);
-            cardDAO.updateMoney(author_money+price*(9/10), card);
+            cardDAO.updateMoney(author_money+price*0.9, card);
         }
         catch(SQLException ex) {
             System.out.println(ex.getMessage());

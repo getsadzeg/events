@@ -59,7 +59,7 @@ public class TicketDAOImpl implements TicketDAO {
             pstmt = con.prepareStatement("SELECT ticket_id FROM TICKET_HISTORY WHERE user_id = ?");
             pstmt.setInt(1, user_id);
             ResultSet historyResult = pstmt.executeQuery();
-            if(historyResult.next()) {
+            while(historyResult.next()) {
                 int ticket_id = historyResult.getInt("ticket_id");
                 ticket.setId(ticket_id);
                 pstmt = con.prepareStatement("SELECT event_id FROM TICKET WHERE id = ?");
