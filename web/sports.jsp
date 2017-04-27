@@ -35,7 +35,7 @@
                    <%
                        boolean link = false;
                        if (existUser) {
-                           out.write("userInf.jsp");
+                           out.write("MyAccountServlet");
                        } else {
                            out.write("login.jsp");
                            link = true;
@@ -65,6 +65,14 @@
                         out.write("</div> </a>");
                     }
                 %>            
+                
+                <%
+                    if(existUser) {
+                        out.write("<a href=\"LogoutServlet\" class=\"btnform\"><div class=\"divBForm\">");
+                        out.write("<h5>Log out</h5>");
+                        out.write("</div> </a>");
+                    }
+                    %>
             </div>
         </div> 
 

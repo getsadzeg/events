@@ -35,7 +35,7 @@
                    <%
                        boolean link = false;
                        if (existUser) {
-                           out.write("userInf.jsp");
+                           out.write("MyAccountServlet");
                        } else {
                            out.write("login.jsp");
                            link = true;
@@ -64,49 +64,58 @@
                         out.write("</h5>");
                         out.write("</div> </a>");
                     }
-                %>            
+                %>
+
+                <%
+                    if (existUser) {
+                        out.write("<a href=\"LogoutServlet\" class=\"btnform\"><div class=\"divBForm\">");
+                        out.write("<h5>Log out</h5>");
+                        out.write("</div> </a>");
+                    }
+                %>
             </div>
         </div> 
-    
-    <div class="menuDiv">
-        <div class="menuItem">
-            <a href="sports.jsp" class="categForm" >
-                Sports
-            </a> 
-        </div> 
 
-        <div class="menuItem">
-            <a href="theatre.jsp" class="categForm">
-                Theater
-            </a>
+        <div class="menuDiv">
+            <div class="menuItem">
+                <a href="sports.jsp" class="categForm" >
+                    Sports
+                </a> 
+            </div> 
+
+            <div class="menuItem">
+                <a href="theatre.jsp" class="categForm">
+                    Theater
+                </a>
+            </div>
+
+            <div class="menuItem">
+                <a href="cinema.jsp" class="categForm">
+                    Cinema
+                </a>
+            </div>
+            <div class="menuItem">
+                <a href="party.jsp" class="categForm">
+                    Party
+                </a>
+            </div>
+
+            <div class="menuItem">
+                <a href="concert.jsp" class="categForm">
+                    Concert
+                </a>
+            </div>
         </div>
 
-        <div class="menuItem">
-            <a href="cinema.jsp" class="categForm">
-                Cinema
-            </a>
-        </div>
-        <div class="menuItem">
-            <a href="party.jsp" class="categForm">
-                Party
-            </a>
-        </div>
-
-        <div class="menuItem">
-            <a href="concert.jsp" class="categForm">
-                Concert
-            </a>
-        </div>
-    </div>
-
-    <%
-        EventDAO eventDAO = new EventDAOImpl();
-        ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents(Category.CINEMA);
+        <%
+            EventDAO eventDAO = new EventDAOImpl();
+            ArrayList<Event> events = (ArrayList<Event>) eventDAO.getAllEvents(Category.CINEMA);
             int i = 0;
             for (Event event : events) {
                 i++;
-                 if (i % 5 == 1) {
-                    out.write("<div>");  }
+                if (i % 5 == 1) {
+                    out.write("<div>");
+                }
                 out.write("<a href=\"EventViewServlet?id=" + event.getId() + " \" class=\"DivLinkForm\"><div class=\"eventDForm\">");
                 out.write("<h2>" + event.getName() + "</h2>");
                 out.write("<h3>" + event.getDesc() + "</h3>");
@@ -117,8 +126,8 @@
                 }
             }
 
-    %> 
+        %> 
 
 
-</body>
+    </body>
 </html>
