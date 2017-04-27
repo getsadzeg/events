@@ -114,9 +114,14 @@
         <%
             EventDAO eventDAO = new EventDAOImpl();
             int eventID = Integer.parseInt(CookieUtil.getCookieContent("eventIDCookie", request));
-            int userID = Integer.parseInt(CookieUtil.getCookieContent("userIDCookie", request));
+            int userID = 0;
+            if (CookieUtil.getCookieContent("userIDCookie", request) != null && 
+                    !CookieUtil.getCookieContent("userIDCookie", request).isEmpty()) {
+                userID = Integer.parseInt(CookieUtil.getCookieContent("userIDCookie", request));
+            }
+
             int eventOwnerID = eventDAO.getEventOwner(eventID).getId();
-             if (userID == eventOwnerID ) {
+            if (userID == eventOwnerID) {
                 out.write("<form action=\"EventEditServlet\" method=\"post\">");
                 out.write("<div class=\"wrapper\">");
                 out.write("<input type=\"hidden\" name=\"actionType\" value=\"edit\">");
@@ -125,7 +130,7 @@
                 out.write("</form>");
             }
         %>
-        
+
 
 
     </div>
