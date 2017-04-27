@@ -34,6 +34,9 @@ public class EventDAOImpl implements EventDAO {
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
             pstmt.setDate(3, new Date(event.getDate().getTime()));
+            if(event.getType().toString().equals("PRIVATE")) {
+                event.setPrice(0);
+            }
             pstmt.setDouble(4, event.getPrice());
             pstmt.setString(5, event.getCategory().toString());
             pstmt.setString(6, event.getType().toString());
