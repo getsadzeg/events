@@ -71,7 +71,12 @@
 
                         }
                     %> 
-
+                    
+                    <a href="createE.jsp" class="btnform">
+                        <div class="diForm"> 
+                            <h5>Create event</h5> 
+                        </div> 
+                    </a>
             </div> 
         </div>
 
