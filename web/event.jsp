@@ -110,6 +110,12 @@
             </div>
         </form>
 
+                              
+              <!--    <a href="" class="btnform">
+                        <div class="diForm"> 
+                            <h5>Delete event</h5> 
+                        </div> 
+                    </a> -->
 
         <%
             EventDAO eventDAO = new EventDAOImpl();
