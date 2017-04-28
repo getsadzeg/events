@@ -18,6 +18,11 @@
                 <input type="submit" value="რეგისტრაცია" />
             </form>
         </div>
+        <a href="index.jsp" class="btnform">
+            <div class="diForm"> 
+                <h5>Homepage</h5> 
+            </div>
+        </a>
     </body>
 </html>
 
