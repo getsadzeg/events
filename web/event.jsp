@@ -110,23 +110,20 @@
             </div>
         </form>
 
-                              
-              <!--    <a href="" class="btnform">
-                        <div class="diForm"> 
-                            <h5>Delete event</h5> 
-                        </div> 
-                    </a> -->
-
         <%
             EventDAO eventDAO = new EventDAOImpl();
             int eventID = Integer.parseInt(CookieUtil.getCookieContent("eventIDCookie", request));
             int userID = 0;
-            if (CookieUtil.getCookieContent("userIDCookie", request) != null && 
-                    !CookieUtil.getCookieContent("userIDCookie", request).isEmpty()) {
+            if (CookieUtil.getCookieContent("userIDCookie", request) != null
+                    && !CookieUtil.getCookieContent("userIDCookie", request).isEmpty()) {
                 userID = Integer.parseInt(CookieUtil.getCookieContent("userIDCookie", request));
             }
 
             int eventOwnerID = eventDAO.getEventOwner(eventID).getId();
+            boolean isLegitToDelete = false;
+            if (eventDAO.getEvent(eventID).getAvailablePlaces().size() == eventDAO.getEvent(eventID).getPlaces()) {
+                isLegitToDelete = true;
+            }
             if (userID == eventOwnerID) {
                 out.write("<form action=\"EventEditServlet\" method=\"post\">");
                 out.write("<div class=\"wrapper\">");
@@ -134,6 +131,14 @@
                 out.write("<input type=\"submit\" name=\"button\" class=\"buttonForm\" value=\"Edit\">");
                 out.write("</div>");
                 out.write("</form>");
+                if (isLegitToDelete) {
+                    out.write("<form action=\"EventDeleteServlet\" method=\"post\">");
+                    out.write("<div class=\"wrapper\">");
+                    out.write("<input type=\"submit\" name=\"deletebutton\" class=\"btnform\" value=\"Delete\">");
+                    out.write("</div>");
+                    out.write("</form>");
+                }
+
             }
         %>
 

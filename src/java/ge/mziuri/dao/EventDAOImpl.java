@@ -51,10 +51,10 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public void DeleteEvent(Event event) {
+    public void DeleteEvent(int event_id) {
         try {
             pstmt = con.prepareStatement("DELETE FROM EVENT WHERE id = ? ");
-            pstmt.setInt(1, event.getId());
+            pstmt.setInt(1, event_id);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

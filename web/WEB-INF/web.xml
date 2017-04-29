@@ -7,6 +7,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>ge.mziuri.servlet.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EventDeleteServlet</servlet-name>
+        <servlet-class>ge.mziuri.servlet.EventDeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MyAccountServlet</servlet-name>
         <url-pattern>/MyAccountServlet</url-pattern>
@@ -14,6 +18,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventDeleteServlet</servlet-name>
+        <url-pattern>/EventDeleteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
