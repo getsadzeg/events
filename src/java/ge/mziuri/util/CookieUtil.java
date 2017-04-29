@@ -12,14 +12,26 @@ public class CookieUtil {
     public static String getCookieContent(String name, HttpServletRequest request) {
         String value = "";
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals(name)) {
-                value = cookie.getValue();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(name)) {
+                    value = cookie.getValue();
+                }
             }
         }
         return value;
     }
-    
+
+    public static String getData(String name, HttpServletRequest request) {
+        String value = "";
+        value = getCookieContent(name + "Cookie", request);
+        if (value.isEmpty()) {
+            if(request.getAttribute(name) != null)
+            value = request.getAttribute(name).toString();
+        }
+        return value;
+    }
+
     public static Cookie getCookie(String name, HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {

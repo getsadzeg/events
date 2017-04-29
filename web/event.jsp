@@ -112,7 +112,12 @@
 
         <%
             EventDAO eventDAO = new EventDAOImpl();
-            int eventID = Integer.parseInt(CookieUtil.getCookieContent("eventIDCookie", request));
+            int eventID = 0;
+            if (CookieUtil.getData("eventID", request) != null
+                    && !CookieUtil.getData("eventID", request).isEmpty()) {
+                eventID = Integer.parseInt(CookieUtil.getData("eventID", request));
+            }
+            
             int userID = 0;
             if (CookieUtil.getCookieContent("userIDCookie", request) != null
                     && !CookieUtil.getCookieContent("userIDCookie", request).isEmpty()) {

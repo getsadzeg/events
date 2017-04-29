@@ -30,6 +30,7 @@ public class EventViewServlet extends HttpServlet {
         request.setAttribute("author", event.getOwner().getUsername());
         Cookie cookie = new Cookie("eventIDCookie", String.valueOf(id));
         response.addCookie(cookie);
+        request.setAttribute("eventID", id);
         RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
         try {
             rd.forward(request, response);

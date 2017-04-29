@@ -1,3 +1,4 @@
+<%@page import="ge.mziuri.util.CookieUtil"%>
 <%@page import="java.lang.Integer"%>
 <%@page import="ge.mziuri.dao.EventDAOImpl"%>
 <%@page import="ge.mziuri.dao.EventDAO"%>
@@ -21,14 +22,8 @@
                 </a> </div>
                 <%
                     boolean existUser = false;
-                    Cookie[] cookies = request.getCookies();
-                    if (cookies != null) {
-                        for (Cookie cookie : cookies) {
-                            if (cookie.getName().equals("userIDCookie")) {
-                                existUser = true;
-                            }
-                        }
-                    }
+                    if(CookieUtil.getData("userID", request) != null
+                            && !CookieUtil.getData("userID", request).isEmpty()) existUser = true;
                 %>
             <div class="DivTform"> 
                 <a href="
