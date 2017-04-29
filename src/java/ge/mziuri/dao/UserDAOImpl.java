@@ -1,5 +1,6 @@
 package ge.mziuri.dao;
 
+import ge.mziuri.util.DatabaseUtil;
 import ge.mziuri.enums.RegistrationFailedExceptionType;
 import ge.mziuri.exceptions.RegistrationFailedException;
 import ge.mziuri.model.User;
@@ -34,6 +35,8 @@ public class UserDAOImpl implements UserDAO {
                 throw new RegistrationFailedException("მომხმარებელი ამ სახელით უკვე არსებობს",
                         RegistrationFailedExceptionType.USERNAME);
             }
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return res;
     }
@@ -45,7 +48,7 @@ public class UserDAOImpl implements UserDAO {
             pstmt = con.prepareStatement("SELECT * FROM \"USER\" WHERE username = ? AND password = ?");
             pstmt.setString(1, username);
             pstmt.setString(2, passwordHash);
-            ResultSet rs = pstmt.executeQuery();            
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
@@ -56,10 +59,12 @@ public class UserDAOImpl implements UserDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return null;
     }
-    
+
     @Override
     public void updateUser(User user) {
         try {
@@ -69,9 +74,10 @@ public class UserDAOImpl implements UserDAO {
             pstmt.setString(3, String.valueOf(user.getPassword().hashCode()));
             pstmt.setInt(4, user.getId());
             pstmt.executeUpdate();
-        }
-        catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
     }
 
@@ -92,10 +98,12 @@ public class UserDAOImpl implements UserDAO {
             return user;
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return null;
     }
-    
+
     @Override
     public int getIdFromUsername(String username) {
         int id = 0;
@@ -103,13 +111,13 @@ public class UserDAOImpl implements UserDAO {
             pstmt = con.prepareStatement("SELECT id FROM \"USER\" WHERE username = ?");
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 id = rs.getInt("id");
             }
-        }
-        
-        catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return id;
     }

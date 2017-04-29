@@ -9,7 +9,7 @@ public class CookieUtil {
 
     }
 
-    public static String getCookieContent(String name, HttpServletRequest request) {
+    public static String getDataFromRequest(String name, HttpServletRequest request) {
         String value = "";
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
@@ -22,10 +22,10 @@ public class CookieUtil {
         return value;
     }
 
-    public static String getData(String name, HttpServletRequest request) {
+    public static String getDataFromRequest(String name, HttpServletRequest request, boolean searchInAttribute) {
         String value = "";
-        value = getCookieContent(name + "Cookie", request);
-        if (value.isEmpty()) {
+        value = getDataFromRequest(name + "Cookie", request);
+        if (value.isEmpty() && searchInAttribute) {
             if(request.getAttribute(name) != null)
             value = request.getAttribute(name).toString();
         }

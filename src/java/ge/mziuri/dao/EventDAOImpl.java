@@ -1,5 +1,6 @@
 package ge.mziuri.dao;
 
+import ge.mziuri.util.DatabaseUtil;
 import ge.mziuri.enums.Category;
 import ge.mziuri.enums.Type;
 import ge.mziuri.model.Event;
@@ -34,7 +35,7 @@ public class EventDAOImpl implements EventDAO {
             pstmt.setString(1, event.getName());
             pstmt.setString(2, event.getDesc());
             pstmt.setDate(3, new Date(event.getDate().getTime()));
-            if(event.getType().toString().equals("PRIVATE")) {
+            if (event.getType().toString().equals("PRIVATE")) {
                 event.setPrice(0);
             }
             pstmt.setDouble(4, event.getPrice());
@@ -47,6 +48,8 @@ public class EventDAOImpl implements EventDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
     }
 
@@ -58,6 +61,8 @@ public class EventDAOImpl implements EventDAO {
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
     }
 
@@ -76,6 +81,8 @@ public class EventDAOImpl implements EventDAO {
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
     }
 
@@ -116,6 +123,8 @@ public class EventDAOImpl implements EventDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return event;
     }
@@ -126,7 +135,7 @@ public class EventDAOImpl implements EventDAO {
         Event event = eventDAO.getEvent(id);
         return event.getOwner();
     }
-    
+
     @Override
     public ArrayList getAllEvents() {
         ArrayList list = new ArrayList<>();
@@ -161,6 +170,8 @@ public class EventDAOImpl implements EventDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return list;
     }
@@ -199,10 +210,12 @@ public class EventDAOImpl implements EventDAO {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return list;
     }
-    
+
     @Override
     public ArrayList getAllEvents(int owner_id) {
         String owner_username = "";
@@ -213,11 +226,13 @@ public class EventDAOImpl implements EventDAO {
             pstmt = con.prepareStatement("SELECT username FROM \"USER\" WHERE id = ?");
             pstmt.setInt(1, owner_id);
             ResultSet userRes = pstmt.executeQuery();
-            if(userRes.next()) owner_username = userRes.getString("username");
+            if (userRes.next()) {
+                owner_username = userRes.getString("username");
+            }
             pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE author_username = ?");
             pstmt.setString(1, owner_username);
             ResultSet eventRes = pstmt.executeQuery();
-            while(eventRes.next()) {
+            while (eventRes.next()) {
                 event = new Event();
                 int id = eventRes.getInt("id");
                 String name = eventRes.getString("name");
@@ -240,9 +255,10 @@ public class EventDAOImpl implements EventDAO {
                 event.setOwner(owner);
                 list.add(event);
             }
-        }
-        catch(SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            DatabaseUtil.closeConnection(con);
         }
         return list;
     }

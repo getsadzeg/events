@@ -22,8 +22,8 @@ public class BuyTicketServlet extends HttpServlet {
         TicketDAO ticketDAO = new TicketDAOImpl();
         String eventID = "";
         String userID = "";
-        eventID = CookieUtil.getCookieContent("eventIDCookie", request);
-        userID = CookieUtil.getCookieContent("userIDCookie", request);
+        eventID = CookieUtil.getDataFromRequest("eventIDCookie", request);
+        userID = CookieUtil.getDataFromRequest("userIDCookie", request);
         int selection = Integer.parseInt(request.getParameter("selection"));
         ticketDAO.buyTicket(Integer.parseInt(eventID), Integer.parseInt(userID), selection); 
         

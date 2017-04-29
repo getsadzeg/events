@@ -25,7 +25,7 @@ public class EventUpdateServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         String id = "";
-        id = CookieUtil.getCookieContent("eventIDCookie", request);
+        id = CookieUtil.getDataFromRequest("eventIDCookie", request);
         EventDAO eventDAO = new EventDAOImpl();
         Event event = eventDAO.getEvent(Integer.parseInt(id));
         String name = (String) request.getParameter("name");

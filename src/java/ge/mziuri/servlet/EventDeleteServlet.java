@@ -22,7 +22,7 @@ public class EventDeleteServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         EventDAO eventDAO = new EventDAOImpl();
-        int eventID = Integer.parseInt(CookieUtil.getCookieContent("eventIDCookie", request));
+        int eventID = Integer.parseInt(CookieUtil.getDataFromRequest("eventIDCookie", request));
         eventDAO.DeleteEvent(eventID);
         RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
         try {

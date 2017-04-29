@@ -22,8 +22,8 @@
                 </a> </div>
                 <%
                     boolean existUser = false;
-                    if(CookieUtil.getData("userID", request) != null
-                            && !CookieUtil.getData("userID", request).isEmpty()) existUser = true;
+                    if(CookieUtil.getDataFromRequest("userID", request, true) != null
+                            && !CookieUtil.getDataFromRequest("userID", request, true).isEmpty()) existUser = true;
                 %>
             <div class="DivTform"> 
                 <a href="

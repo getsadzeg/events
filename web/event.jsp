@@ -113,15 +113,15 @@
         <%
             EventDAO eventDAO = new EventDAOImpl();
             int eventID = 0;
-            if (CookieUtil.getData("eventID", request) != null
-                    && !CookieUtil.getData("eventID", request).isEmpty()) {
-                eventID = Integer.parseInt(CookieUtil.getData("eventID", request));
+            if (CookieUtil.getDataFromRequest("eventID", request, true) != null
+                    && !CookieUtil.getDataFromRequest("eventID", request, true).isEmpty()) {
+                eventID = Integer.parseInt(CookieUtil.getDataFromRequest("eventID", request, true));
             }
             
             int userID = 0;
-            if (CookieUtil.getCookieContent("userIDCookie", request) != null
-                    && !CookieUtil.getCookieContent("userIDCookie", request).isEmpty()) {
-                userID = Integer.parseInt(CookieUtil.getCookieContent("userIDCookie", request));
+            if (CookieUtil.getDataFromRequest("userIDCookie", request) != null
+                    && !CookieUtil.getDataFromRequest("userIDCookie", request).isEmpty()) {
+                userID = Integer.parseInt(CookieUtil.getDataFromRequest("userIDCookie", request));
             }
 
             int eventOwnerID = eventDAO.getEventOwner(eventID).getId();

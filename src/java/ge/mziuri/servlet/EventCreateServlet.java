@@ -43,7 +43,7 @@ public class EventCreateServlet extends HttpServlet {
             System.out.println(ex.getMessage());
         }
         Event event = new Event();
-        String userID = CookieUtil.getCookieContent("userIDCookie", request);
+        String userID = CookieUtil.getDataFromRequest("userIDCookie", request);
         UserDAO userDAO = new UserDAOImpl();
         User user = userDAO.getUser(Integer.parseInt(userID));
         event.setName(name);

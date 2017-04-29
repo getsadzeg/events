@@ -41,7 +41,7 @@ public class MyAccountServlet extends HttpServlet {
     }
 
     private void doEverything(HttpServletRequest request, HttpServletResponse response) {
-        String id = CookieUtil.getCookieContent("userIDCookie", request);
+        String id = CookieUtil.getDataFromRequest("userIDCookie", request);
         TicketDAO ticketDAO = new TicketDAOImpl();
         EventDAO eventDAO = new EventDAOImpl();
         ArrayList<Ticket> boughtTickets = ticketDAO.getBoughtTickets(Integer.parseInt(id));

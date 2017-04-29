@@ -3,7 +3,7 @@ package ge.mziuri.service;
 
 import ge.mziuri.dao.CardDAO;
 import ge.mziuri.dao.CardDAOImpl;
-import ge.mziuri.dao.DatabaseUtil;
+import ge.mziuri.util.DatabaseUtil;
 import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.model.Card;
