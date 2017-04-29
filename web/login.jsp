@@ -16,6 +16,10 @@
                 <input type="submit" value="შესვლა" />
             </form>
         </div>
+        <a href="index.jsp" class="btnform">
+                        <div class="diForm"> 
+                            <h5>Homepage</h5> 
+                        </div> 
     </body>
 </html>
 
