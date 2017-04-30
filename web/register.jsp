@@ -20,7 +20,7 @@
         </div>
         <a href="index.jsp" class="btnform">
             <div class="diForm"> 
-                <h5>Homepage</h5> 
+                <h5>მთავარ გვერდზე გადასვლა</h5> 
             </div>
         </a>
     </body>

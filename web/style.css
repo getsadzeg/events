@@ -2,7 +2,7 @@
     text-align: center;
     margin-top: 70px;
     font: bold 15px arial, sans-serif;
-     margin: auto;
+    margin: auto;
     margin-top: 70px;
 }
 
@@ -16,7 +16,7 @@
     margin-top: 70px;
 }
 
- .divForm {
+.divForm {
     border-style: solid; 
     border-width: 0.2px;
     height: 100px;
@@ -36,10 +36,10 @@
 }
 
 .DivTform{
-      display: table-cell;  
+    display: table-cell;  
 }
 
- .menuItem {
+.menuItem {
     border-style: solid;
     border-width: 0.2px;
     height: 40px;
@@ -48,132 +48,132 @@
     text-align: center;
     color : crimson;   
     display: table-cell;
- }
- 
-   .linkForm {
+}
+
+.linkForm {
     color: crimson;
     text-decoration: none;
     font: bold 80px arial, sans-serif;    
     width: 500px;
-  
-    }
-    
-    .categForm {
-      color: crimson;
-      text-decoration: none; 
-      font: bold 20px arial, sans-serif;
-    }
-      
-    .eventForm {
-       text-align: center;
-       border-style: solid;
-       border-width: 1px;
-       padding: 10px;
-       width: 400px;
-       margin: auto;
-       font-size: 26px; 
-        }
-        
-    .hForm {
-        text-align: center;   
-            
-        }
-        
-    .buttonForm {
-       margin: 10px;
-       display: table-cell;
-       }
-            
-            
-     .wrapper {
-         text-align: center;
-         margin-top: 20px;
-       }
 
-       .userForm {
-             text-align: center;
-             border-style: solid;
-             border-width: 1px;
-             padding: 10px;
-             width: 300px;
-             margin: auto;
-             margin-top: 70px;  
-                    }   
-                    
-       .eventDForm {
-             border-style: solid;
-             border-width: 1px;
-             width: 240px;    
-             text-align: center;      
-             color: black;
-                   }
-      
-     .DivLinkForm {
-         text-decoration: none;
-         padding: 4px;
-         margin-bottom: 10px;
-         margin-left: 10px;
-         display: table-cell;    
-         table-layout: fixed;
-                    }
-     
-      .btnform {
-           text-align: center;
-           text-decoration: none;
-      }               
-      
-      .FormDivLinkForm {
-           margin-left: 10px;              
-           display: table-cell;    
-           table-layout: fixed;
-           margin-bottom: 10px;      
-           border-spacing: 10px;
-                    }
-                    
-      .divBForm {
-            background-color: deepskyblue;
-            color: crimson;
-            border-style: solid;
-            border-width: 0.2px; 
-            height: 40px;
-            width: 150px;
-            margin: 10px;
-                    }
-                    
-      .div2Form {
-           border-style: solid; 
-           border-width: 0.2px;
-           height: 100px;
-           width: 100%;
-           background: deepskyblue;
-           text-align: center;
-           color : crimson;
-           font: bold 15px arial, sans-serif; 
-           display: table-cell;                          
-                    }
-                    
-      .newform1 {
-         border-style: solid;        
-         border-width: 0.2px;
-         height: 250px;               
-         text-align: center;     
-         width: 500px;
-         display: table-cell;
-         margin: 40px;
-         padding: 10px;
-                    }
-       
-      dForm{
-        display: table-cell;  
-        margin: 10px;
-        padding: 10px;  
-         
-      }
-      
-      diForm{
-            border-style: solid;
-            border-width: 0.3px; 
-            height: 50px;
-            width: 160px;
-            margin: 10px;
-     }
+}
+
+.categForm {
+    color: crimson;
+    text-decoration: none; 
+    font: bold 20px arial, sans-serif;
+}
+
+.eventForm {
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    width: 400px;
+    margin: auto;
+    font-size: 26px; 
+}
+
+.hForm {
+    text-align: center;   
+
+}
+
+.buttonForm {
+    margin: 10px;
+    display: table-cell;
+}
+
+
+.wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.userForm {
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    width: 300px;
+    margin: auto;
+    margin-top: 70px;  
+}   
+
+.eventDForm {
+    border-style: solid;
+    border-width: 1px;
+    width: 240px;    
+    text-align: center;      
+    color: black;
+}
+
+.DivLinkForm {
+    text-decoration: none;
+    padding: 4px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    display: table-cell;    
+    table-layout: fixed;
+}
+
+.btnform {
+    text-align: center;
+    text-decoration: none;
+}               
+
+.FormDivLinkForm {
+    margin-left: 10px;              
+    display: table-cell;    
+    table-layout: fixed;
+    margin-bottom: 10px;      
+    border-spacing: 10px;
+}
+
+.divBForm {
+    background-color: deepskyblue;
+    color: crimson;
+    border-style: solid;
+    border-width: 0.2px; 
+    height: 40px;
+    width: 150px;
+    margin: 10px;
+}
+
+.div2Form {
+    border-style: solid; 
+    border-width: 0.2px;
+    height: 100px;
+    width: 100%;
+    background: deepskyblue;
+    text-align: center;
+    color : crimson;
+    font: bold 15px arial, sans-serif; 
+    display: table-cell;                          
+}
+
+.newform1 {
+    border-style: solid;        
+    border-width: 0.2px;
+    height: 250px;               
+    text-align: center;     
+    width: 500px;
+    display: table-cell;
+    margin: 40px;
+    padding: 10px;
+}
+
+dForm{
+    display: table-cell;  
+    margin: 10px;
+    padding: 10px;  
+
+}
+
+diForm{
+    border-style: solid;
+    border-width: 0.3px; 
+    height: 50px;
+    width: 160px;
+    margin: 10px;
+}

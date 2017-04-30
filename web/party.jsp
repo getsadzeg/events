@@ -1,3 +1,5 @@
+<%@page import="ge.mziuri.util.CookieUtil"%>
+<%@page import="ge.mziuri.util.CookieUtil"%>
 <%@page import="ge.mziuri.enums.Category"%>
 <%@page import="ge.mziuri.model.User"%>
 <%@page import="java.util.ArrayList"%>
@@ -21,14 +23,8 @@
                 </a> </div>
                 <%
                     boolean existUser = false;
-                    Cookie[] cookies = request.getCookies();
-                    if (cookies != null) {
-                        for (Cookie cookie : cookies) {
-                            if (cookie.getName().equals("userIDCookie")) {
-                                existUser = true;
-                            }
-                        }
-                    }
+                    if(CookieUtil.getDataFromRequest("userID", request, true) != null
+                            && !CookieUtil.getDataFromRequest("userID", request, true).isEmpty()) existUser = true;
                 %>
             <div class="DivTform"> 
                 <a href="
