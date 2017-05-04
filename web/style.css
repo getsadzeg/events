@@ -164,7 +164,7 @@
 }
 
 dForm{
-    display: table-cell;  
+  /*  display: table-cell;   */
     margin: 10px;
     padding: 10px;  
 
@@ -177,3 +177,6 @@ diForm{
     width: 160px;
     margin: 10px;
 }
+
+.allform {
+      margin-right: auto; margin-left: auto; }

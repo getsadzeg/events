@@ -14,7 +14,8 @@
     </head>
     <body>
 
-
+       <div class="allForm">
+           
         <div  class="dform">
             <div class="newform1">
                 <h2>User's info</h2>
@@ -79,6 +80,6 @@
                     </a>
             </div> 
         </div>
-
+       </div>
     </body>
 </html>
