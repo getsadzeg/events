@@ -91,6 +91,9 @@
                 <br>
                 <span> ავტორი: </span>
                 <span>  <%=request.getAttribute("author")%> </span> 
+                <br>
+                <span> ნახვები: </span>
+                <span>  <%=request.getAttribute("views")%> </span> 
 
             </div>
         </form>

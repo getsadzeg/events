@@ -18,6 +18,8 @@ public class EventViewServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         EventDAO eventDAO = new EventDAOImpl();
+        eventDAO.updateViews(id);
+        eventDAO = new EventDAOImpl();
         Event event = eventDAO.getEvent(id);
         request.setAttribute("name", event.getName());
         request.setAttribute("description", event.getDesc());
@@ -27,6 +29,7 @@ public class EventViewServlet extends HttpServlet {
         request.setAttribute("type", event.getType().toString());
         request.setAttribute("places", event.getPlaces());
         request.setAttribute("availableSeats", event.getAvailablePlaces());
+        request.setAttribute("views", event.getViews());
         request.setAttribute("author", event.getOwner().getUsername());
         Cookie cookie = new Cookie("eventIDCookie", String.valueOf(id));
         response.addCookie(cookie);

@@ -87,6 +87,20 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
+    public void updateViews(int event_id) {
+        try {
+            pstmt = con.prepareStatement("UPDATE EVENT SET views = views+1 WHERE id = ?");
+            pstmt.setInt(1, event_id);
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            DatabaseUtil.closeConnection(con);
+        }
+    }
+
+    @Override
     public Event getEvent(int id) {
         Event event = new Event();
         User owner = new User();
@@ -107,6 +121,7 @@ public class EventDAOImpl implements EventDAO {
                 int seatsnum = result.getInt("places");
                 availablePlaceString = result.getString("available_places");
                 list = eventUtil.StringToList(availablePlaceString);
+                int views = result.getInt("views");
                 String owner_username = result.getString("author_username");
                 owner.setUsername(owner_username);
                 owner.setId(userDAO.getIdFromUsername(owner_username));
@@ -119,6 +134,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setType(type);
                 event.setPlaces(seatsnum);
                 event.setAvailablePlaces(list);
+                event.setViews(views);
                 event.setOwner(owner);
             }
         } catch (SQLException ex) {
@@ -142,7 +158,7 @@ public class EventDAOImpl implements EventDAO {
         Event event;
         User owner;
         try {
-            pstmt = con.prepareStatement("SELECT * FROM EVENT");
+            pstmt = con.prepareStatement("SELECT * FROM EVENT ORDER BY views DESC");
             ResultSet result = pstmt.executeQuery();
             while (result.next()) {
                 event = new Event();
@@ -156,6 +172,7 @@ public class EventDAOImpl implements EventDAO {
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
                 String owner_username = result.getString("author_username");
+                int views = result.getInt("views");
                 owner.setUsername(owner_username);
                 event.setId(id);
                 event.setName(name);
@@ -165,6 +182,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setCategory(category);
                 event.setType(type);
                 event.setPlaces(seatsnum);
+                event.setViews(views);
                 event.setOwner(owner);
                 list.add(event);
             }
@@ -174,6 +192,7 @@ public class EventDAOImpl implements EventDAO {
             DatabaseUtil.closeConnection(con);
         }
         return list;
+
     }
 
     @Override
@@ -182,7 +201,7 @@ public class EventDAOImpl implements EventDAO {
         Event event;
         User owner;
         try {
-            pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE category = ?");
+            pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE category = ? ORDER BY views DESC");
             pstmt.setString(1, category.toString());
             ResultSet result = pstmt.executeQuery();
             while (result.next()) {
@@ -196,6 +215,7 @@ public class EventDAOImpl implements EventDAO {
                 Type type = Type.valueOf(result.getString("type"));
                 int seatsnum = result.getInt("places");
                 String owner_username = result.getString("author_username");
+                int views = result.getInt("views");
                 owner.setUsername(owner_username);
                 event.setId(id);
                 event.setName(name);
@@ -205,6 +225,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setCategory(category);
                 event.setType(type);
                 event.setPlaces(seatsnum);
+                event.setViews(views);
                 event.setOwner(owner);
                 list.add(event);
             }
@@ -229,7 +250,7 @@ public class EventDAOImpl implements EventDAO {
             if (userRes.next()) {
                 owner_username = userRes.getString("username");
             }
-            pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE author_username = ?");
+            pstmt = con.prepareStatement("SELECT * FROM EVENT WHERE author_username = ? ORDER BY views DESC");
             pstmt.setString(1, owner_username);
             ResultSet eventRes = pstmt.executeQuery();
             while (eventRes.next()) {
@@ -242,6 +263,7 @@ public class EventDAOImpl implements EventDAO {
                 Type type = Type.valueOf(eventRes.getString("type"));
                 int seatsnum = eventRes.getInt("places");
                 Category category = Category.valueOf(eventRes.getString("category"));
+                int views = eventRes.getInt("views");
                 owner = new User();
                 owner.setUsername(owner_username);
                 event.setId(id);
@@ -252,6 +274,7 @@ public class EventDAOImpl implements EventDAO {
                 event.setCategory(category);
                 event.setType(type);
                 event.setPlaces(seatsnum);
+                event.setViews(views);
                 event.setOwner(owner);
                 list.add(event);
             }

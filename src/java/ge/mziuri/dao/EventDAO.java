@@ -15,6 +15,8 @@ public interface EventDAO {
     
     void UpdateEvent(Event event);
     
+    void updateViews(int event_id);
+    
     Event getEvent(int id);
     
     User getEventOwner(int id);
