@@ -1,3 +1,4 @@
+<%@page import="ge.mziuri.util.CookieUtil"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ge.mziuri.model.User"%>
 <%@page import="ge.mziuri.dao.EventDAOImpl"%>
@@ -19,11 +20,9 @@
                     Events
                 </a> </div>
                 <%
-                    <%
                     boolean existUser = false;
                     if(CookieUtil.getDataFromRequest("userID", request, true) != null
                             && !CookieUtil.getDataFromRequest("userID", request, true).isEmpty()) existUser = true;
-                %>
                 %>
             <div class="DivTform"> 
                 <a href="
