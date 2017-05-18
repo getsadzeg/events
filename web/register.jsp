@@ -10,17 +10,17 @@
     <body>
         <div class="registerForm">
             <form action="RegisterServlet" name="registerForm" method="post">
-                სახელი:     <input type="text" name="firstName"/> <br>
-                გვარი:      <input type="text" name="lastName" /> <br>
-                მომ. სახ. : <input type="text" name="username" /> <br>
-                პაროლი:   <input type="password" name="password" /> <br>
-                გაიმეორეთ: <input type="password" name ="password2"/> <br>
-                <input type="submit" value="რეგისტრაცია" />
+                Name:     <input type="text" name="firstName"/> <br>
+                Surname:      <input type="text" name="lastName" /> <br>
+                Username: <input type="text" name="username" /> <br>
+                Password:   <input type="password" name="password" /> <br>
+                Repeat password: <input type="password" name ="password2"/> <br>
+                <input type="submit" value="Register" />
             </form>
         </div>
         <a href="index.jsp" class="btnform">
             <div class="diForm"> 
-                <h5>მთავარ გვერდზე გადასვლა</h5> 
+                <h5>Homepage</h5> 
             </div>
         </a>
     </body>

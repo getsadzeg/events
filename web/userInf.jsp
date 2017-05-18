@@ -22,12 +22,12 @@
                 <form action="MyAccountServlet" method="post">
                     <%
                         User user = (User) request.getAttribute("User");
-                        out.write("სახელი: <input type=\"text\" name=\"firstname\" value=\"" + user.getName() + "\"><br>");
-                        out.write("გვარი: <input type=\"text\" name=\"lastname\" value=\"" + user.getSurname() + "\"><br>");
-                        out.write("ახალი პაროლი: <input type=\"password\" name=\"password\"><br>");
+                        out.write("Name: <input type=\"text\" name=\"firstname\" value=\"" + user.getName() + "\"><br>");
+                        out.write("Surname: <input type=\"text\" name=\"lastname\" value=\"" + user.getSurname() + "\"><br>");
+                        out.write("New password: <input type=\"password\" name=\"password\"><br>");
 
                     %>
-                    <input type="submit" value="განახლება">
+                    <input type="submit" value="submit">
                     <input type="hidden" name = "updateValue" value = "userUpdate">
                     </form>
                   </div>
@@ -37,12 +37,12 @@
                 <form action="MyAccountServlet" method="post">
                     <%                        
                         Card card = (Card) request.getAttribute("Card");
-                        out.write("ბარათის კოდი: <input type=\"text\" name=\"cardcode\" value=\"" + card.getCode() + "\"><br>");
-                        out.write("ბარათის პასკოდი: <input type=\"password\" name=\"passcode\" value=\"" + card.getPasscode() + "\"><br>");
-                        out.write("ბარათის ვადა: <input type=\"date\" name=\"expDate\" value=\"" + card.getExpDate() + "\"><br>");
+                        out.write("Card code: <input type=\"text\" name=\"cardcode\" value=\"" + card.getCode() + "\"><br>");
+                        out.write("Card passcode: <input type=\"password\" name=\"passcode\" value=\"" + card.getPasscode() + "\"><br>");
+                        out.write("Expiration Date: <input type=\"date\" name=\"expDate\" value=\"" + card.getExpDate() + "\"><br>");
 
                     %>
-                    <input type="submit" value="განახლება">
+                    <input type="submit" value="submit">
                     <input type="hidden" name = "updateValue" value = "cardUpdate">
                     </form>
                   </div>

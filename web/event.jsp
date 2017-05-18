@@ -71,28 +71,28 @@
         <form action = "EventViewServlet" method = "get">
             <h1 class="hForm"> <%=request.getAttribute("name")%> </h1>
             <div class="eventForm">
-                <span> აღწერა: </span>
+                <span> Description: </span>
                 <span> <%=request.getAttribute("description")%> </span>
                 <br>
-                <span> თარიღი: </span>
+                <span> Date: </span>
                 <span> <%=request.getAttribute("date")%> </span> 
                 <br>
-                <span> ფასი: </span>
+                <span> Price: </span>
                 <span>  <%=request.getAttribute("price")%> </span>
                 <br>
-                <span> კატეგორია: </span>
+                <span> Category: </span>
                 <span>  <%=request.getAttribute("category")%> </span> 
                 <br>
-                <span> ტიპი: </span>
+                <span> Type: </span>
                 <span>  <%=request.getAttribute("type")%> </span>
                 <br>
-                <span> ადგილები: </span>
+                <span> Places: </span>
                 <span>  <%=request.getAttribute("places")%> </span> 
                 <br>
-                <span> ავტორი: </span>
+                <span> Author: </span>
                 <span>  <%=request.getAttribute("author")%> </span> 
                 <br>
-                <span> ნახვები: </span>
+                <span> Views: </span>
                 <span>  <%=request.getAttribute("views")%> </span> 
 
             </div>

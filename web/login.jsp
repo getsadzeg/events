@@ -10,15 +10,15 @@
     <body>
         <div class="loginForm">
             <form action="LoginServlet" method="post">
-                <input type="text" name="username" /> <br>
-                <input type="password" name="password" /> <br>
-                <a href="register.jsp"> რეგისტრაცია </a>
-                <input type="submit" value="შესვლა" />
+                <input type="text" name="username"/> <br>
+                <input type="password" name="password"/> <br>
+                <a href="register.jsp"> Register </a>
+                <input type="submit" value="submit" />
             </form>
         </div>
         <a href="index.jsp" class="btnform">
                         <div class="diForm"> 
-                            <h5>მთავარზე გადასვლა</h5> 
+                            <h5>Homepage</h5> 
                         </div> 
     </body>
 </html>

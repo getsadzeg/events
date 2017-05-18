@@ -12,19 +12,19 @@
 
         <div class="eventForm">
             <form action = "EventCreateServlet" method = "post">
-                სახელი: <input type="text" name="name"> <br>   
-                აღწერა: <input type="text" name="desc"> <br>   
-                თარიღი:  <input type="date" name="date"> <br> 
-                ფასი:  <input type="number" name="price"> <br> 
-                კატეგორია: <input type="text" name="category"> <br> 
-                ტიპი: <input type="text" name="type"> <br> 
-                ადგილები: <input type="number" name="places"> <br> 
-                <input type="submit" value="შექმნა">
+                Name: <input type="text" name="name"> <br>   
+                Description: <input type="text" name="desc"> <br>   
+                Date:  <input type="date" name="date"> <br> 
+                Price:  <input type="number" name="price"> <br> 
+                Category: <input type="text" name="category"> <br> 
+                Type: <input type="text" name="type"> <br> 
+                Places: <input type="number" name="places"> <br> 
+                <input type="submit" value="Create">
             </form>
         </div>
       <a href="index.jsp" class="btnform">
                         <div class="diForm"> 
-                            <h5>მთავარ გვერდზე გადასვლა</h5> 
+                            <h5>Homepage</h5> 
                         </div> 
     </body>
 </html>
