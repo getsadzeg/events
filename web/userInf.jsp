@@ -18,7 +18,7 @@
            
         <div  class="dform">
             <div class="newform1">
-                <h2>User's info</h2>
+                <h2>Me</h2>
                 <form action="MyAccountServlet" method="post">
                     <%
                         User user = (User) request.getAttribute("User");
@@ -27,22 +27,25 @@
                         out.write("New password: <input type=\"password\" name=\"password\"><br>");
 
                     %>
-                    <input type="submit" value="submit">
+                    <input type="submit" value="Submit">
                     <input type="hidden" name = "updateValue" value = "userUpdate">
                     </form>
                   </div>
 
             <div class="newform1">
-                <h2>User's card info</h2>
+                <h2>My Card</h2>
                 <form action="MyAccountServlet" method="post">
                     <%                        
                         Card card = (Card) request.getAttribute("Card");
+                        if(card != null) {
                         out.write("Card code: <input type=\"text\" name=\"cardcode\" value=\"" + card.getCode() + "\"><br>");
                         out.write("Card passcode: <input type=\"password\" name=\"passcode\" value=\"" + card.getPasscode() + "\"><br>");
                         out.write("Expiration Date: <input type=\"date\" name=\"expDate\" value=\"" + card.getExpDate() + "\"><br>");
-
+                        out.write("<input type=\"submit\" value=\"Submit\">");
+                        }
+                        else out.write("Please submit your card first.");
                     %>
-                    <input type="submit" value="submit">
+                    
                     <input type="hidden" name = "updateValue" value = "cardUpdate">
                     </form>
                   </div>
@@ -50,7 +53,7 @@
 
         <div class="dform">   
             <div class="newform1"> 
-                <h2>User's bought tickets</h2>
+                <h2>My all tickets</h2>
                 
                     <%                       
                         List<Ticket> tickets = (List<Ticket>) request.getAttribute("BoughtTickets");
@@ -62,7 +65,7 @@
                     %>                
             </div>
             <div class="newform1"> 
-                <h2>User's events</h2>
+                <h2>My Events</h2>
                 
                     <%
                         List<Event> myevents = (List<Event>) request.getAttribute("myEvents");
