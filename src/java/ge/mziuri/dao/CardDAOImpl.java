@@ -49,7 +49,7 @@ public class CardDAOImpl implements CardDAO {
     }
 
     @Override
-    public Card getCardwithUserID(int user_id) { //no money needed in Card obj
+    public Card getCardwithUserID(int user_id) {
         Card card;
         try {
             pstmt = con.prepareStatement("SELECT card_id FROM \"USER\" WHERE id = ?");

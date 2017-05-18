@@ -20,6 +20,8 @@ public class EventDAOImpl implements EventDAO {
     private PreparedStatement pstmt;
 
     private final EventUtil eventUtil = new EventUtil();
+    
+    
 
     public EventDAOImpl() {
         con = DatabaseUtil.getConnection();
@@ -123,6 +125,7 @@ public class EventDAOImpl implements EventDAO {
                 list = eventUtil.StringToList(availablePlaceString);
                 int views = result.getInt("views");
                 String owner_username = result.getString("author_username");
+                if(new java.util.Date().getTime() > date.getTime()) event.setSellingEndedStatus(true);
                 owner.setUsername(owner_username);
                 owner.setId(userDAO.getIdFromUsername(owner_username));
                 event.setId(id);

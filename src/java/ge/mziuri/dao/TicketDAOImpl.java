@@ -15,7 +15,7 @@ public class TicketDAOImpl implements TicketDAO {
 
     private Connection con;
     private PreparedStatement pstmt;
-    private static final String STATUS = "ACTIVE"; //wanna change this if present date > event date
+    private static final String STATUS = "ACTIVE"; //wanna remove this
 
     public TicketDAOImpl() {
         con = DatabaseUtil.getConnection();

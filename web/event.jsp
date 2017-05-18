@@ -98,20 +98,22 @@
             </div>
         </form>
 
-        <form action="BuyTicketServlet" method="post">
-            <div class="wrapper">
-                <select name="selection">
+        <%
+            if (!(boolean) request.getAttribute("selling_ended")) {
+                out.write("<form action=\"BuyTicketServlet\" method=\"post\">");
+                out.write("<div class=\"wrapper\">");
+                out.write("<select name=\"selection\">");
+                List<String> numbers = (List<String>) request.getAttribute("availableSeats");
+                for (String number : numbers) {
+                    out.write("<option value=\"" + number + "\">" + number + "</option>");
+                }
+                out.write("</select>");
+                out.write("<input type=\"submit\" class=\"buttonForm\" value=\"Buy Ticket\">");
+                out.write("</div>");
+                out.write("</form>");
+            }
+        %>
 
-                    <%
-                        List<String> numbers = (List<String>) request.getAttribute("availableSeats");
-                        for (String number : numbers) {
-                            out.write("<option value=\"" + number + "\">" + number + "</option>");
-                        }
-                    %>
-                </select>
-                <input type="submit" class="buttonForm" value="Buy Ticket">   
-            </div>
-        </form>
 
         <%
             EventDAO eventDAO = new EventDAOImpl();
@@ -120,7 +122,7 @@
                     && !CookieUtil.getDataFromRequest("eventID", request, true).isEmpty()) {
                 eventID = Integer.parseInt(CookieUtil.getDataFromRequest("eventID", request, true));
             }
-            
+
             int userID = 0;
             if (CookieUtil.getDataFromRequest("userIDCookie", request) != null
                     && !CookieUtil.getDataFromRequest("userIDCookie", request).isEmpty()) {

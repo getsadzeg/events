@@ -20,6 +20,7 @@ public class Event {
     private ArrayList availablePlaces;
     private int views;
     private User owner;
+    private boolean SELLING_ENDED = false;
 
     public Event() {
         
@@ -134,11 +135,21 @@ public class Event {
         this.views = views;
     }
     
+    
+    public boolean SELLING_ENDED() {
+        return SELLING_ENDED;
+    }
+
+    
+    public void setSellingEndedStatus(boolean aSELLING_ENDED) {
+        SELLING_ENDED = aSELLING_ENDED;
+    }
+    
     @Override
     public String toString() {
         return "id:" + id + " name:" + name + " description:" + desc + " date:" + date.toString() + " price:" + price + " category:" + category + 
-                " type:" + type + " seats:" + places + " owner username" + owner.getUsername() + "views: " + views;
+                " type:" + type + " seats:" + places + " owner username" + owner.getUsername() + "views: " + views 
+                + "selling status: " + SELLING_ENDED;
     }
-
     
 }
