@@ -139,13 +139,14 @@ public class EventDAOImpl implements EventDAO {
                 event.setAvailablePlaces(list);
                 event.setViews(views);
                 event.setOwner(owner);
+                return event;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
             DatabaseUtil.closeConnection(con);
         }
-        return event;
+        return null;
     }
 
     @Override

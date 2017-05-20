@@ -1,4 +1,5 @@
 
+<%@page import="ge.mziuri.model.Event"%>
 <%@page import="ge.mziuri.dao.EventDAOImpl"%>
 <%@page import="ge.mziuri.dao.EventDAO"%>
 <%@page import="ge.mziuri.util.CookieUtil"%>

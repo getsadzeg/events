@@ -147,8 +147,8 @@ public class Event {
     
     @Override
     public String toString() {
-        return "id:" + id + " name:" + name + " description:" + desc + " date:" + date.toString() + " price:" + price + " category:" + category + 
-                " type:" + type + " seats:" + places + " owner username" + owner.getUsername() + "views: " + views 
+        return "id:" + id + " name:" + name + " description:" + desc + " date:" + date.toString() + " price:" + price + " category:" + category.toString() + 
+                " type:" + type.toString() + " seats:" + places + " owner username" + owner.getUsername() + "views: " + views 
                 + "selling status: " + SELLING_ENDED;
     }
     
