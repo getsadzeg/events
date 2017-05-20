@@ -59,8 +59,6 @@
                         out.write("</h5>");
                         out.write("</div> </a>");
                     }
-                %>
-                <%
                     if(existUser) {
                         out.write("<a href=\"LogoutServlet\" class=\"btnform\"><div class=\"divBForm\">");
                         out.write("<h5>Log out</h5>");

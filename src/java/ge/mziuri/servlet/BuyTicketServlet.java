@@ -33,11 +33,7 @@ public class BuyTicketServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 
             rd.forward(request, response);
-        } catch (ServletException | IOException | NumberFormatException ex) {
-            response.setContentType("text/html");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter pt = response.getWriter();
-            pt.append("დაფიქსირდა შეცდომა");
+        } catch (ServletException | IOException ex) {
             System.out.println(ex.getMessage());
         }
     }

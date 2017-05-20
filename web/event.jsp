@@ -35,7 +35,7 @@
                    <%
                        boolean link = false;
                        if (existUser) {
-                           out.write("userInf.jsp");
+                           out.write("MyAccountServlet");
                        } else {
                            out.write("login.jsp");
                            link = true;
@@ -62,6 +62,11 @@
                         out.write("<h5>");
                         out.write("Register");
                         out.write("</h5>");
+                        out.write("</div> </a>");
+                    }
+                    if(existUser) {
+                        out.write("<a href=\"LogoutServlet\" class=\"btnform\"><div class=\"divBForm\">");
+                        out.write("<h5>Log out</h5>");
                         out.write("</div> </a>");
                     }
                 %>            
@@ -99,7 +104,7 @@
         </form>
 
         <%
-            if (!(boolean) request.getAttribute("selling_ended")) {
+            if (!(boolean) request.getAttribute("selling_ended") && existUser) {
                 out.write("<form action=\"BuyTicketServlet\" method=\"post\">");
                 out.write("<div class=\"wrapper\">");
                 out.write("<select name=\"selection\">");
@@ -131,7 +136,9 @@
 
             int eventOwnerID = eventDAO.getEventOwner(eventID).getId();
             boolean isLegitToDelete = false;
-            if (eventDAO.getEvent(eventID).getAvailablePlaces().size() == eventDAO.getEvent(eventID).getPlaces()) {
+            int availableSeatsSize = eventDAO.getEvent(eventID).getAvailablePlaces().size();
+            int seats = eventDAO.getEvent(eventID).getPlaces(); //bug here?
+            if (availableSeatsSize == seats) {
                 isLegitToDelete = true;
             }
             if (userID == eventOwnerID) {
