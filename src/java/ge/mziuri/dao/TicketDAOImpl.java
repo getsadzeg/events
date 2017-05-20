@@ -15,7 +15,6 @@ public class TicketDAOImpl implements TicketDAO {
 
     private Connection con;
     private PreparedStatement pstmt;
-    private static final String STATUS = "ACTIVE"; //wanna remove this
 
     public TicketDAOImpl() {
         con = DatabaseUtil.getConnection();
@@ -39,10 +38,9 @@ public class TicketDAOImpl implements TicketDAO {
                 ticketID = result.getInt("id");
             }
 
-            pstmt = con.prepareStatement("INSERT INTO TICKET_HISTORY(user_id, ticket_id, status) VALUES(?, ?, ?)");
+            pstmt = con.prepareStatement("INSERT INTO TICKET_HISTORY(user_id, ticket_id) VALUES(?, ?)");
             pstmt.setInt(1, userID);
             pstmt.setInt(2, ticketID);
-            pstmt.setString(3, STATUS);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
