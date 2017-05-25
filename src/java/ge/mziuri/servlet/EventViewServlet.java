@@ -22,7 +22,7 @@ public class EventViewServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         EventDAO eventDAO = new EventDAOImpl();
         eventDAO = new EventDAOImpl();
-        Event event
+        Event event = new Event();
         if (eventDAO.getEvent(id) != null) {
             event = eventDAO.getEvent(id);
             eventDAO.updateViews(id);
