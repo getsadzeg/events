@@ -22,7 +22,7 @@ public class EventViewServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         EventDAO eventDAO = new EventDAOImpl();
         eventDAO = new EventDAOImpl();
-        Event event = eventDAO.getEvent(id);
+        Event event = eventDAO.getEvent(id); //nullpointerexception here?
         if (event != null) {
             eventDAO.updateViews(id);
             request.setAttribute("name", event.getName());
@@ -43,7 +43,7 @@ public class EventViewServlet extends HttpServlet {
             try {
                 rd.forward(request, response);
             } catch (ServletException | IOException ex) {
-                ex.printStackTrace();
+                System.out.println(ex.getMessage());
             }
         } else {
             pt.append("ღონისძიება ვერ მოიძებნა");

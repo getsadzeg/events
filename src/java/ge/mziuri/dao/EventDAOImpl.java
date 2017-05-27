@@ -104,7 +104,7 @@ public class EventDAOImpl implements EventDAO {
 
     @Override
     public Event getEvent(int id) {
-        Event event = new Event();
+        Event event = null;
         User owner = new User();
         UserDAO userDAO = new UserDAOImpl();
         String availablePlaceString = null;
@@ -114,6 +114,7 @@ public class EventDAOImpl implements EventDAO {
             pstmt.setInt(1, id);
             ResultSet result = pstmt.executeQuery();
             if (result.next()) {
+                event = new Event();
                 String name = result.getString("name");
                 String description = result.getString("Description");
                 Date date = new Date(result.getDate("Date").getTime());
@@ -139,14 +140,13 @@ public class EventDAOImpl implements EventDAO {
                 event.setAvailablePlaces(list);
                 event.setViews(views);
                 event.setOwner(owner);
-                return event;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
             DatabaseUtil.closeConnection(con);
         }
-        return null;
+        return event;
     }
 
     @Override
