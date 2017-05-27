@@ -105,11 +105,12 @@
         </form>
 
         <%
-            if (!(boolean) request.getAttribute("selling_ended") && existUser) {
+            List<String> numbers = (List<String>) request.getAttribute("availableSeats");
+            if (existUser && !(boolean) request.getAttribute("selling_ended") && !numbers.get(0).equals("")) {
                 out.write("<form action=\"BuyTicketServlet\" method=\"post\">");
                 out.write("<div class=\"wrapper\">");
                 out.write("<select name=\"selection\">");
-                List<String> numbers = (List<String>) request.getAttribute("availableSeats");
+                
                 for (String number : numbers) {
                     out.write("<option value=\"" + number + "\">" + number + "</option>");
                 }
@@ -118,6 +119,7 @@
                 out.write("</div>");
                 out.write("</form>");
             }
+            else if(numbers.get(0).equals("")) out.write("ადგილები ამოიწურა");
         %>
 
 
