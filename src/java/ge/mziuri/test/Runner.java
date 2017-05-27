@@ -15,6 +15,6 @@ import java.util.ArrayList;
 public class Runner {
     public static void main(String[] args) {
         EventDAO eventDAO = new EventDAOImpl();
-        System.out.println(eventDAO.getEvent(25));
+        System.out.println(eventDAO.getEvent(6).getPlaces());
     }
 }

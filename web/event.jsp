@@ -137,9 +137,9 @@
 
             int eventOwnerID = eventDAO.getEventOwner(eventID).getId();
             boolean isLegitToDelete = false;
-            int availableSeatsSize = eventDAO.getEvent(eventID).getAvailablePlaces().size();
-            //int seats = eventDAO.getEvent(eventID).getPlaces(); //bug here?
-            int seats = 0;
+            Event event = eventDAO.getEvent(eventID);
+            int availableSeatsSize = event.getAvailablePlaces().size();
+            int seats = event.getPlaces();
             if (availableSeatsSize == seats) {
                 isLegitToDelete = true;
             }

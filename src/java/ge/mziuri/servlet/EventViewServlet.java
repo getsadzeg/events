@@ -22,7 +22,7 @@ public class EventViewServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         EventDAO eventDAO = new EventDAOImpl();
         eventDAO = new EventDAOImpl();
-        Event event = eventDAO.getEvent(id); //nullpointerexception here?
+        Event event = eventDAO.getEvent(id); 
         if (event != null) {
             eventDAO.updateViews(id);
             request.setAttribute("name", event.getName());
