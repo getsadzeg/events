@@ -119,7 +119,7 @@
                 out.write("</div>");
                 out.write("</form>");
             }
-            else if(numbers.get(0).equals("")) out.write("ადგილები ამოიწურა");
+            else if(numbers.get(0).equals("")) out.write("<div class=\"wrapper\">ადგილები ამოიწურა<div>");
         %>
 
 
