@@ -17,6 +17,9 @@ public class LogoutServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
         Cookie cookie = CookieUtil.getCookie("userIDCookie", request);
         cookie.setMaxAge(0);
         response.addCookie(cookie);

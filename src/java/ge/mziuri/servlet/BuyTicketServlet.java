@@ -21,7 +21,9 @@ public class BuyTicketServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html");
+            request.setCharacterEncoding("UTF-8");
             TicketDAO ticketDAO = new TicketDAOImpl();
             String eventID = "";
             String userID = "";

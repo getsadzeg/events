@@ -21,6 +21,9 @@ public class EventDeleteServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
         EventDAO eventDAO = new EventDAOImpl();
         int eventID = Integer.parseInt(CookieUtil.getDataFromRequest("eventIDCookie", request));
         eventDAO.DeleteEvent(eventID);

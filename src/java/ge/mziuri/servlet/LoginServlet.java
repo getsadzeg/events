@@ -23,6 +23,9 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html");
+            request.setCharacterEncoding("UTF-8");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             UserDAO userDAO = new UserDAOImpl();

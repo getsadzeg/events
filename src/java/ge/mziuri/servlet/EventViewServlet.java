@@ -18,6 +18,7 @@ public class EventViewServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         PrintWriter pt = response.getWriter();
         int id = Integer.parseInt(request.getParameter("id"));
         EventDAO eventDAO = new EventDAOImpl();

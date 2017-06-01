@@ -15,11 +15,8 @@ import ge.mziuri.model.User;
 import static ge.mziuri.service.MyAccountService.update;
 import ge.mziuri.util.CookieUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +37,10 @@ public class MyAccountServlet extends HttpServlet {
         doEverything(request, response);
     }
 
-    private void doEverything(HttpServletRequest request, HttpServletResponse response) {
+    private void doEverything(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
         String id = CookieUtil.getDataFromRequest("userIDCookie", request);
         TicketDAO ticketDAO = new TicketDAOImpl();
         EventDAO eventDAO = new EventDAOImpl();
