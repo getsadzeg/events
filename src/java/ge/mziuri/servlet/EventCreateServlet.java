@@ -29,7 +29,7 @@ public class EventCreateServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         ServletUtil.setEncoding(request, response);
         String name = (String) request.getParameter("name");
         String description = (String) request.getParameter("desc");

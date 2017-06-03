@@ -38,7 +38,7 @@ public class MyAccountServlet extends HttpServlet {
         doEverything(request, response);
     }
 
-    private void doEverything(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    private void doEverything(HttpServletRequest request, HttpServletResponse response) {
         ServletUtil.setEncoding(request, response);
         String id = CookieUtil.getDataFromRequest("userIDCookie", request);
         TicketDAO ticketDAO = new TicketDAOImpl();

@@ -25,7 +25,7 @@ public class EventUpdateServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         ServletUtil.setEncoding(request, response);
         String id = "";
         id = CookieUtil.getDataFromRequest("eventIDCookie", request);

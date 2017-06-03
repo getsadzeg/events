@@ -12,10 +12,14 @@ public class ServletUtil {
         
     }
     
-    public static void setEncoding(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        request.setCharacterEncoding("UTF-8");
+    public static void setEncoding(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            response.setContentType("text/html");
+            response.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

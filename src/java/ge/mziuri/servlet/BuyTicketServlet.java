@@ -20,8 +20,8 @@ public class BuyTicketServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        ServletUtil.setEncoding(request, response);
         try {
-            ServletUtil.setEncoding(request, response);
             TicketDAO ticketDAO = new TicketDAOImpl();
             String eventID = "";
             String userID = "";

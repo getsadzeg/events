@@ -21,7 +21,7 @@ public class EventDeleteServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         ServletUtil.setEncoding(request, response);
         EventDAO eventDAO = new EventDAOImpl();
         int eventID = Integer.parseInt(CookieUtil.getDataFromRequest("eventIDCookie", request));
