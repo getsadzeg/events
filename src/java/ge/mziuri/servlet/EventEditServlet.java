@@ -5,6 +5,7 @@ import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.model.Event;
 import ge.mziuri.util.CookieUtil;
+import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.RequestDispatcher;
@@ -23,9 +24,7 @@ public class EventEditServlet extends HttpServlet {
     
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-        request.setCharacterEncoding("UTF-8");
+        ServletUtil.setEncoding(request, response);
         String id = "";
         id = CookieUtil.getDataFromRequest("eventIDCookie", request);
         EventDAO eventDAO = new EventDAOImpl();
@@ -34,8 +33,8 @@ public class EventEditServlet extends HttpServlet {
         request.setAttribute("desc", event.getDesc());
         request.setAttribute("date", event.getDate());
         request.setAttribute("category", event.getCategory().toString());
-        Cookie cookie = new Cookie("eventIDCookie", id);
-        response.addCookie(cookie);
+        /*Cookie cookie = new Cookie("eventIDCookie", id);
+        response.addCookie(cookie);*/
         RequestDispatcher rd = request.getRequestDispatcher("editE.jsp");
         try {
             rd.forward(request, response);

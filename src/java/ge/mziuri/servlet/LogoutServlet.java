@@ -2,6 +2,7 @@
 package ge.mziuri.servlet;
 
 import ge.mziuri.util.CookieUtil;
+import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -17,9 +18,7 @@ public class LogoutServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-        request.setCharacterEncoding("UTF-8");
+        ServletUtil.setEncoding(request, response);
         Cookie cookie = CookieUtil.getCookie("userIDCookie", request);
         cookie.setMaxAge(0);
         response.addCookie(cookie);

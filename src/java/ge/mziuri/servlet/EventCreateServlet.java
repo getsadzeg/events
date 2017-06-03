@@ -9,6 +9,7 @@ import ge.mziuri.enums.Type;
 import ge.mziuri.model.Event;
 import ge.mziuri.model.User;
 import ge.mziuri.util.CookieUtil;
+import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
@@ -29,9 +30,7 @@ public class EventCreateServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-        request.setCharacterEncoding("UTF-8");
+        ServletUtil.setEncoding(request, response);
         String name = (String) request.getParameter("name");
         String description = (String) request.getParameter("desc");
         String date_string = (String) request.getParameter("date");

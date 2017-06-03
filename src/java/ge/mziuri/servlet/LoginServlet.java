@@ -3,7 +3,7 @@ package ge.mziuri.servlet;
 import ge.mziuri.dao.UserDAO;
 import ge.mziuri.dao.UserDAOImpl;
 import ge.mziuri.model.User;
-import ge.mziuri.util.CookieUtil;
+import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -23,9 +23,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html");
-            request.setCharacterEncoding("UTF-8");
+            ServletUtil.setEncoding(request, response);
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             UserDAO userDAO = new UserDAOImpl();

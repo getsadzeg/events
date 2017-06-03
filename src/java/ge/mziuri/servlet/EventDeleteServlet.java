@@ -3,7 +3,9 @@ package ge.mziuri.servlet;
 import ge.mziuri.dao.EventDAO;
 import ge.mziuri.dao.EventDAOImpl;
 import ge.mziuri.util.CookieUtil;
+import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +21,8 @@ public class EventDeleteServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-        request.setCharacterEncoding("UTF-8");
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        ServletUtil.setEncoding(request, response);
         EventDAO eventDAO = new EventDAOImpl();
         int eventID = Integer.parseInt(CookieUtil.getDataFromRequest("eventIDCookie", request));
         eventDAO.DeleteEvent(eventID);

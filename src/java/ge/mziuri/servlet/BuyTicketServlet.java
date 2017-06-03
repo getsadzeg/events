@@ -3,8 +3,8 @@ package ge.mziuri.servlet;
 import ge.mziuri.dao.TicketDAO;
 import ge.mziuri.dao.TicketDAOImpl;
 import ge.mziuri.util.CookieUtil;
+import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +19,9 @@ public class BuyTicketServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html");
-            request.setCharacterEncoding("UTF-8");
+            ServletUtil.setEncoding(request, response);
             TicketDAO ticketDAO = new TicketDAOImpl();
             String eventID = "";
             String userID = "";

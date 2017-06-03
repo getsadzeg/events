@@ -1,6 +1,5 @@
 package ge.mziuri.util;
 
-import ge.mziuri.model.Event;
 import java.util.ArrayList;
 import java.util.Arrays;
 
