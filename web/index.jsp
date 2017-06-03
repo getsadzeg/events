@@ -1,3 +1,4 @@
+<%@page import="ge.mziuri.util.ServletUtil"%>
 <%@page import="ge.mziuri.util.CookieUtil"%>
 <%@page import="java.lang.Integer"%>
 <%@page import="ge.mziuri.dao.EventDAOImpl"%>
@@ -21,6 +22,7 @@
                     Events
                 </a> </div>
                 <%
+                    ServletUtil.setEncoding(request, response);
                     boolean existUser = false;
                     if(CookieUtil.getDataFromRequest("userID", request, true) != null
                             && !CookieUtil.getDataFromRequest("userID", request, true).isEmpty()) existUser = true;
