@@ -54,13 +54,14 @@ public class EventUpdateServlet extends HttpServlet {
         request.setAttribute("category", category.toString());
         request.setAttribute("type", event.getType().toString());
         request.setAttribute("places", event.getPlaces());
-        request.setAttribute("freeplaces", event.getAvailablePlaces());
+        request.setAttribute("availableSeats", event.getAvailablePlaces());
         request.setAttribute("author", event.getOwner().getUsername());
+        request.setAttribute("selling_ended", event.SELLING_ENDED());
         RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
         try {
             rd.forward(request, response);
         } catch(ServletException | IOException ex) {
-            System.out.println(ex.getMessage());
+            ex.printStackTrace(System.out);
         }
     }
 }

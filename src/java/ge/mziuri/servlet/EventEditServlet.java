@@ -33,8 +33,6 @@ public class EventEditServlet extends HttpServlet {
         request.setAttribute("desc", event.getDesc());
         request.setAttribute("date", event.getDate());
         request.setAttribute("category", event.getCategory().toString());
-        /*Cookie cookie = new Cookie("eventIDCookie", id);
-        response.addCookie(cookie);*/
         RequestDispatcher rd = request.getRequestDispatcher("editE.jsp");
         try {
             rd.forward(request, response);

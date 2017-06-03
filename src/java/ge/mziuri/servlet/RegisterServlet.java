@@ -45,8 +45,6 @@ public class RegisterServlet extends HttpServlet {
             rd.forward(request, response);
         }
         catch(RegistrationFailedException e) {
-            response.setContentType("text/html");
-            response.setCharacterEncoding("UTF-8");
             PrintWriter pt = response.getWriter();
             pt.append(e.getMessage());
         }

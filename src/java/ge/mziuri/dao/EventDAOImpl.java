@@ -142,17 +142,15 @@ public class EventDAOImpl implements EventDAO {
                 event.setOwner(owner);
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            DatabaseUtil.closeConnection(con);
+            ex.printStackTrace(System.out);
         }
+        //problems were occurred while closing this connection, so I removed it; will discuss
         return event;
     }
 
     @Override
     public User getEventOwner(int id) {
-        EventDAO eventDAO = new EventDAOImpl();
-        Event event = eventDAO.getEvent(id);
+        Event event = getEvent(id);
         return event.getOwner();
     }
 
