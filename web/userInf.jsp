@@ -41,7 +41,8 @@
                         out.write("Card code: <input type=\"text\" name=\"cardcode\" value=\"" + card.getCode() + "\"><br>");
                         out.write("Card passcode: <input type=\"password\" name=\"passcode\" value=\"" + card.getPasscode() + "\"><br>");
                         out.write("Expiration Date: <input type=\"date\" name=\"expDate\" value=\"" + card.getExpDate() + "\"><br>");
-                        out.write("<input type=\"submit\" value=\"Submit\">");
+                        out.write("<input type=\"submit\" value=\"Submit\"><br>");
+                        out.write("Money on your card: <input type=\"text\" name = \"money\" value=\"" + card.getMoney() + "\"><br>");
                         }
                         else out.write("Please submit your card first.");
                     %>

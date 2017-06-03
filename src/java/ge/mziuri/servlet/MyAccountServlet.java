@@ -16,7 +16,6 @@ import static ge.mziuri.service.MyAccountService.update;
 import ge.mziuri.util.CookieUtil;
 import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

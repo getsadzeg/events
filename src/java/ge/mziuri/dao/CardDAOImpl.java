@@ -59,13 +59,14 @@ public class CardDAOImpl implements CardDAO {
                 int card_id = cardIDResult.getInt("card_id");
                 card = new Card();
                 card.setId(card_id);
-                pstmt = con.prepareStatement("SELECT cardCode, passCode, expirationDate FROM CARD WHERE id = ?");
+                pstmt = con.prepareStatement("SELECT cardCode, passCode, expirationDate, money FROM CARD WHERE id = ?");
                 pstmt.setInt(1, card_id);
                 ResultSet cardResult = pstmt.executeQuery();
                 if (cardResult.next()) {
                     card.setCode(cardResult.getString("cardCode"));
                     card.setPasscode(cardResult.getString("passCode"));
                     card.setExpDate(new Date(cardResult.getDate("expirationDate").getTime()));
+                    card.setMoney(cardResult.getDouble("money"));
                     return card;
                 }
             }
