@@ -7,12 +7,11 @@ import ge.mziuri.model.Event;
 import ge.mziuri.util.CookieUtil;
 import ge.mziuri.util.ServletUtil;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,21 +46,10 @@ public class EventUpdateServlet extends HttpServlet {
         event.setDate(date);
         event.setCategory(category);
         eventDAO.UpdateEvent(event);
-        request.setAttribute("name", name);
-        request.setAttribute("description", description);
-        request.setAttribute("date", date);
-        request.setAttribute("price", event.getPrice());
-        request.setAttribute("category", category.toString());
-        request.setAttribute("type", event.getType().toString());
-        request.setAttribute("places", event.getPlaces());
-        request.setAttribute("availableSeats", event.getAvailablePlaces());
-        request.setAttribute("author", event.getOwner().getUsername());
-        request.setAttribute("selling_ended", event.SELLING_ENDED());
-        RequestDispatcher rd = request.getRequestDispatcher("event.jsp");
         try {
-            rd.forward(request, response);
-        } catch(ServletException | IOException ex) {
-            ex.printStackTrace(System.out);
+            response.sendRedirect("EventViewServlet?id=" + id);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 }
